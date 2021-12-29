@@ -64,7 +64,7 @@ void OnInit() {
   indi = new Indi_MA(_indi_params);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
-  string short_name = StringFormat("MA(%d)", InpMAPeriod);
+  string short_name = StringFormat("%s(%d)", indi.GetName(), InpMAPeriod);
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
   // Sets first bar from what index will be drawn
@@ -77,25 +77,33 @@ void OnInit() {
  * Calculate event handler function.
  */
 int OnCalculate(const int rates_total, const int prev_calculated,
-                const int begin, const double &price[]) {
-  int start;
+                const datetime &time[], const double &open[],
+                const double &high[], const double &low[],
+                const double &close[], const long &tick_volume[],
+                const long &volume[], const int &spread[]) {
+  int i, start;
   if (rates_total < 2 * InpMAPeriod) {
     return (0);
   }
   // Initialize calculations.
   start = prev_calculated == 0 ? 2 * InpMAPeriod - 1 : prev_calculated - 1;
   if (prev_calculated == 0) {
-    for (int i = 0; i <= start; i++) {
-      MABuffer[i] = price[i];
+    for (i = 0; i <= start; i++) {
+      MABuffer[i] = close[i];
     }
   }
   // Main calculations.
-  for (int i = start; i < rates_total && !IsStopped(); i++) {
+  for (i = start; i < rates_total && !IsStopped(); i++) {
     bool _is_ready = indi.Get<bool>(
         STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
     double _value = indi[i][0];
-    MABuffer[i] = _is_ready ? indi[i][0] : price[i];
+    MABuffer[i] = _is_ready ? indi[i][0] : close[i];
   }
   // Returns new prev_calculated.
   return (rates_total);
 }
+
+/**
+ * Deinit event handler function.
+ */
+void OnDeinit(const int reason) { delete indi; }
