@@ -1,5 +1,5 @@
 //+------------------------------------------------------------------+
-//|                                                EA31337 framework |
+//|                                                EA31337 indicator |
 //|                                 Copyright 2016-2021, EA31337 Ltd |
 //|                                       https://github.com/EA31337 |
 //+------------------------------------------------------------------+
@@ -39,15 +39,16 @@
 #property indicator_label1 "MA"
 #property indicator_applied_price PRICE_CLOSE
 
+// Includes.
+#include <EA31337-classes/Indicators/Indi_MA.mqh>
+
 // Input parameters.
 input int InpMAPeriod = 14;                  // MA period
 input int InpMAShift = 0;                    // MA shift
 input ENUM_MA_METHOD InpMAMethod = MODE_SMA; // MA method (smoothing type)
-input ENUM_APPLIED_PRICE InpMAAppliedPrice = PRICE_OPEN; // Applied price
-input int InpShift = 0;                                  // Indicator shift
-
-// Includes.
-#include <EA31337-classes/Indicators/Indi_MA.mqh>
+input ENUM_APPLIED_PRICE InpMAAppliedPrice = PRICE_OPEN;    // Applied price
+input int InpShift = 0;                                     // Indicator shift
+input ENUM_IDATA_SOURCE_TYPE InpSourceType = IDATA_BUILTIN; // Source type
 
 // Global variables.
 double MABuffer[];
@@ -61,6 +62,7 @@ void OnInit() {
   // Initialize indicator.
   IndiMAParams _indi_params(::InpMAPeriod, ::InpMAShift, ::InpMAMethod,
                             ::InpMAAppliedPrice, ::InpShift);
+  _indi_params.SetDataSourceType(InpSourceType);
   indi = new Indi_MA(_indi_params);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
