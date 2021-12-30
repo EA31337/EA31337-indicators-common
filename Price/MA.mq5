@@ -1,7 +1,7 @@
 //+------------------------------------------------------------------+
-//|                                                EA31337 indicator |
+//|                                               EA31337 indicators |
 //|                                 Copyright 2016-2021, EA31337 Ltd |
-//|                                       https://github.com/EA31337 |
+//|                                        https://ea31337.github.io |
 //+------------------------------------------------------------------+
 
 /*
@@ -25,18 +25,22 @@
  * Implements Moving Average indicator.
  */
 
-#property copyright "2016-2021, EA31337 Ltd"
-#property link "https://ea31337.github.io"
-#property description "Moving Average"
+// Defines.
+#define INDI_FULL_NAME "Moving Average"
+#define INDI_SHORT_NAME "MA"
 
 // Indicator properties.
+#property copyright "2016-2021, EA31337 Ltd"
+#property link "https://ea31337.github.io"
+#property description INDI_FULL_NAME
+//--
 #property indicator_chart_window
 #property indicator_buffers 1
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
 #property indicator_color1 DarkBlue
 #property indicator_width1 1
-#property indicator_label1 "MA"
+#property indicator_label1 INDI_SHORT_NAME
 #property indicator_applied_price PRICE_CLOSE
 
 // Includes.
@@ -50,15 +54,18 @@ input ENUM_APPLIED_PRICE InpMAAppliedPrice = PRICE_OPEN;    // Applied price
 input int InpShift = 0;                                     // Indicator shift
 input ENUM_IDATA_SOURCE_TYPE InpSourceType = IDATA_BUILTIN; // Source type
 
+// Global indicator buffers.
+double ExtMABuffer[];
+
 // Global variables.
-double MABuffer[];
 Indi_MA *indi;
 
 /**
  * Init event handler function.
  */
 void OnInit() {
-  SetIndexBuffer(0, MABuffer, INDICATOR_DATA);
+  // Initialize indicator buffers.
+  SetIndexBuffer(0, ExtMABuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiMAParams _indi_params(::InpMAPeriod, ::InpMAShift, ::InpMAMethod,
                             ::InpMAAppliedPrice, ::InpShift);
@@ -91,15 +98,15 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   start = prev_calculated == 0 ? 2 * InpMAPeriod - 1 : prev_calculated - 1;
   if (prev_calculated == 0) {
     for (i = 0; i <= start; i++) {
-      MABuffer[i] = close[i];
+      ExtMABuffer[i] = close[i];
     }
   }
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
+    double _value = indi[i][0];
     bool _is_ready = indi.Get<bool>(
         STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
-    double _value = indi[i][0];
-    MABuffer[i] = _is_ready ? indi[i][0] : close[i];
+    ExtMABuffer[i] = _is_ready ? indi[i][0] : close[i];
   }
   // Returns new prev_calculated.
   return (rates_total);
