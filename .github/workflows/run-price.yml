@@ -1,22 +1,16 @@
 ---
-name: Compile
+name: Run (Price)
 
 # yamllint disable-line rule:truthy
 on:
   pull_request:
-    branches:
-      - 'master'
-      - 'dev*'
-    paths-ignore:
-      - '*.md'
-      - '.git*'
+    paths:
+      - 'Price/**'
+      - .github/workflows/run-price.yml
   push:
-    branches:
-      - 'master'
-      - 'dev*'
-    paths-ignore:
-      - '*.md'
-      - '.git*'
+    paths:
+      - 'Price/**'
+      - .github/workflows/run-price.yml
 
 jobs:
   GetList:
@@ -29,12 +23,13 @@ jobs:
         id: get-files
         run: |
           import glob, json, os
-          files = glob.glob("**/*.mq?")
+          files = glob.glob("Price/*.mq?")
           print("::set-output name=filelist::{}".format(json.dumps(files)))
         shell: python
       - name: Display output
         run: echo ${{ steps.get-files.outputs.filelist }}
-  Compile:
+
+  Compile-Indicators:
     defaults:
       run:
         shell: powershell
@@ -75,3 +70,24 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex?'
+
+  Run-MQL4:
+    defaults:
+      run:
+        shell: bash
+        working-directory: Price
+    needs: Compile-Indicators
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test:
+          - MA
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: .
+      - name: Run ${{ matrix.test }}
+        uses: fx31337/mql-tester-action@master
+        with:
+          Script: ${{ matrix.test }}
+    timeout-minutes: 10
