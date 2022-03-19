@@ -1,0 +1,162 @@
+---
+name: Run (Range)
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    paths:
+      - 'Range/**'
+      - .github/workflows/run-range.yml
+  push:
+    paths:
+      - 'Range/**'
+      - .github/workflows/run-range.yml
+
+jobs:
+  GetList:
+    outputs:
+      filelist: ${{ steps.get-files.outputs.filelist }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set output with list of files
+        id: get-files
+        run: |
+          import glob, json, os
+          files = glob.glob("Range/*.mq?")
+          print("::set-output name=filelist::{}".format(json.dumps(files)))
+        shell: python
+      - name: Display output
+        run: echo ${{ steps.get-files.outputs.filelist }}
+
+  Compile-Indicators:
+    defaults:
+      run:
+        shell: powershell
+    needs: [GetList]
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        file: ${{ fromJson(needs.GetList.outputs.filelist) }}
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+        with:
+          path: Include/EA31337-classes
+          ref: dev
+          repository: EA31337/EA31337-classes
+      - name: Compile (build 2361)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2361
+          path: ${{ matrix.file }}
+          verbose: true
+      - name: Compile (build 2515)
+        if: endsWith(matrix.file, '.mq5')
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2515
+          path: ${{ matrix.file }}
+          verbose: true
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - run: Get-Location
+      - name: Upload indicator artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Indicators-common
+          path: '**/*.ex?'
+    timeout-minutes: 10
+
+  Compile-Strategy:
+    defaults:
+      run:
+        shell: powershell
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          path: Strategy-Indicator
+          ref: master
+          repository: EA31337/Strategy-Indicator
+      - uses: actions/checkout@v2
+        with:
+          path: Include/EA31337-classes
+          ref: dev
+          repository: EA31337/EA31337-classes
+      - name: Compile (build 2361)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2361
+          path: Strategy-Indicator
+          verbose: true
+      - name: Compile (build 2515)
+        if: endsWith(matrix.file, '.mq5')
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2515
+          path: Strategy-Indicator
+          verbose: true
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - run: Get-Location
+      - name: Upload indicator artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: Stg_Indicator
+          path: 'Strategy-Indicator/*.ex?'
+    timeout-minutes: 10
+
+  Run-MQL4:
+    defaults:
+      run:
+        shell: bash
+    env:
+      OPT_TRACE: ${{ secrets.OPT_TRACE }}
+    needs: [Compile-Indicators, Compile-Strategy]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test:
+          - Range\RSI
+
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          path: .
+      - uses: frdrwrt/write-to-file@v1.3
+        with:
+          filepath: Stg_Indicator/Stg_Indicator.set
+          content: |
+            Indicator_Indi_Indicator_DataExportMethod=1
+            Indicator_Indi_Indicator_Path=${{ matrix.test }}
+            Indicator_Indi_Indicator_Type=25
+          mode: 0644
+      - name: List files
+        run: find . -ls
+      - name: Run Indicator strategy with ${{ matrix.test }}
+        uses: fx31337/mql-tester-action@master
+        with:
+          BtDays: 1-12
+          OptTrace: ${{ env.OPT_TRACE }}
+          RunOnStart: >-
+            ln -fsv "/github/workspace/Indicators-common"
+            "$TERMINAL_DIR/$MQL_DIR/Indicators"
+          RunOnSet: cat "$TESTER_DIR/$EA_SETFILE"
+          RunOnError: pwd && find -L .
+          SetFile: ${{ github.workspace }}/Stg_Indicator/Stg_Indicator.set
+          TestExpert: Stg_Indicator.ex4
+      - name: Upload results
+        uses: actions/upload-artifact@v2
+        with:
+          name: Results-Range
+          path: '**.csv'
+    timeout-minutes: 10
