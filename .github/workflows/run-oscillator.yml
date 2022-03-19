@@ -126,8 +126,8 @@ jobs:
     strategy:
       matrix:
         test:
-          - Oscillator\AC
-          - Oscillator\MACD
+          - AC
+          - MACD
 
     steps:
       - uses: actions/download-artifact@v2
@@ -138,12 +138,12 @@ jobs:
           filepath: Stg_Indicator/Stg_Indicator.set
           content: |
             Indicator_Indi_Indicator_DataExportMethod=1
-            Indicator_Indi_Indicator_Path=${{ matrix.test }}
+            Indicator_Indi_Indicator_Path=Oscillator\${{ matrix.test }}
             Indicator_Indi_Indicator_Type=25
           mode: 0644
       - name: List files
         run: find . -ls
-      - name: Run Indicator strategy with ${{ matrix.test }}
+      - name: Run Indicator strategy with ${{ matrix.test }} indicator
         uses: fx31337/mql-tester-action@master
         with:
           BtDays: 1-12
@@ -158,6 +158,6 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v2
         with:
-          name: Results-Oscillator
+          name: Results-Oscillator-${{ matrix.test }}
           path: '**.csv'
     timeout-minutes: 10
