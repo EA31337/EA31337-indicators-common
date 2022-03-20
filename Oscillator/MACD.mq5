@@ -112,8 +112,7 @@ int OnCalculate(const int rates_total, const int prev_calculated,
               : prev_calculated - 1;
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
-    IndicatorDataEntry _entry = indi[i];
-    // double _value = indi[i][0];
+    IndicatorDataEntry _entry = indi[rates_total - i];
     bool _is_ready = indi.Get<bool>(
         STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
     ExtMACDBuffer[i] = _is_ready ? _entry[(int)LINE_MAIN] : 0.0;

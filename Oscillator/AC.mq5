@@ -91,10 +91,10 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   start = prev_calculated;
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
-    double _value = indi[i][0];
+    IndicatorDataEntry _entry = indi[rates_total - i];
     bool _is_ready = indi.Get<bool>(
         STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
-    ExtACBuffer[i] = _is_ready ? indi[i][0] : 0;
+    ExtACBuffer[i] = _is_ready ? _entry[0] : 0;
   }
   // Returns new prev_calculated.
   return (rates_total);
