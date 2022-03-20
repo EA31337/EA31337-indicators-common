@@ -72,8 +72,9 @@ void OnInit() {
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpRSIPeriod);
-  PlotIndexSetString(0, PLOT_LABEL, short_name);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
+  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, 50.0);
+  PlotIndexSetString(0, PLOT_LABEL, short_name);
   // Sets first bar from what index will be drawn
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpRSIPeriod);
   // Sets indicator shift.
@@ -98,9 +99,12 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
     IndicatorDataEntry _entry = indi[rates_total - i];
-    bool _is_ready = indi.Get<bool>(
-        STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
-    ExtRSIBuffer[i] = _is_ready ? _entry[0] : 50.0;
+    if (!indi.Get<bool>(
+            STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
+      ExtRSIBuffer[i] = 50.0;
+      return prev_calculated + 1;
+    }
+    ExtRSIBuffer[i] = _entry[0];
   }
   // Returns new prev_calculated.
   return (rates_total);

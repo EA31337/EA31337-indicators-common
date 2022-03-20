@@ -82,10 +82,13 @@ void OnInit() {
   string short_name =
       StringFormat("%s(%d,%d,%d)", indi.GetName(), ::InpMACDFastEMA,
                    ::InpMACDSlowEMA, ::InpMACDSignalSMA);
-  PlotIndexSetString(0, PLOT_LABEL, short_name);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
+  PlotIndexSetString(0, PLOT_LABEL, short_name);
+  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, DBL_MAX);
+  PlotIndexSetDouble(1, PLOT_EMPTY_VALUE, DBL_MAX);
   // Sets first bar from what index will be drawn
-  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpMACDSignalSMA - 1);
+  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN,
+                      fmax(InpMACDSignalSMA, InpMACDSlowEMA) - 1);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
   // Drawing settings (MQL4).
@@ -113,10 +116,14 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
     IndicatorDataEntry _entry = indi[rates_total - i];
-    bool _is_ready = indi.Get<bool>(
-        STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
-    ExtMACDBuffer[i] = _is_ready ? _entry[(int)LINE_MAIN] : 0.0;
-    ExtSignalBuffer[i] = _is_ready ? _entry[(int)LINE_SIGNAL] : 0.0;
+    if (!indi.Get<bool>(
+            STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
+      ExtMACDBuffer[i] = DBL_MAX;
+      ExtSignalBuffer[i] = DBL_MAX;
+      return prev_calculated + 1;
+    }
+    ExtMACDBuffer[i] = _entry[(int)LINE_MAIN];
+    ExtSignalBuffer[i] = _entry[(int)LINE_SIGNAL];
   }
   // Returns new prev_calculated.
   return (rates_total);

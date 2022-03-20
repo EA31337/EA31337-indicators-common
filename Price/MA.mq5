@@ -74,10 +74,11 @@ void OnInit() {
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpMAPeriod);
-  PlotIndexSetString(0, PLOT_LABEL, short_name);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
+  PlotIndexSetString(0, PLOT_LABEL, short_name);
+  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, DBL_MAX);
   // Sets first bar from what index will be drawn
-  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, 2 * InpMAPeriod - 1);
+  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpMAPeriod - 1);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
 }
@@ -104,9 +105,12 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
     IndicatorDataEntry _entry = indi[rates_total - i];
-    bool _is_ready = indi.Get<bool>(
-        STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY));
-    ExtMABuffer[i] = _is_ready ? _entry[0] : close[i];
+    if (!indi.Get<bool>(
+            STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
+      ExtMABuffer[i] = DBL_MAX;
+      return prev_calculated + 1;
+    }
+    ExtMABuffer[i] = _entry[0];
   }
   // Returns new prev_calculated.
   return (rates_total);
