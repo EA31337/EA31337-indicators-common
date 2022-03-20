@@ -1,6 +1,6 @@
 //+------------------------------------------------------------------+
 //|                                               EA31337 indicators |
-//|                                 Copyright 2016-2021, EA31337 Ltd |
+//|                                 Copyright 2016-2022, EA31337 Ltd |
 //|                                        https://ea31337.github.io |
 //+------------------------------------------------------------------+
 
@@ -30,7 +30,7 @@
 #define INDI_SHORT_NAME "AC"
 
 // Indicator properties.
-#property copyright "2016-2021, EA31337 Ltd"
+#property copyright "2016-2022, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
 //--
