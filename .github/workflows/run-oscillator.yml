@@ -43,7 +43,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: Include/EA31337-classes
-          ref: v2.009
+          ref: v2.010
           repository: EA31337/EA31337-classes
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
@@ -81,12 +81,12 @@ jobs:
       - uses: actions/checkout@v2
         with:
           path: Strategy-Indicator
-          ref: master
+          ref: v1.010
           repository: EA31337/Strategy-Indicator
       - uses: actions/checkout@v2
         with:
           path: Include/EA31337-classes
-          ref: v2.009
+          ref: v2.010
           repository: EA31337/EA31337-classes
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
