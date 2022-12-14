@@ -65,8 +65,7 @@ void OnInit() {
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits + 2);
   // Initialize indicator.
   IndiACParams _indi_params(::InpShift);
-  _indi_params.SetDataSourceType(InpSourceType);
-  indi = new Indi_AC(_indi_params);
+  indi = new Indi_AC(_indi_params, InpSourceType);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

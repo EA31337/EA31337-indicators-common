@@ -75,8 +75,7 @@ void OnInit() {
   IndiMACDParams _indi_params(::InpMACDFastEMA, ::InpMACDSlowEMA,
                               ::InpMACDSignalSMA, ::InpMACDAppliedPrice,
                               ::InpShift);
-  _indi_params.SetDataSourceType(InpSourceType);
-  indi = new Indi_MACD(_indi_params);
+  indi = new Indi_MACD(_indi_params, InpSourceType);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =
