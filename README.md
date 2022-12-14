@@ -6,6 +6,7 @@
 [![Discuss][gh-discuss-badge]][gh-discuss-link]
 [![Status][gha-image-check-master]][gha-link-check-master]
 [![Status][gha-image-compile-master]][gha-link-compile-master]
+[![Edit][gh-edit-badge]][gh-edit-link]
 
 ## About the project
 
@@ -28,6 +29,9 @@ Related project:
 
 [gh-discuss-badge]: https://img.shields.io/badge/Discussions-Q&A-blue.svg?logo=github
 [gh-discuss-link]: https://github.com/EA31337/EA31337-indicators-common/discussions
+
+[gh-edit-badge]: https://img.shields.io/badge/GitHub-edit-purple.svg?logo=github
+[gh-edit-link]: https://github.dev/EA31337/EA31337-indicators-common
 
 [gh-issues]: https://github.com/EA31337/EA31337-indicators-common/issues
 
