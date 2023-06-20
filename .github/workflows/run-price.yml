@@ -81,7 +81,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           path: Strategy-Indicator
-          ref: v1.011
+          ref: v1.012
           repository: EA31337/Strategy-Indicator
       - uses: actions/checkout@v3
         with:
