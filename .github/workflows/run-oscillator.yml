@@ -128,6 +128,7 @@ jobs:
         test:
           - AC
           - ADX
+          - ADXW
           - MACD
           - RSI
           - Stochastic
