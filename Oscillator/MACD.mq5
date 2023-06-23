@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "MACD"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2022, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -45,6 +46,7 @@
 #property indicator_width2 1
 #property indicator_label1 INDI_SHORT_NAME
 #property indicator_label2 "Signal"
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_MACD.mqh>

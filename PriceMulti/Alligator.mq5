@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "Aligator"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2023, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -49,6 +50,7 @@
 #property indicator_label1 "Jaws"
 #property indicator_label2 "Teeth"
 #property indicator_label3 "Lips"
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_Alligator.mqh>

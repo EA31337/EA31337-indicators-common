@@ -21,11 +21,13 @@
  */
 
 // Indicator properties.
+#ifdef __MQL__
 #property indicator_chart_window
 #property indicator_buffers 3
 #property indicator_color1 Blue
 #property indicator_color2 Red
 #property indicator_color3 Lime
+#endif
 
 // Includes the main code.
 #include "Alligator.mq5"

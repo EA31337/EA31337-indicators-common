@@ -21,9 +21,11 @@
  */
 
 // Indicator properties.
+#ifdef __MQL__
 #property indicator_separate_window
 #property indicator_buffers 1
 #property indicator_color1 LightSeaGreen
+#endif
 
 // Includes the main code.
 #include "AD.mq5"

@@ -21,6 +21,7 @@
  */
 
 // Indicator properties.
+#ifdef __MQL__
 #property indicator_separate_window
 #property indicator_minimum 0
 #property indicator_maximum 100
@@ -31,6 +32,7 @@
 #property indicator_level2 80.0
 #property indicator_levelcolor clrSilver
 #property indicator_levelstyle STYLE_DOT
+#endif
 
 // Includes the main code.
 #include "Stochastic.mq5"

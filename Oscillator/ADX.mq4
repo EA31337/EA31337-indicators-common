@@ -21,6 +21,7 @@
  */
 
 // Indicator properties.
+#ifdef __MQL__
 #property indicator_separate_window
 #property indicator_buffers 6
 
@@ -41,6 +42,7 @@
 #property indicator_style3 STYLE_DOT
 #property indicator_width3 1
 #property indicator_label3 "-DI"
+#endif
 
 // Includes the main code.
 #include "ADX.mq5"

@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "ADX"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2023, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -52,6 +53,7 @@
 #property indicator_label1 "ADX"
 #property indicator_label2 "+DI"
 #property indicator_label3 "-DI"
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_ADX.mqh>

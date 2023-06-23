@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "Stoch"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2023, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -45,6 +46,7 @@
 #property indicator_label1 "K period"
 #property indicator_label2 "D period"
 #property indicator_label2 "Slowing"
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_Stochastic.mqh>

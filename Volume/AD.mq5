@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "AD"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2023, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -40,6 +41,7 @@
 #property indicator_type1 DRAW_LINE
 #property indicator_color1 LightSeaGreen
 #property indicator_label1 INDI_SHORT_NAME
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_AD.mqh>

@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "AC"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2022, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -41,6 +42,7 @@
 #property indicator_color1 Green, Red
 #property indicator_width1 2
 #property indicator_label1 INDI_SHORT_NAME
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_AC.mqh>

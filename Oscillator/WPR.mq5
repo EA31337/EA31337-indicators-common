@@ -30,6 +30,7 @@
 #define INDI_SHORT_NAME "WPR"
 
 // Indicator properties.
+#ifdef __MQL__
 #property copyright "2016-2022, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
@@ -46,6 +47,7 @@
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
 #property indicator_color1 DodgerBlue
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_WPR.mqh>
