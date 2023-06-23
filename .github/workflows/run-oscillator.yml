@@ -130,6 +130,7 @@ jobs:
           - ADX
           - MACD
           - RSI
+          - Stochastic
 
     steps:
       - uses: actions/download-artifact@v3
