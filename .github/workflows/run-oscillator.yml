@@ -131,6 +131,7 @@ jobs:
           - MACD
           - RSI
           - Stochastic
+          - WPR
 
     steps:
       - uses: actions/download-artifact@v3
