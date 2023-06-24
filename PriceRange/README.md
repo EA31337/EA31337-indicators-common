@@ -127,3 +127,48 @@ overbought and oversold levels. It helps traders identify possible price
 reversals and can be used to find selling or buying opportunities. However,
 it should be used in combination with other indicators and analysis
 techniques to validate signals and make well-informed trading decisions.
+
+## SAR
+
+The Parabolic SAR (Stop and Reverse) indicator is a technical analysis tool
+that helps identify potential entry and exit points in a market trend. It is
+particularly useful in trending markets where it can assist traders in
+determining when to enter or exit a trade.
+
+The indicator is represented by a series of dots that appear either above or
+below the price chart. These dots indicate potential stop and reverse points
+for the price trend. When the dots are below the price, it suggests an upward
+trend, while dots above the price indicate a downward trend.
+
+The calculation of the Parabolic SAR involves two key factors: the acceleration
+factor (AF) and the extreme point (EP). The acceleration factor determines the
+rate at which the SAR dots move closer to the price, while the extreme point
+represents the highest or lowest price reached during the current trend.
+
+Initially, the SAR dots are placed below the price in an upward trend and above
+the price in a downward trend. As the price continues to move in the same
+direction, the dots gradually move closer to the price. The acceleration factor
+determines how quickly this convergence occurs.
+
+When the price crosses above or below the SAR dot, it indicates a potential
+trend reversal. At this point, the SAR dots switch sides, appearing on the
+opposite side of the price chart. This reversal signal can be used by traders
+to exit existing positions and potentially enter new positions in the opposite
+direction.
+
+Traders often use the Parabolic SAR indicator in conjunction with other
+technical analysis tools or indicators to confirm signals. For example, they
+may look for confirmation from oscillators, moving averages, or chart patterns
+to validate the potential trend reversal suggested by the SAR dots.
+
+It's important to note that the Parabolic SAR is most effective in trending
+markets and may produce false signals or whipsaws in ranging or sideways
+markets. Therefore, it is advisable to use the indicator in conjunction with
+other tools to filter out false signals and improve overall trading decisions.
+
+In summary, the Parabolic SAR indicator is a technical tool that helps traders
+identify potential entry and exit points in a trending market. It uses a series
+of dots placed above or below the price chart to indicate potential stop and
+reverse points. Traders can use these signals to determine trend reversals and
+make informed trading decisions, but it is recommended to use the indicator
+alongside other analysis techniques for better accuracy.
