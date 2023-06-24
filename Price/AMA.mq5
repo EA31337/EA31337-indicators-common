@@ -22,7 +22,7 @@
 
 /**
  * @file
- * Implements Moving Average indicator.
+ * Implements Adaptive Moving Average indicator.
  */
 
 // Defines.
@@ -50,16 +50,16 @@
 #include <EA31337-classes/Indicators/Indi_AMA.mqh>
 
 // Input parameters.
-input int InpPeriodAMA = 10;                                // AMA period
-input int InpFastPeriodEMA = 2;                             // Fast EMA period
-input int InpSlowPeriodEMA = 30;                            // Slow EMA period
-input int InpShiftAMA = 0;                                  // AMA shift
+input int InpPeriod = 10;                                // AMA period
+input int InpFastPeriod = 2;                             // Fast EMA period
+input int InpSlowPeriod = 30;                            // Slow EMA period
+input int InpAMAShift = 0;                                  // AMA shift
 input ENUM_APPLIED_PRICE InpAppliedPrice = PRICE_OPEN;      // Applied price
 input int InpShift = 0;                                     // Shift
 input ENUM_IDATA_SOURCE_TYPE InpSourceType = IDATA_BUILTIN; // Source type
 
 // Global indicator buffers.
-double ExtAMABuffer[];
+double InpExtAMABuffer[];
 
 // Global variables.
 Indi_AMA *indi;
@@ -69,25 +69,25 @@ Indi_AMA *indi;
  */
 void OnInit() {
   // Initialize indicator buffers.
-  SetIndexBuffer(0, ExtAMABuffer, INDICATOR_DATA);
+  SetIndexBuffer(0, InpExtAMABuffer, INDICATOR_DATA);
   // Initialize indicator.
-  IndiAMAParams _indi_params(::InpPeriodAMA, ::InpFastPeriodEMA,
-                             ::InpSlowPeriodEMA, ::InpShiftAMA,
+  IndiAMAParams _indi_params(::InpPeriod, ::InpFastPeriod,
+                             ::InpSlowPeriod, ::InpAMAShift,
                              ::InpAppliedPrice, ::InpShift);
   indi = new Indi_AMA(_indi_params, InpSourceType);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =
-      StringFormat("%s(%d, %d, %d)", indi.GetName(), ::InpPeriodAMA,
-                   ::InpFastPeriodEMA, ::InpSlowPeriodEMA);
+      StringFormat("%s(%d, %d, %d)", indi.GetName(), ::InpPeriod,
+                   ::InpFastPeriod, ::InpSlowPeriod);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   // Use DBL_MAX for empty values.
   PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, DBL_MAX);
   // Sets first bar from what index will be drawn
-  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, ::InpPeriodAMA);
+  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, ::InpPeriod);
   // Sets indicator shift.
-  PlotIndexSetInteger(0, PLOT_SHIFT, ::InpPeriodAMA);
+  PlotIndexSetInteger(0, PLOT_SHIFT, ::InpPeriod);
   // Set accuracy.
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits + 1);
 }
@@ -101,14 +101,14 @@ int OnCalculate(const int rates_total, const int prev_calculated,
                 const double &close[], const long &tick_volume[],
                 const long &volume[], const int &spread[]) {
   int i, start;
-  if (rates_total < 2 * InpPeriodAMA) {
+  if (rates_total < 2 * InpPeriod) {
     return (0);
   }
   // Initialize calculations.
-  start = prev_calculated == 0 ? 2 * InpPeriodAMA - 1 : prev_calculated - 1;
+  start = prev_calculated == 0 ? 2 * InpPeriod - 1 : prev_calculated - 1;
   if (prev_calculated == 0) {
     for (i = 0; i <= start; i++) {
-      ExtAMABuffer[i] = close[i];
+      InpExtAMABuffer[i] = close[i];
     }
   }
   // Main calculations.
@@ -116,10 +116,10 @@ int OnCalculate(const int rates_total, const int prev_calculated,
     IndicatorDataEntry _entry = indi[rates_total - i];
     if (!indi.Get<bool>(
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
-      ExtAMABuffer[i] = DBL_MAX;
+      InpExtAMABuffer[i] = DBL_MAX;
       return prev_calculated + 1;
     }
-    ExtAMABuffer[i] = _entry[0];
+    InpExtAMABuffer[i] = _entry[0];
   }
   // Returns new prev_calculated.
   return (rates_total);
