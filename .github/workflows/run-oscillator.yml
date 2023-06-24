@@ -131,6 +131,8 @@ jobs:
           - AO
           - ASI
           - ATR
+          - Bears
+          - Bulls
           - MACD
           - RSI
           - Stochastic
