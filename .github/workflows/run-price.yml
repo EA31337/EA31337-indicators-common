@@ -126,6 +126,7 @@ jobs:
     strategy:
       matrix:
         test:
+          - AMA
           - MA
 
     steps:
