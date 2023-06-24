@@ -129,6 +129,7 @@ jobs:
           - ADX
           - ADXW
           - ASI
+          - ATR
           - MACD
           - RSI
           - Stochastic
