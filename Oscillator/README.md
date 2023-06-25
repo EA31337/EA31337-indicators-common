@@ -315,6 +315,23 @@ be used to identify potential breakouts. When the indicator shows low
 volatility followed by a significant increase, it may indicate an impending
 price breakout or trend change.
 
+## DeMarker
+
+The DeMarker indicator, developed by Thomas DeMark, is a technical analysis
+tool that helps identify potential overbought and oversold conditions in the
+market. It measures the demand for an asset by comparing the current price to
+the previous price range.
+
+The DeMarker indicator calculates values ranging from 0 to 1 and is typically
+displayed as a line graph. It is based on the concept that price exhaustion
+often occurs when the indicator reaches extreme levels.
+
+Interpreting the DeMarker indicator involves identifying overbought and
+oversold conditions. Typically, when the indicator reaches values near 1, it
+suggests that the market is overbought, indicating a potential reversal or
+price correction. Conversely, values near 0 indicate oversold conditions,
+suggesting a potential buying opportunity.
+
 ## MACD (Moving Average Convergence Divergence)
 
 MACD measures the relationship between two moving averages

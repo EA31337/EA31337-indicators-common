@@ -133,6 +133,7 @@ jobs:
           - ATR
           - Bears
           - Bulls
+          - DeMarker
           - CCI
           - CHV
           - MACD
