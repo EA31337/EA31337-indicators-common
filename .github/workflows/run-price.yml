@@ -69,7 +69,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Indicators-common
-          path: '**/*.ex?'
+          path: '**/*.ex[45]'
     timeout-minutes: 10
 
   Compile-Strategy:
@@ -112,7 +112,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Stg_Indicator
-          path: 'Strategy-Indicator/*.ex?'
+          path: 'Strategy-Indicator/*.ex[45]'
     timeout-minutes: 10
 
   Run-MQL4:

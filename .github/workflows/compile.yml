@@ -74,4 +74,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Indicators-common
-          path: '**/*.ex?'
+          path: '**/*.ex[45]'
