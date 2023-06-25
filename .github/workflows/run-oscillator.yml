@@ -140,6 +140,7 @@ jobs:
           - Gator
           - MACD
           - MI
+          - MOM
           - RSI
           - Stochastic
           - WPR

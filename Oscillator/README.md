@@ -492,6 +492,44 @@ suggests that the market is becoming more volatile, indicating a potential
 price reversal. Conversely, when the indicator falls below the signal line, it
 suggests a contraction in volatility and a continuation of the current trend.
 
+## MOM (Momentum)
+
+The Momentum (MOM) indicator is a technical analysis tool that measures the
+rate of change of a security's price over a specified period. It provides
+insights into the strength and speed of price movements and helps traders
+identify potential trend reversals or continuations.
+
+The Momentum indicator is calculated by comparing the current closing price to
+a previous closing price from a specific number of periods ago. The difference
+between these prices is then plotted on a momentum line or histogram.
+
+Here are a few key points about the Momentum indicator:
+
+- Interpretation: The Momentum indicator generates positive or negative values
+  on a scale, indicating the strength and direction of price momentum. Positive
+  values suggest upward momentum, while negative values indicate downward
+  momentum.
+
+- Overbought and Oversold Conditions: Traders often use the Momentum indicator
+  to identify overbought or oversold conditions in the market. When the indicator
+  reaches extreme levels, it may signal that the price has moved too far and is
+  likely to reverse.
+
+- Divergence: Traders also look for divergences between the Momentum indicator
+  and the price chart. If the price is making higher highs, but the Momentum
+  indicator is making lower highs (bearish divergence) or vice versa (bullish
+  divergence), it may indicate a potential change in trend.
+
+- Confirmation: The Momentum indicator is often used in conjunction with other
+  technical indicators to confirm trading signals. For example, if the price
+  breaks above a resistance level and the Momentum indicator shows positive
+  momentum, it could provide additional confidence in the bullish signal.
+
+It's important to note that the interpretation of the Momentum indicator may
+vary depending on the time frame and market conditions. Traders should consider
+using it alongside other indicators, trend analysis, and risk management
+techniques to make informed trading decisions.
+
 ## RSI (Relative Strength Index)
 
 The Relative Strength Index (RSI) is a popular momentum oscillator used in
