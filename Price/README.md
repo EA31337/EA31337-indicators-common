@@ -94,6 +94,29 @@ averages. The DEMA is used to identify trend reversals and generate trading
 signals. Traders often use it in conjunction with other indicators and analysis
 techniques to enhance their trading strategies.
 
+## FrAMA (Fractal Adaptive Moving Average)
+
+The Fractal Adaptive Moving Average (FrAMA) is a technical indicator that aims
+to adjust its sensitivity to market conditions by dynamically adapting its
+smoothing period. It is designed to provide smoother and more responsive moving
+average lines compared to traditional moving averages.
+
+The FrAMA indicator calculates the moving average by considering the price
+action and volatility of the market. It adjusts the smoothing period based on
+the fractal dimension, which is a mathematical concept that measures the
+irregularity or complexity of a price series.
+
+In periods of high volatility or strong price trends, the FrAMA responds
+quickly by reducing the smoothing period, allowing it to closely track price
+movements. Conversely, in periods of low volatility or choppy price action, the
+FrAMA increases the smoothing period to reduce sensitivity to minor price
+fluctuations and provide smoother signals.
+
+By adapting to changing market conditions, the FrAMA attempts to minimize lag
+and provide more accurate signals. Traders often use the FrAMA to identify
+trends, support and resistance levels, and potential entry or exit points in a
+market.
+
 ## MA (Moving Average)
 
 The Moving Average (MA) indicator is one of the most widely used and basic
