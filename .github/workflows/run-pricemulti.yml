@@ -127,6 +127,7 @@ jobs:
       matrix:
         test:
           - Alligator
+          - Ichimoku
 
     steps:
       - uses: actions/download-artifact@v3
