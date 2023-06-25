@@ -133,6 +133,7 @@ jobs:
           - ATR
           - Bears
           - Bulls
+          - CCI
           - MACD
           - RSI
           - Stochastic
