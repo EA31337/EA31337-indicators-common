@@ -50,9 +50,9 @@
 #include <EA31337-classes/Indicators/Indi_AMA.mqh>
 
 // Input parameters.
-input int InpPeriod = 10;                                // AMA period
-input int InpFastPeriod = 2;                             // Fast EMA period
-input int InpSlowPeriod = 30;                            // Slow EMA period
+input int InpPeriod = 10;                                   // AMA period
+input int InpFastPeriod = 2;                                // Fast EMA period
+input int InpSlowPeriod = 30;                               // Slow EMA period
 input int InpAMAShift = 0;                                  // AMA shift
 input ENUM_APPLIED_PRICE InpAppliedPrice = PRICE_OPEN;      // Applied price
 input int InpShift = 0;                                     // Shift
@@ -71,9 +71,8 @@ void OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, InpExtAMABuffer, INDICATOR_DATA);
   // Initialize indicator.
-  IndiAMAParams _indi_params(::InpPeriod, ::InpFastPeriod,
-                             ::InpSlowPeriod, ::InpAMAShift,
-                             ::InpAppliedPrice, ::InpShift);
+  IndiAMAParams _indi_params(::InpPeriod, ::InpFastPeriod, ::InpSlowPeriod,
+                             ::InpAMAShift, ::InpAppliedPrice, ::InpShift);
   indi = new Indi_AMA(_indi_params, InpSourceType);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
