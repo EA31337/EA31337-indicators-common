@@ -127,6 +127,7 @@ jobs:
       matrix:
         test:
           - BB
+          - Envelopes
 
     steps:
       - uses: actions/download-artifact@v3
