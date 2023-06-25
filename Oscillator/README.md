@@ -72,7 +72,7 @@ negative bars indicate bearish momentum, and transitions can signal
 potential trend reversals. The AO is often used in conjunction with other
 indicators and analysis techniques to enhance trading decisions.
 
-## ASI (Accumulation Swing Index) indicator
+## ASI (Accumulation Swing Index)
 
 The Accumulation Swing Index (ASI) is a technical indicator that aims to gauge
 the strength and direction of a market's price movement.
@@ -242,7 +242,7 @@ potential trend reversals, divergences, and buying opportunities. However, it
 should be employed alongside other tools and analysis techniques to enhance
 accuracy and confirm signals.
 
-## Commodity Channel Index (CCI)
+## CCI (Commodity Channel Index)
 
 The Commodity Channel Index (CCI) is a versatile technical indicator that
 measures the current price level relative to its average over a specified
@@ -293,14 +293,36 @@ overbought and oversold conditions in the market and can indicate potential
 reversals or corrections. Traders use the CCI in conjunction with other tools
 to make more informed trading decisions.
 
-## MACD (Moving Average Convergence Divergence) indicator
+## CHV (Chaikin Volatility)
+
+The Chaikin Volatility (CHV) indicator is a technical analysis tool that
+measures the volatility of a financial instrument based on the difference
+between high and low prices over a specific period. It was developed by Marc
+Chaikin to help traders assess market volatility and identify potential trading
+opportunities.
+
+The resulting value represents the Chaikin Volatility, which is typically
+displayed as a line graph. Higher values indicate greater volatility, while
+lower values suggest lower volatility.
+
+Traders use the Chaikin Volatility to assess the potential magnitude of price
+movements. When volatility is high, it may present opportunities for traders
+seeking larger price swings. Conversely, low volatility may indicate a period
+of consolidation or indecision in the market.
+
+In addition to identifying volatility levels, the Chaikin Volatility can also
+be used to identify potential breakouts. When the indicator shows low
+volatility followed by a significant increase, it may indicate an impending
+price breakout or trend change.
+
+## MACD (Moving Average Convergence Divergence)
 
 MACD measures the relationship between two moving averages
 of an asset's price. It consists of a MACD line and a signal line.
 The MACD histogram represents the difference between the MACD line
 and the signal line and provides insights into the momentum of the trend.
 
-## RSI (Relative Strength Index) indicator
+## RSI (Relative Strength Index)
 
 RSI compares the magnitude of recent price gains to recent price losses
 to determine if an asset is overbought or oversold.
@@ -308,7 +330,7 @@ It oscillates between 0 and 100,
 with values above 70 indicating overbought conditions
 and values below 30 indicating oversold conditions.
 
-## Stochastic indicator
+## Stochastic
 
 The Stochastic Oscillator compares the closing price of an asset
 to its price range over a specific period.

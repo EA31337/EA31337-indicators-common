@@ -134,6 +134,7 @@ jobs:
           - Bears
           - Bulls
           - CCI
+          - CHV
           - MACD
           - RSI
           - Stochastic
