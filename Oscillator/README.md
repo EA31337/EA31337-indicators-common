@@ -361,6 +361,68 @@ price patterns and cycles. It is recommended to use the DPO in conjunction with
 other technical indicators, chart patterns, and risk management strategies to
 make well-informed trading decisions.
 
+## Gator 1 (based on 3 non-shifted moving averages)
+
+The Gator Oscillator is a technical indicator based on three non-shifted moving
+averages. It is designed to help traders identify the presence and strength of
+trends in the market. The indicator consists of two histogram bars, each
+representing the convergence or divergence of the moving averages.
+
+The Gator Oscillator utilizes three non-shifted moving averages, typically
+calculated over different time periods. These moving averages are often
+referred to as the Jaw, Teeth, and Lips. The Jaw represents the slowest moving
+average, followed by the Teeth and then the Lips.
+
+When the three moving averages are intertwined or in close proximity, it
+indicates a dormant or non-trending market. In this phase, the Gator Oscillator
+shows a histogram bar that is close to zero, indicating a lack of significant
+price movement.
+
+As the market starts to trend, the moving averages diverge from each other, and
+the Gator Oscillator histogram bars begin to show divergence as well. The
+magnitude and direction of the histogram bars correspond to the strength and
+direction of the trend.
+
+When the histogram bars are above zero, it suggests a bullish trend, with the
+green bar indicating a stronger bullish momentum. Conversely, when the
+histogram bars are below zero, it suggests a bearish trend, with the red bar
+indicating a stronger bearish momentum.
+
+Traders often use the Gator Oscillator to confirm trends identified by other
+indicators or to anticipate potential trend reversals. It can also help
+identify periods of consolidation or range-bound markets.
+
+## Gator 2 (based on shifted Alligator buffers)
+
+The Gator Oscillator is a technical indicator that works in conjunction with
+the Alligator indicator, which is also developed by Bill Williams. It helps
+traders identify the presence of trends and the degree of their strength in the
+market.
+
+The Gator Oscillator consists of two histogram bars, each derived from the
+shifted Alligator indicator. The Alligator indicator itself consists of three
+lines, known as the Jaw, Teeth, and Lips, which represent different moving
+averages applied to different time periods.
+
+The Gator Oscillator uses the shifted Alligator buffers to calculate the
+difference between the Jaw and Teeth lines, and the difference between the
+Teeth and Lips lines. These differences are then represented as the histogram
+bars of the Gator Oscillator.
+
+When the histogram bars are above the zero line, it indicates that the market
+is in an active phase, with increasing momentum. The green bar represents the
+difference between the Jaw and Teeth lines, while the red bar represents the
+difference between the Teeth and Lips lines.
+
+Conversely, when the histogram bars are below the zero line, it suggests that
+the market is in a dormant or non-trending phase, with decreasing momentum. The
+green bar indicates the difference between the Teeth and Lips lines, while the
+red bar represents the difference between the Jaw and Teeth lines.
+
+Traders often use the Gator Oscillator to confirm trends identified by the
+Alligator indicator, as well as to spot potential trend reversals. It can also
+provide insights into the strength of the prevailing trend.
+
 ## MACD (Moving Average Convergence Divergence)
 
 MACD measures the relationship between two moving averages

@@ -137,6 +137,7 @@ jobs:
           - CHV
           - DPO
           - DeMarker
+          - Gator
           - MACD
           - RSI
           - Stochastic
