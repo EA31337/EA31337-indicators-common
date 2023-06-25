@@ -24,6 +24,41 @@ well-informed trading decisions. As with any indicator, it's advisable to test
 and validate their effectiveness within your trading strategy before relying on
 them solely.
 
+## BWMFI (Bill Williams' Market Facilitation Index)
+
+Bill Williams' Market Facilitation Index (BWMFI) is a technical indicator
+developed by renowned trader and author Bill Williams. It aims to measure the
+efficiency and strength of price movements in the market. The indicator helps
+traders assess the ease with which price moves, providing insights into the
+state of the market and potential trading opportunities.
+
+The BWMFI is calculated using a combination of price and volume data.  It takes
+into account four different combinations of price and volume:
+
+1. If both price and volume increase compared to the previous period, it
+   indicates a high market facilitation, suggesting strong buyer or seller
+   activity.
+2. If price increases but volume decreases compared to the previous period,
+   it suggests a low market facilitation, indicating potential weakness or lack
+   of participation.
+3. If price decreases but volume increases compared to the previous period,
+   it also indicates a low market facilitation, suggesting a struggle between
+   buyers and sellers.
+4. If both price and volume decrease compared to the previous period, it
+   indicates a high market facilitation, suggesting low activity and potential
+   consolidation.
+
+The BWMFI indicator is represented by colored bars on a chart. Green bars
+indicate a high market facilitation, indicating a strong trend and active
+participation. Red bars indicate a low market facilitation, suggesting a
+lack of interest or weak trend. Yellow bars represent periods of market
+consolidation or indecision.
+
+Traders can use the BWMFI indicator to confirm trends, assess the strength
+of price movements, and identify potential turning points in the market. It
+can be used in conjunction with other technical analysis tools and trading
+strategies to make informed trading decisions.
+
 ## CHO (Chaikin Oscillator)
 
 The Chaikin Oscillator (CHO) is a technical analysis indicator developed by
