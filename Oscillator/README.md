@@ -287,11 +287,11 @@ be used in conjunction with other technical analysis tools and indicators to
 confirm signals. Traders often combine the CCI with trend lines, support and
 resistance levels, or other oscillators to enhance its effectiveness.
 
-In summary, the Commodity Channel Index (CCI) is a technical indicator that
-measures the current price level relative to its average over a specified
-period. It helps identify overbought and oversold conditions in the market
-and can indicate potential reversals or corrections. Traders use the CCI in
-conjunction with other tools to make more informed trading decisions.
+In summary, this indicator is a technical indicator that measures the current
+price level relative to its average over a specified period. It helps identify
+overbought and oversold conditions in the market and can indicate potential
+reversals or corrections. Traders use the CCI in conjunction with other tools
+to make more informed trading decisions.
 
 ## MACD (Moving Average Convergence Divergence) indicator
 
