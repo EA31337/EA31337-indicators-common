@@ -26,6 +26,7 @@
 #property indicator_buffers 2
 #property indicator_color1 LightSeaGreen
 #property indicator_color2 LightSeaGreen
+#property version "1.000"
 #endif
 
 // Includes the main code.

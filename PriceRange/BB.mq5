@@ -47,6 +47,7 @@
 #property indicator_label1 "Bands middle"
 #property indicator_label2 "Bands upper"
 #property indicator_label3 "Bands lower"
+#property version "1.000"
 #endif
 
 // Includes.

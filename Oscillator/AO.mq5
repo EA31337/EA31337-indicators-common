@@ -45,6 +45,7 @@
 #property indicator_color1 Green, Red
 #property indicator_width1 1
 #property indicator_label1 INDI_SHORT_NAME
+#property version "1.000"
 #endif
 
 // Includes.

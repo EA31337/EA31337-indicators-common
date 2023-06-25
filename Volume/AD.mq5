@@ -41,6 +41,7 @@
 #property indicator_type1 DRAW_LINE
 #property indicator_color1 LightSeaGreen
 #property indicator_label1 INDI_SHORT_NAME
+#property version "1.000"
 #endif
 
 // Includes.

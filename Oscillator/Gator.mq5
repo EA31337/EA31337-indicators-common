@@ -48,6 +48,7 @@
 #property indicator_width2 2
 #property indicator_label1 "Gator Upper"
 #property indicator_label2 "Gator Lower"
+#property version "1.000"
 #endif
 
 // Includes.

@@ -42,6 +42,7 @@
 #property indicator_style3 STYLE_DOT
 #property indicator_width3 1
 #property indicator_label3 "-DI"
+#property version "1.000"
 #endif
 
 // Includes the main code.

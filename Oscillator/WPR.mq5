@@ -47,6 +47,7 @@
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
 #property indicator_color1 DodgerBlue
+#property version "1.000"
 #endif
 
 // Includes.

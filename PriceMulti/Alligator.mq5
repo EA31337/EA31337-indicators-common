@@ -50,6 +50,7 @@
 #property indicator_label1 "Jaws"
 #property indicator_label2 "Teeth"
 #property indicator_label3 "Lips"
+#property version "1.000"
 #endif
 
 // Includes.

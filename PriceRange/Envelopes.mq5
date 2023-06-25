@@ -44,6 +44,7 @@
 #property indicator_color2 Red
 #property indicator_label1 "Upper band"
 #property indicator_label2 "Lower band"
+#property version "1.000"
 #endif
 
 // Includes.

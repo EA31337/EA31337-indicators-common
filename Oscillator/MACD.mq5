@@ -46,6 +46,7 @@
 #property indicator_width2 1
 #property indicator_label1 INDI_SHORT_NAME
 #property indicator_label2 "Signal"
+#property version "1.000"
 #endif
 
 // Includes.

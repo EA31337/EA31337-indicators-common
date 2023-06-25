@@ -46,6 +46,7 @@
 #property indicator_label1 "K period"
 #property indicator_label2 "D period"
 #property indicator_label2 "Slowing"
+#property version "1.000"
 #endif
 
 // Includes.

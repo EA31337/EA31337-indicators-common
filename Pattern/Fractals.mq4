@@ -30,6 +30,7 @@
 #property indicator_color2 clrGray
 #property indicator_label1 "Fractal Up"
 #property indicator_label2 "Fractal Down"
+#property version "1.000"
 #endif
 
 // Includes the main code.

@@ -44,6 +44,7 @@
 #property indicator_style1 STYLE_SOLID
 #property indicator_width1 1
 #property indicator_applied_price PRICE_OPEN
+#property version "1.000"
 #endif
 
 // Includes.

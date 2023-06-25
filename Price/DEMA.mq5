@@ -44,6 +44,7 @@
 #property indicator_label1 "DEMA"
 #property indicator_applied_price PRICE_CLOSE
 #property indicator_label1 INDI_SHORT_NAME
+#property version "1.000"
 #endif
 
 // Includes.

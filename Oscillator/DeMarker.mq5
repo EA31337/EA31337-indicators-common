@@ -43,6 +43,7 @@
 #property indicator_level1 0.3
 #property indicator_level2 0.7
 #property indicator_label1 INDI_SHORT_NAME
+#property version "1.000"
 #endif
 
 // Includes.

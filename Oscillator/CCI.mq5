@@ -44,6 +44,7 @@
 #property indicator_level2 100.0
 #property indicator_applied_price PRICE_TYPICAL
 #property indicator_label1 INDI_SHORT_NAME
+#property version "1.000"
 #endif
 
 // Includes.

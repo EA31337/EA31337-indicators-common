@@ -53,6 +53,7 @@
 #property indicator_label1 "ADX"
 #property indicator_label2 "+DI"
 #property indicator_label3 "-DI"
+#property version "1.000"
 #endif
 
 // Includes.

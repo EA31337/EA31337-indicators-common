@@ -27,6 +27,7 @@
 #property indicator_color1 DodgerBlue
 #property indicator_levelcolor clrSilver
 #property indicator_levelstyle STYLE_DOT
+#property version "1.000"
 #endif
 
 // Includes the main code.

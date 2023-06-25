@@ -27,6 +27,7 @@
 #property indicator_color1 Black
 #property indicator_color2 Green
 #property indicator_color3 Red
+#property version "1.000"
 #endif
 
 // Includes the main code.

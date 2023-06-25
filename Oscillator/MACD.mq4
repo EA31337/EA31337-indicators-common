@@ -27,6 +27,7 @@
 #property indicator_color1 Silver
 #property indicator_color2 Red
 #property indicator_width1 2
+#property version "1.000"
 #endif
 
 // Includes the main code.

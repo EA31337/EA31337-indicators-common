@@ -25,6 +25,7 @@
 #property indicator_chart_window
 #property indicator_buffers 1
 #property indicator_color1 DarkBlue
+#property version "1.000"
 #endif
 
 // Includes the main code.
