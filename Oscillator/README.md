@@ -461,6 +461,37 @@ important to note that the MACD is a lagging indicator, meaning that
 it may not provide signals at the exact tops and bottoms of price
 movements.
 
+## MI (Mass Index)
+
+The Mass Index is a technical indicator that helps identify potential trend
+reversals by measuring the volatility within a given time period. It was
+developed by Donald Dorsey and is used to detect price changes that may lead to
+significant market reversals.
+
+The Mass Index calculates the range between high and low prices over a
+specified period and then identifies periods of range expansion or contraction.
+It focuses on the concept of "reversal bulges," which occur when the price
+range expands significantly.
+
+The indicator consists of two components:
+
+1. Signal Line: The Mass Index uses a signal line, typically set to a default
+   value of 25, which indicates when the price range is expanding.
+   When the range exceeds the signal line,
+   it suggests a potential reversal signal.
+
+2. Reversal Bulges: A reversal bulge occurs when the ratio of the 9-day
+   exponential moving average of the range to the 25-day exponential moving
+   average of the range crosses above the signal line.
+   This indicates an increase in volatility and suggests that a reversal
+   in the current trend may be imminent.
+
+Traders use the Mass Index to identify periods of increasing volatility and
+potential trend reversals. When the indicator rises above the signal line, it
+suggests that the market is becoming more volatile, indicating a potential
+price reversal. Conversely, when the indicator falls below the signal line, it
+suggests a contraction in volatility and a continuation of the current trend.
+
 ## RSI (Relative Strength Index)
 
 The Relative Strength Index (RSI) is a popular momentum oscillator used in
