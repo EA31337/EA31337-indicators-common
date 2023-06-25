@@ -22,12 +22,12 @@
 
 /**
  * @file
- * Implements Bill Williams' Market Facilitation Index (BWMFI) indicator.
+ * Implements Money Flow Index (MFI) indicator.
  */
 
 // Defines.
-#define INDI_FULL_NAME "Bill Williams' Market Facilitation Index"
-#define INDI_SHORT_NAME "BWMFI"
+#define INDI_FULL_NAME "Money Flow Index"
+#define INDI_SHORT_NAME "MFI"
 
 // Indicator properties.
 #ifdef __MQL__
@@ -36,29 +36,35 @@
 #property description INDI_FULL_NAME
 //--
 #property indicator_separate_window
-#property indicator_buffers 2
+#property indicator_buffers 1
 #property indicator_plots 1
-#property indicator_type1 DRAW_COLOR_HISTOGRAM
-#property indicator_color1 Lime, SaddleBrown, Blue, Pink
-#property indicator_width1 2
+#property indicator_type1 DRAW_LINE
+#property indicator_color1 DodgerBlue
+#property indicator_maximum 100.0
+#property indicator_minimum 0.0
+#property indicator_level1 20.0
+#property indicator_level2 80.0
+#property indicator_levelcolor Silver
+#property indicator_levelstyle 2
+#property indicator_levelwidth 1
 #property indicator_label1 INDI_SHORT_NAME
 #property version "1.000"
 #endif
 
 // Includes.
-#include <EA31337-classes/Indicators/Indi_BWMFI.mqh>
+#include <EA31337-classes/Indicators/Indi_MFI.mqh>
 
 // Input parameters.
+input int InpMFIPeriod = 14;                                // Period
 input ENUM_APPLIED_VOLUME InpVolumeType = VOLUME_TICK;      // Volumes
 input int InpShift = 0;                                     // Shift
 input ENUM_IDATA_SOURCE_TYPE InpSourceType = IDATA_BUILTIN; // Source type
 
 // Global indicator buffers.
 double ExtMFIBuffer[];
-double ExtColorBuffer[];
 
 // Global variables.
-Indi_BWMFI *indi;
+Indi_MFI *indi;
 
 /**
  * Init event handler function.
@@ -66,10 +72,9 @@ Indi_BWMFI *indi;
 void OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtMFIBuffer, INDICATOR_DATA);
-  SetIndexBuffer(1, ExtColorBuffer, INDICATOR_COLOR_INDEX);
   // Initialize indicator.
-  IndiBWIndiMFIParams _indi_params(/*::InpVolumeType, */ ::InpShift);
-  indi = new Indi_BWMFI(_indi_params, InpSourceType);
+  IndiMFIParams _indi_params(::InpMFIPeriod, ::InpVolumeType, ::InpShift);
+  indi = new Indi_MFI(_indi_params, InpSourceType);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());
@@ -102,8 +107,7 @@ int OnCalculate(const int rates_total, const int prev_calculated,
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
       return prev_calculated + 1;
     }
-    ExtMFIBuffer[i] = _entry[(int)BWMFI_BUFFER];
-    ExtColorBuffer[i] = _entry[(int)BWMFI_HISTCOLOR];
+    ExtMFIBuffer[i] = _entry[0];
   }
   // Returns new prev_calculated.
   return (rates_total);

@@ -32,6 +32,11 @@ efficiency and strength of price movements in the market. The indicator helps
 traders assess the ease with which price moves, providing insights into the
 state of the market and potential trading opportunities.
 
+The interpretation of the BWMFI focuses on the market zones and their
+implications for trend strength and participation. Green zones indicate strong
+trends, red zones suggest potential reversals or weak trends, and gray zones
+indicate periods of consolidation or indecision.
+
 The BWMFI is calculated using a combination of price and volume data.  It takes
 into account four different combinations of price and volume:
 
@@ -53,6 +58,11 @@ indicate a high market facilitation, indicating a strong trend and active
 participation. Red bars indicate a low market facilitation, suggesting a
 lack of interest or weak trend. Yellow bars represent periods of market
 consolidation or indecision.
+
+The BWMFI uses color-coded bars (green, red, and gray) to represent different
+market zones, indicating the strength of market facilitation.  Whereas MFI
+typically uses histograms or bar charts to represent market facilitation,
+without specific color coding.
 
 Traders can use the BWMFI indicator to confirm trends, assess the strength
 of price movements, and identify potential turning points in the market. It
@@ -145,3 +155,48 @@ Divergences between the Force Index and price movement can also provide
 valuable signals. For example, if the price is making higher highs but the
 Force Index is making lower highs, it may indicate weakening buying pressure
 and a potential trend reversal.
+
+## MFI (Money Flow Index)
+
+The Market Facilitation Index (MFI) is a technical indicator that measures the
+strength and efficiency of price movements based on changes in trading volume.
+It was developed by Dr. Alexander Elder, a renowned trader and author.
+
+The MFI considers four possible market scenarios based on the relationship
+between price and volume:
+
+1. High Volume and an Upward Movement (Green): When both volume and price
+   increase compared to the previous period, it suggests a strong market
+   facilitation. This indicates active buying or selling pressure
+   and signifies a healthy uptrend or downtrend.
+
+2. High Volume and a Downward Movement (Red):
+   When both volume and price decrease compared to the previous period,
+   it indicates a weak market facilitation. This suggests a lack of interest or
+   participation from market participants, potentially signaling a consolidation
+   or indecisive phase.
+
+3. Low Volume and an Upward Movement (Blue): When volume decreases while price
+   increases compared to the previous period, it indicates a low market
+   facilitation.  This suggests that the current trend may lack strong
+   conviction, and the price movement might be driven by fewer market
+   participants.
+
+4. Low Volume and a Downward Movement (Yellow): When volume decreases while
+   price decreases compared to the previous period, it also indicates
+   a low market facilitation.  This suggests a lack of interest
+   or weak selling pressure, potentially leading to a range-bound
+   or sideways market.
+
+The MFI indicator typically uses color-coded bars or histograms
+to represent these scenarios on a chart, making it easy for
+traders to visually assess the market facilitation. Traders can
+observe the colors and patterns of the MFI bars to gain insights
+into the strength of price movements and potential market
+reversals.
+
+The MFI can be used as a standalone indicator or in combination
+with other technical analysis tools to make trading decisions.
+It helps traders identify periods of strong trends, assess
+market participation, and potentially spot divergences or
+reversals.

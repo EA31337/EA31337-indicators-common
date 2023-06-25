@@ -129,6 +129,7 @@ jobs:
           - BWMFI
           - CHO
           - Force
+          - MFI
 
     steps:
       - uses: actions/download-artifact@v3
