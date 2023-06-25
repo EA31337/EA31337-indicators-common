@@ -70,3 +70,43 @@ accumulation and distribution of assets in the market. It helps identify buying
 and selling opportunities based on changes in accumulation/distribution
 patterns. Traders use the CHO in conjunction with other tools to confirm
 signals and make informed trading decisions.
+
+## Force Index
+
+The Force Index is a technical analysis indicator that helps traders identify
+the strength of buying and selling pressure in the market. It was developed by
+Alexander Elder and combines price movement and trading volume to determine the
+force behind price trends.
+
+The Force Index calculation involves three components: price change, trading
+volume, and a smoothing factor.
+
+Here's a brief explanation of how the Force Index is calculated:
+
+1. Calculate the price change between the current period and the previous
+   period. The price change can be based on the closing price, but some
+   variations of the indicator may consider the high and low prices as well.
+
+2. Multiply the price change by the trading volume for the current period to
+   determine the force behind the price movement.
+
+3. Apply a smoothing factor, such as a simple moving average (SMA) or
+   exponential moving average (EMA), to the force values over a specific
+   period. The smoothing period is typically chosen based on the trader's
+   preference and the time frame being analyzed.
+
+The resulting values are plotted on a separate chart, typically displayed as
+a histogram or a line graph. Positive values indicate bullish force,
+suggesting buying pressure, while negative values indicate bearish force,
+suggesting selling pressure.
+
+Traders analyze the Force Index to identify trends, divergences, and
+potential reversal points. A rising Force Index indicates increasing buying
+pressure, potentially confirming an uptrend. Conversely, a falling Force
+Index suggests increasing selling pressure, potentially confirming a
+downtrend.
+
+Divergences between the Force Index and price movement can also provide
+valuable signals. For example, if the price is making higher highs but the
+Force Index is making lower highs, it may indicate weakening buying pressure
+and a potential trend reversal.
