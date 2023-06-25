@@ -28,7 +28,7 @@
 #property indicator_level1 27
 #property indicator_level2 26.5
 #property indicator_levelcolor DarkGray
-#property indicator_levelstyle STYLE_SOLID
+#property indicator_levelstyle STYLE_DOT
 #property version "1.000"
 #endif
 
