@@ -332,6 +332,35 @@ suggests that the market is overbought, indicating a potential reversal or
 price correction. Conversely, values near 0 indicate oversold conditions,
 suggesting a potential buying opportunity.
 
+## DPO (Detrended Price Oscillator)
+
+The Detrended Price Oscillator (DPO) is a technical analysis indicator that
+helps traders identify cycles and overbought/oversold conditions in the market
+by removing the underlying trend from the price data. It aims to highlight
+short-term price cycles and potential reversal points.
+
+The DPO calculates the difference between a specific price point and a
+displaced moving average, typically a simple moving average (SMA) of the price
+over a certain period. The displacement is usually set to half of the chosen
+period, effectively centering the moving average on the price chart.
+
+The resulting values are plotted on a separate oscillator chart, with zero as
+the centerline. Positive values indicate that the current price is above the
+displaced moving average, while negative values indicate that the current price
+is below the displaced moving average.
+
+Traders analyze the Detrended Price Oscillator to identify short-term cycles
+and potential trend reversals. When the DPO crosses above the zero line, it may
+suggest a bullish signal, indicating a potential buying opportunity.
+Conversely, when the DPO crosses below the zero line, it may suggest a bearish
+signal, indicating a potential selling opportunity.
+
+It's important to note that the DPO focuses on eliminating the longer-term
+trend component from the price data, allowing traders to analyze shorter-term
+price patterns and cycles. It is recommended to use the DPO in conjunction with
+other technical indicators, chart patterns, and risk management strategies to
+make well-informed trading decisions.
+
 ## MACD (Moving Average Convergence Divergence)
 
 MACD measures the relationship between two moving averages

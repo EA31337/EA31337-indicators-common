@@ -133,9 +133,10 @@ jobs:
           - ATR
           - Bears
           - Bulls
-          - DeMarker
           - CCI
           - CHV
+          - DPO
+          - DeMarker
           - MACD
           - RSI
           - Stochastic
