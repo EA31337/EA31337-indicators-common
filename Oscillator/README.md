@@ -884,6 +884,50 @@ multiple timeframes and weighted averages to provide a comprehensive view of
 market momentum and trend strength. Traders use it to identify
 overbought/oversold conditions, confirm trends, and generate trading signals.
 
+## WAD (Larry Williams' Accumulation/Distribution)
+
+Larry Williams' Accumulation/Distribution (WAD) indicator is a technical
+analysis tool that measures the flow of money into or out of a financial
+instrument over a specified period. It aims to identify divergences between
+price and volume, providing insights into potential reversals or continuation
+of price trends.
+
+Here are the key points about Larry Williams' Accumulation/Distribution (WAD)
+indicator:
+
+- Calculation: The WAD indicator calculates the cumulative accumulation or
+  distribution by considering the relationship between the current period's
+  closing price and the previous period's closing price. If the current period's
+  closing price is higher than the previous period's closing price, the volume is
+  considered as accumulation. If the current period's closing price is lower, the
+  volume is considered as distribution. The cumulative value is then calculated
+  based on these accumulations and distributions.
+
+- Divergence Analysis: Traders use the WAD indicator to identify divergences
+  between the indicator and price movements. For example, if the price is making
+  higher highs but the WAD indicator is making lower highs (bearish divergence),
+  it suggests potential weakness in buying pressure and a possible trend
+  reversal. Conversely, if the price is making lower lows but the WAD
+  indicator is making higher lows (bullish divergence), it indicates
+  potential strength in buying pressure and a possible trend reversal.
+
+- Confirmation of Price Trends: The WAD indicator can also be used to confirm
+  the strength of a price trend. When the WAD indicator is moving in the same
+  direction as the price trend, it suggests that the trend is supported by
+  consistent accumulation or distribution. This can provide confidence to
+  traders in the continuation of the trend.
+
+- Overbought/Oversold Levels: Traders may also look at overbought and oversold
+  levels on the WAD indicator. Extreme values in the indicator can indicate
+  potential exhaustion of the current trend and a possible reversal in price.
+
+The WAD indicator helps traders analyze the flow of money into or out of a
+financial instrument. By identifying divergences, confirming price trends, and
+assessing overbought/oversold conditions, traders can make informed decisions
+about potential trend reversals or continuations. It can be a useful tool for
+identifying shifts in buying or selling pressure and anticipating changes in
+price direction.
+
 ## WPR (Williams Percent Range)
 
 WPR indicator is a momentum oscillator developed by Larry Williams.

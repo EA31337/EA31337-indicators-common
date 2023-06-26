@@ -150,6 +150,7 @@ jobs:
           - Stochastic
           - UOS
           - TRIX
+          - WAD
           - WPR
 
     steps:
