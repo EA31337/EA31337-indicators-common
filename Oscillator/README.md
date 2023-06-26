@@ -685,6 +685,45 @@ The Relative Vigor Index (RVI) is a useful tool for assessing the
 strength of a trend, identifying potential trend reversals, and
 generating trading signals.
 
+## StdDev (Standard Deviation)
+
+The Standard Deviation (StdDev) indicator is a statistical measure that
+quantifies the volatility or dispersion of price data. It provides insights
+into the variability of price movements and helps traders assess the risk
+associated with a particular asset.
+
+Here are the key points about the Standard Deviation (StdDev) indicator:
+
+- Calculation: The StdDev indicator calculates the average deviation of price
+  data from its mean (average) over a specific period. It measures how much the
+  prices have deviated from the average value. The higher the standard deviation,
+  the greater the price volatility.
+
+- Interpretation: The StdDev indicator provides information about the
+  variability of price movements. A higher StdDev value indicates greater
+  price volatility, suggesting wider price swings and potentially riskier
+  market conditions. Conversely, a lower StdDev value indicates lower
+  price volatility and more stable market conditions.
+
+- Volatility Bands: Traders often use the StdDev indicator to create
+  volatility bands around a moving average. By adding and subtracting a
+  multiple of the standard deviation from the moving average, volatility
+  bands are formed. These bands help identify price levels where the
+  market is relatively overbought (upper band) or oversold (lower band).
+  Breakouts outside the volatility bands can signal potential trend
+  reversals or continuation.
+
+- Risk Assessment: The StdDev indicator is valuable for risk assessment
+  and position sizing. Traders can use the standard deviation as a measure
+  of the potential risk associated with a particular trade. Higher
+  standard deviation values may require wider stop-loss orders or smaller
+  position sizes to account for increased price volatility.
+
+The Standard Deviation (StdDev) indicator is widely used in technical
+analysis to assess price volatility, identify potential breakout levels,
+and manage risk. It helps traders make informed decisions about position
+sizing, risk management, and the overall market environment.
+
 ## Stochastic
 
 The Stochastic oscillator is a popular momentum indicator used in technical
