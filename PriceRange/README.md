@@ -128,6 +128,42 @@ reversals and can be used to find selling or buying opportunities. However,
 it should be used in combination with other indicators and analysis
 techniques to validate signals and make well-informed trading decisions.
 
+## Price Channel
+
+The Price Channel indicator is a technical analysis tool used to identify the
+upper and lower boundaries within which a price is expected to fluctuate. It
+consists of two parallel lines that encompass the price action, forming a
+channel.
+
+Here are the key points about the Price Channel indicator:
+
+- Calculation: The Price Channel is typically calculated by plotting a moving
+  average of the high and low prices over a specific period. The upper channel
+  line is derived by adding a multiple of the average true range (ATR) to the
+  moving average, while the lower channel line is obtained by subtracting the
+  same multiple of the ATR from the moving average.
+
+- Interpretation: The upper channel line represents the resistance level,
+  indicating the potential upper limit of price movement. The lower channel
+  line represents the support level, indicating the potential lower limit of
+  price movement. As the price moves within the channel, it is expected to
+  encounter support or resistance at these levels.
+
+- Breakouts: Breakouts from the Price Channel can be significant trading
+  signals. When the price breaks above the upper channel line, it may signal a
+  bullish breakout and the potential for further upward movement. Conversely,
+  when the price breaks below the lower channel line, it may indicate a bearish
+  breakout and the potential for further downward movement.
+
+- Volatility: The width of the Price Channel indicates the volatility of the
+  market. Narrow channels suggest low volatility and consolidation, while wider
+  channels suggest higher volatility and potential trending conditions.
+
+Traders use the Price Channel indicator to identify potential support and
+resistance levels, assess the range of price movement, and spot potential
+breakout opportunities. It can be applied to various time frames and
+financial instruments.
+
 ## SAR
 
 The Parabolic SAR (Stop and Reverse) indicator is a technical analysis tool

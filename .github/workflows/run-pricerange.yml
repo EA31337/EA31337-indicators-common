@@ -128,6 +128,7 @@ jobs:
         test:
           - BB
           - Envelopes
+          - PriceChannel
           - SAR
 
     steps:
