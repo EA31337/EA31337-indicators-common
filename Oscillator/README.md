@@ -757,6 +757,46 @@ the asset is overbought and may experience a price correction. Conversely,
 when the %K line falls below the lower reference line, it suggests the
 asset is oversold and may experience a price rebound.
 
+## TRIX (Triple Exponential Average)
+
+The Triple Exponential Average (TRIX) indicator is a momentum oscillator that
+is designed to identify trend reversals and provide signals for potential
+buying or selling opportunities. It is based on a triple smoothing technique
+applied to the underlying price data.
+
+Here are the key points about the Triple Exponential Average (TRIX) indicator:
+
+- Calculation: The TRIX indicator is calculated by applying triple exponential
+  smoothing to the price data. It starts with calculating a single exponential
+  moving average (EMA) of the price. Then, two additional EMAs are applied to the
+  initial EMA, resulting in three levels of smoothing. The TRIX value is derived
+  from the percentage change of the triple smoothed EMA over a specified period.
+
+- Trend Reversals: The TRIX indicator is primarily used to identify trend
+  reversals in the market. When the TRIX line crosses above the zero line, it
+  generates a bullish signal, indicating a potential upward trend reversal.
+  Conversely, when the TRIX line crosses below the zero line, it generates a
+  bearish signal, suggesting a potential downward trend reversal. Traders often
+  look for confirmation from other technical indicators or price patterns before
+  taking trading decisions based on TRIX signals.
+
+- Momentum and Divergence: The TRIX indicator can also provide insights into
+  market momentum and divergence. Changes in the TRIX slope can indicate changes
+  in momentum. Steeper slopes suggest stronger momentum, while flatter slopes
+  suggest weaker momentum. Additionally, divergence between the TRIX line and the
+  price action may signal potential trend exhaustion or upcoming reversals.
+
+- Signal Confirmation: As with any technical indicator, it is important to use
+  the TRIX indicator in conjunction with other tools and indicators to confirm
+  signals. Traders often combine TRIX with other trend-following indicators, such
+  as moving averages or trendlines, to validate the strength and direction of the
+  identified trend.
+
+The Triple Exponential Average (TRIX) indicator is a popular tool among
+technical traders who seek to identify trend reversals and capture potential
+trading opportunities. It helps traders gauge momentum, spot divergences, and
+make informed decisions about entering or exiting trades.
+
 ## WPR (Williams Percent Range)
 
 WPR indicator is a momentum oscillator developed by Larry Williams.
