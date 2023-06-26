@@ -930,23 +930,57 @@ price direction.
 
 ## WPR (Williams Percent Range)
 
-WPR indicator is a momentum oscillator developed by Larry Williams.
-It is used to identify overbought and oversold conditions in the market
-and potential trend reversals.
-The WPR indicator oscillates between -100 and 0,
-with readings above -20 considered overbought
-and readings below -80 considered oversold.
+The Williams Percent Range (WPR) indicator, also known as Williams %R, is a
+momentum oscillator that helps traders identify overbought and oversold
+conditions in the market. It was developed by Larry Williams and is based on
+the concept of measuring the relationship between the current price and the
+range of prices over a specific period.
 
-The WPR indicator calculates the percentage of the difference
-between the current closing price and the highest high over a specified period,
-relative to the difference between the highest high
-and the lowest low over the same period.
-The formula is then inverted and multiplied by -100 to obtain the WPR value.
+The WPR indicator calculates the percentage of the difference between the
+current closing price and the highest high over a specified period, relative to
+the difference between the highest high and the lowest low over the same
+period.  The formula is then inverted and multiplied by -100 to obtain the WPR
+value.
 
-When the WPR indicator reaches or exceeds the -20 level,
-it suggests that the market is overbought,
-meaning the price may have risen too far too quickly,
-and a reversal or correction may occur.
-Conversely, when the WPR indicator falls to or below the -80 level,
-it indicates oversold conditions, implying that the price may have declined
-too rapidly and could potentially reverse to the upside.
+When the WPR indicator reaches or exceeds the -20 level, it suggests that the
+market is overbought, meaning the price may have risen too far too quickly, and
+a reversal or correction may occur.  Conversely, when the WPR indicator falls
+to or below the -80 level, it indicates oversold conditions, implying that the
+price may have declined too rapidly and could potentially reverse to the
+upside.
+
+Here are the key points about the Williams Percent Range (WPR) indicator:
+
+- Calculation: The WPR indicator is calculated using the following formula: %R =
+  (Highest High - Close) / (Highest High - Lowest Low) * -100 The indicator
+  oscillates between 0 and -100, where 0 represents the highest high and -100
+  represents the lowest low within the specified period.
+
+- Overbought and Oversold Levels: The WPR indicator is typically displayed as a
+  line chart that oscillates between 0 and -100. Traders often consider values
+  above -20 as overbought, suggesting that the price has risen too far, too fast
+  and may be due for a reversal or correction. Values below -80 are considered
+  oversold, indicating that the price has declined too much, too quickly and may
+  be poised for a bounce or a potential reversal.
+
+- Divergence Analysis: Traders also use the WPR indicator to identify divergences
+  between the indicator and price movements. For example, if the price is making
+  lower lows but the WPR indicator is making higher lows (bullish divergence), it
+  suggests potential strength in buying pressure and a possible trend reversal.
+  Conversely, if the price is making higher highs but the WPR indicator is making
+  lower highs (bearish divergence), it indicates potential weakness in buying
+  pressure and a possible trend reversal.
+
+- Reversal Signals: The WPR indicator can generate buy and sell signals based on
+  overbought and oversold conditions. When the indicator moves above -20 and then
+  crosses back below it, it may indicate a bearish reversal and a potential
+  selling opportunity. Similarly, when the indicator moves below -80 and then
+  crosses back above it, it may suggest a bullish reversal and a potential buying
+  opportunity.
+
+The Williams Percent Range (WPR) indicator is a popular tool for identifying
+overbought and oversold conditions in the market. Traders use it to determine
+potential trend reversals, assess buying or selling pressure, and generate
+trading signals. By monitoring the WPR indicator, traders can gain insights
+into market sentiment and make informed decisions about their trading
+strategies.
