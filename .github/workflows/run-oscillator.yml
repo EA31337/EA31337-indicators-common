@@ -126,6 +126,7 @@ jobs:
     strategy:
       matrix:
         test:
+          - AC
           - ADX
           - ADXW
           - AO
