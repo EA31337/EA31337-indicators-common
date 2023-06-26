@@ -144,6 +144,7 @@ jobs:
           - OsMA
           - ROC
           - RSI
+          - RVI
           - Stochastic
           - WPR
 

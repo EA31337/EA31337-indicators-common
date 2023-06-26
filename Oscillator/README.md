@@ -643,6 +643,48 @@ recommended to use the RSI in combination with other forms of analysis and
 to consider other factors such as market trends, support and resistance
 levels, and fundamental analysis.
 
+## RVI (Relative Vigor Index)
+
+The Relative Vigor Index (RVI) is a technical indicator that measures the
+strength of a trend by comparing the closing price to the trading range. It
+helps traders identify potential trend reversals, confirm the strength of a
+trend, and generate buy or sell signals.
+
+Here are the key points about the Relative Vigor Index (RVI) indicator:
+
+- Calculation: The RVI indicator is calculated using four components - the
+  current closing price, the opening price, the highest price, and the lowest
+  price. It compares the relationship between the closing price and the trading
+  range to determine the strength of the current trend. The RVI value is derived
+  from the difference between the closing price and the midpoint of the trading
+  range over a specified period.
+
+- Interpretation: The RVI indicator consists of a single line that fluctuates
+  above and below a centerline. When the RVI line moves above the centerline, it
+  suggests that the buyers are dominant, indicating a bullish trend. Conversely,
+  when the RVI line moves below the centerline, it indicates that the
+  sellers are in control, suggesting a bearish trend. The distance of
+  the RVI line from the centerline can indicate the strength of the
+  trend.
+
+- Divergence: Traders often look for divergences between the RVI
+  indicator and the price chart. Bullish divergence occurs when the
+  price makes lower lows while the RVI line forms higher lows,
+  suggesting potential upward momentum. Bearish divergence occurs when
+  the price forms higher highs while the RVI line makes lower highs,
+  indicating potential downward momentum.
+
+- Signal Generation: Traders use the RVI indicator to generate buy and
+  sell signals. A common technique is to look for crossovers of the RVI
+  line and the centerline. When the RVI line crosses above the
+  centerline, it generates a buy signal, indicating a potential bullish
+  trend. Conversely, when the RVI line crosses below the centerline, it
+  generates a sell signal, suggesting a potential bearish trend.
+
+The Relative Vigor Index (RVI) is a useful tool for assessing the
+strength of a trend, identifying potential trend reversals, and
+generating trading signals.
+
 ## Stochastic
 
 The Stochastic oscillator is a popular momentum indicator used in technical
