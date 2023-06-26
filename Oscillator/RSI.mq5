@@ -22,7 +22,7 @@
 
 /**
  * @file
- * Implements Relative Strength Index indicator.
+ * Implements Relative Strength Index (RSI) indicator.
  */
 
 // Defines.
@@ -36,14 +36,11 @@
 #property description INDI_FULL_NAME
 //--
 #property indicator_separate_window
-#property indicator_minimum 0
-#property indicator_maximum 100
-#property indicator_level1 30
-#property indicator_level2 70
 #property indicator_buffers 1
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
-#property indicator_color1 DodgerBlue
+#property indicator_color1 LightSeaGreen
+#property indicator_label1 INDI_SHORT_NAME
 #property version "1.000"
 #endif
 
@@ -75,7 +72,7 @@ void OnInit() {
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpRSIPeriod);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
-  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, 50.0);
+  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, DBL_MAX);
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   // Sets first bar from what index will be drawn
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpRSIPeriod);
@@ -92,9 +89,6 @@ int OnCalculate(const int rates_total, const int prev_calculated,
                 const double &close[], const long &tick_volume[],
                 const long &volume[], const int &spread[]) {
   int i, start;
-  if (rates_total < fmax(0, InpRSIPeriod)) {
-    return (0);
-  }
   // Initialize calculations.
   start =
       prev_calculated == 0 ? fmax(0, InpRSIPeriod - 1) : prev_calculated - 1;
@@ -103,7 +97,6 @@ int OnCalculate(const int rates_total, const int prev_calculated,
     IndicatorDataEntry _entry = indi[rates_total - i];
     if (!indi.Get<bool>(
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
-      ExtRSIBuffer[i] = 50.0;
       return prev_calculated + 1;
     }
     ExtRSIBuffer[i] = _entry[0];
