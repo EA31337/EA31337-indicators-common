@@ -236,3 +236,37 @@ Here are the key features of the OBV indicator:
 
 The OBV indicator can be applied to various time frames and is suitable for
 analyzing individual stocks, indexes, or other financial instruments.
+
+## PVT (Price and Volume Trend)
+
+The Price and Volume Trend (PVT) indicator is a technical analysis tool that
+combines price and volume data to assess the strength of a price trend and
+identify potential trading signals. It aims to provide insights into the
+relationship between price movements and trading volume.
+
+Here are the key points about the Price and Volume Trend (PVT) indicator:
+
+- Calculation: The PVT indicator is calculated by multiplying the percentage
+  change in price by the corresponding trading volume and adding the result to
+  the previous PVT value. The initial PVT value is typically set to zero. The
+  resulting PVT line is then plotted on a chart.
+
+- Interpretation: The PVT indicator is used to evaluate the buying and selling
+  pressure behind price movements. When the PVT line is rising, it suggests that
+  buying pressure is increasing and the price trend is potentially strong.
+  Conversely, a declining PVT line indicates that selling pressure may be
+  intensifying, which could weaken the price trend.
+
+- Divergence: Traders often look for divergences between the PVT indicator and
+  the price chart. Divergences occur when the PVT line moves in the opposite
+  direction of the price trend. Bullish divergence happens when the price makes
+  lower lows while the PVT line forms higher lows, indicating potential bullish
+  strength. Bearish divergence occurs when the price forms higher highs while the
+  PVT line makes lower highs, suggesting potential bearish weakness.
+
+- Volume Confirmation: The PVT indicator can also be used to confirm the strength
+  of a price trend. If the price is rising and the PVT line is also rising, it
+  suggests that the price movement is supported by increasing volume, adding
+  credibility to the upward trend. Similarly, if the price is falling and the PVT
+  line is declining, it indicates that selling pressure is accompanied by higher
+  volume, reinforcing the downward trend.
