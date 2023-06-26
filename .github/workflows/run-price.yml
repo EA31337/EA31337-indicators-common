@@ -132,6 +132,7 @@ jobs:
           - MA
           - TEMA
           - VIDYA
+          - ZigZag
 
     steps:
       - uses: actions/download-artifact@v3

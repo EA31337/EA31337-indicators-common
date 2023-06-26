@@ -236,3 +236,51 @@ The Variable Index Dynamic Average (VIDYA) indicator is a popular tool among
 technical traders who seek to adapt moving averages to changing market
 conditions. By adjusting the smoothing period based on volatility, it aims to
 provide a more accurate representation of price trends.
+
+## ZigZag
+
+The ZigZag indicator is a technical analysis tool that helps traders identify
+and visualize significant price reversals or changes in direction in a
+financial market. It aims to filter out the market noise and highlight the most
+important price movements.
+
+Here are the key points about the ZigZag indicator:
+
+- Construction: The ZigZag indicator connects significant highs and lows in the
+  price chart by drawing lines or "zigzags" between them. It focuses on price
+  swings that exceed a specified percentage or point threshold, ignoring smaller
+  fluctuations.
+
+- Reversal Criteria: The ZigZag indicator uses a predefined reversal criterion to
+  determine when to change direction and draw a new zigzag line. This criterion
+  can be set as a percentage, such as 5%, or a fixed point value, such as 10
+  pips. When a price movement exceeds the reversal threshold, a new zigzag line
+  is drawn in the opposite direction.
+
+- Filtering Noise: By filtering out smaller price movements, the ZigZag indicator
+  helps traders identify the more significant price reversals or swings in the
+  market. It allows them to focus on major trend changes and key
+  support/resistance levels without being distracted by minor fluctuations.
+
+- Visual Representation: The ZigZag indicator typically plots the zigzag lines on
+  the price chart, making it easy for traders to visualize the reversals and
+  changes in market direction. The lines connect the swing highs and lows,
+  providing a clear visual representation of the price structure and its
+  turning points.
+
+- Application: Traders use the ZigZag indicator in various ways. It can
+  help identify potential trend reversals, support and resistance levels,
+  and chart patterns such as double tops or bottoms. Some traders use the
+  ZigZag indicator in combination with other technical analysis tools to
+  confirm signals or generate trading strategies.
+
+It's important to note that the ZigZag indicator is a lagging
+indicator, as it relies on past price data to identify reversals. It
+may not capture every price swing or provide real-time signals.
+Therefore, traders often use it in conjunction with other indicators or
+analysis techniques to make well-informed trading decisions.
+
+Overall, the ZigZag indicator is a popular tool for traders seeking to
+identify significant price reversals and filter out market noise. It
+provides a visual representation of the price structure and helps
+traders focus on the most important price movements in their analysis.
