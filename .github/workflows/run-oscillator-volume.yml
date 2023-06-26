@@ -133,6 +133,7 @@ jobs:
           - OBV
           - PVT
           - Volumes
+          - VROC
 
     steps:
       - uses: actions/download-artifact@v3

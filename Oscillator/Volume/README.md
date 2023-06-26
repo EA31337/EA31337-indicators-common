@@ -314,3 +314,48 @@ Here are the key points about the Volumes indicator:
 The Volumes indicator is a valuable tool for analyzing trading volume and its
 relationship to price movements. It provides insights into market activity,
 confirms price trends, and helps identify potential trading opportunities.
+
+## VROC (Volume Rate of Change)
+
+The Volume Rate of Change (VROC) indicator is a technical analysis tool that
+measures the rate of change in trading volume over a specified period. It helps
+traders identify the speed and intensity of volume changes, which can provide
+insights into potential price movements and market trends.
+
+Here are the key points about the Volume Rate of Change (VROC) indicator:
+
+- Rate of Change Calculation: The VROC indicator calculates the rate of change in
+  trading volume by comparing the current volume with the volume a certain number
+  of periods ago. The rate of change is expressed as a percentage, representing
+  the percentage increase or decrease in volume over the specified period.
+
+- Volume Momentum: The VROC indicator is primarily used to gauge volume momentum.
+  When the VROC value is positive, it indicates that the current volume is higher
+  than the volume of the specified period ago, suggesting increasing volume
+  momentum. Conversely, a negative VROC value suggests declining volume momentum.
+
+- Confirmation of Price Movements: Traders often use the VROC indicator to
+  confirm price movements. When the price is rising or falling and accompanied by
+  increasing volume (positive VROC), it suggests strong buying or selling
+  pressure, respectively, and validates the price trend. Conversely, decreasing
+  volume (negative VROC) during price movements may indicate weakening momentum
+  and a potential reversal.
+
+- Divergences: Traders also look for divergences between the VROC indicator and
+  price movements. If the price is making higher highs, but the VROC is making
+  lower highs (bearish divergence), it suggests a potential weakening of buying
+  pressure and a possible trend reversal. Conversely, if the price is making
+  lower lows, but the VROC is making higher lows (bullish divergence), it
+  indicates a potential shift in sentiment and a possible trend reversal.
+
+- Timeframe Selection: The VROC indicator's effectiveness may vary depending on
+  the timeframe used. Shorter timeframes can provide insights into short-term
+  volume changes and intraday trading, while longer timeframes can reveal broader
+  market trends and investor sentiment.
+
+The Volume Rate of Change (VROC) indicator is a valuable tool for analyzing
+volume momentum and its relationship to price movements. It helps traders
+identify trends, confirm price movements, and detect potential reversals
+through divergences. By integrating the VROC indicator into their technical
+analysis, traders can gain a deeper understanding of market dynamics and make
+more informed trading decisions.
