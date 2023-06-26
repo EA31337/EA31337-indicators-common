@@ -147,6 +147,7 @@ jobs:
           - RVI
           - StdDev
           - Stochastic
+          - UOS
           - TRIX
           - WPR
 

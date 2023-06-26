@@ -797,6 +797,53 @@ technical traders who seek to identify trend reversals and capture potential
 trading opportunities. It helps traders gauge momentum, spot divergences, and
 make informed decisions about entering or exiting trades.
 
+## UOS (Ultimate Oscillator)
+
+The Ultimate Oscillator (UOS) indicator is a technical analysis tool that
+combines multiple timeframes and weighted averages to provide insights into the
+underlying momentum and trend strength of a security. It aims to identify
+overbought and oversold conditions and generate signals for potential buying or
+selling opportunities.
+
+Here are the key points about the Ultimate Oscillator (UOS) indicator:
+
+- Calculation: The UOS indicator is calculated by incorporating three different
+  timeframes: short-term (typically 7 periods), intermediate-term (typically 14
+  periods), and long-term (typically 28 periods). For each timeframe, the UOS
+  calculates a weighted average based on the relationship between the current
+  close and the price range over that period. These three averages are then
+  combined using specific weightings to generate the UOS value.
+
+- Overbought and Oversold Conditions: The UOS indicator is used to identify
+  overbought and oversold conditions in the market. When the UOS value rises
+  above a certain threshold (e.g., 70), it suggests that the security may be
+  overbought, indicating a potential reversal or price correction. Conversely,
+  when the UOS value falls below a certain threshold (e.g., 30), it suggests
+  that the security may be oversold, indicating a potential upward price
+  reversal.
+
+- Trend Confirmation: The UOS indicator also helps traders confirm the strength
+  and direction of the underlying trend. When the UOS value is rising, it
+  indicates increasing buying pressure and suggests a strengthening bullish
+  trend. Conversely, when the UOS value is falling, it indicates increasing
+  selling pressure and suggests a weakening bearish trend. Traders often look
+  for divergences between the UOS indicator and price action to identify
+  potential trend reversals.
+
+- Signal Generation: The UOS indicator generates trading signals based on
+  overbought/oversold conditions and trend confirmation. When the UOS value
+  crosses above the overbought threshold, it generates a bearish signal,
+  suggesting a potential selling opportunity. Conversely, when the UOS value
+  crosses below the oversold threshold, it generates a bullish signal,
+  indicating a potential buying opportunity. Traders often wait for additional
+  confirmation from other indicators or price patterns before executing trades
+  based on UOS signals.
+
+The Ultimate Oscillator (UOS) indicator is a versatile tool that combines
+multiple timeframes and weighted averages to provide a comprehensive view of
+market momentum and trend strength. Traders use it to identify
+overbought/oversold conditions, confirm trends, and generate trading signals.
+
 ## WPR (Williams Percent Range)
 
 WPR indicator is a momentum oscillator developed by Larry Williams.
