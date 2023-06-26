@@ -130,6 +130,7 @@ jobs:
           - DEMA
           - FrAMA
           - MA
+          - TEMA
 
     steps:
       - uses: actions/download-artifact@v3

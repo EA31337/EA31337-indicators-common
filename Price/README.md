@@ -156,3 +156,41 @@ It is widely used to determine support and resistance levels, as well as
 generate entry and exit signals. Traders often rely on moving averages in
 combination with other indicators and analysis techniques to make informed
 trading decisions.
+
+## TEMA (Triple Exponential Moving Average)
+
+The Triple Exponential Moving Average (TEMA) indicator is a trend-following
+technical analysis tool that aims to reduce lag and provide smoother moving
+average signals. It is a variation of the traditional exponential moving
+average (EMA) that incorporates multiple smoothing calculations.
+
+Here are the key points about this indicator:
+
+- Calculation: The TEMA indicator applies three levels of exponential smoothing
+  to price data. It begins by calculating a single exponential moving average
+  (EMA) of the input data. Then, it applies two additional EMAs to the initial
+  EMA. The smoothing factors used for each EMA are based on the chosen period
+  length.
+
+- Smoothing and Lag Reduction: The TEMA indicator is designed to reduce lag and
+  provide faster and more responsive moving average signals compared to
+  traditional moving averages. By applying multiple levels of smoothing, it
+  attempts to filter out short-term price fluctuations and focus on the
+  underlying trend.
+
+- Trend Identification: The TEMA indicator helps traders identify the direction
+  and strength of a trend. When the TEMA line is rising, it suggests an uptrend,
+  while a declining TEMA line indicates a downtrend. The slope and angle of
+  the TEMA line can provide insights into the strength and momentum of the
+  trend.
+
+- Signal Generation: The TEMA indicator generates trading signals similar to
+  other moving averages. When the price crosses above the TEMA line, it
+  generates a bullish signal, indicating a potential buying opportunity.
+  Conversely, when the price crosses below the TEMA line, it generates a
+  bearish signal, suggesting a potential selling opportunity.
+
+The Triple Exponential Moving Average (TEMA) indicator is favored by
+traders who seek smoother and more responsive moving average signals. It
+aims to reduce lag and provide a clearer representation of the underlying
+trend.
