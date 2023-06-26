@@ -29,6 +29,46 @@ analysis that measure price momentum and provide insights into
 overbought or oversold conditions.  They are considered a subset of
 indicators due to their specific function and characteristics.
 
+## AC (Accelerator/Decelerator)
+
+The Accelerator/Decelerator (AC) indicator is a technical analysis tool that
+helps traders identify the acceleration or deceleration of a current price
+trend. It is based on the concept that changes in momentum often precede
+changes in price direction.
+
+Here are the key points about the Accelerator/Decelerator (AC) indicator:
+
+- Calculation: The AC indicator is calculated by taking the difference between
+  the midpoint of the current bar's high and low prices and the midpoint of the
+  previous bar's high and low prices. This difference is then multiplied by the
+  volume of the current bar.
+
+- Histogram Representation: The AC indicator is typically displayed as a
+  histogram chart, with bars above and below the zero line. Positive values above
+  the zero line indicate acceleration, suggesting increasing bullish momentum.
+  Negative values below the zero line indicate deceleration, suggesting
+  increasing bearish momentum.
+
+- Signal Confirmation: Traders use the AC indicator to confirm the strength of a
+  price trend. When the histogram bars are increasing in size and moving higher
+  above the zero line, it suggests a strengthening bullish trend. Conversely,
+  when the bars are increasing in size and moving lower below the zero
+  line, it suggests a strengthening bearish trend.
+
+- Divergences: Traders also look for divergences between the AC indicator
+  and price movements. If the price is making higher highs but the AC
+  indicator is making lower highs (bearish divergence), it suggests
+  potential weakening of bullish momentum and a possible trend reversal.
+  Conversely, if the price is making lower lows but the AC indicator is
+  making higher lows (bullish divergence), it indicates potential weakening
+  of bearish momentum and a possible trend reversal.
+
+The Accelerator/Decelerator (AC) indicator provides insights into the
+momentum of a price trend, helping traders identify potential trend
+changes and confirm the strength of a current trend. By analyzing the
+histogram bars and looking for divergences, traders can make more
+informed trading decisions and take advantage of price momentum shifts.
+
 ## AO (Awesome Oscillator)
 
 The Awesome Oscillator (AO) is a technical indicator designed to identify the
