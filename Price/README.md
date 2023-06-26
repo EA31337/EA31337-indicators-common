@@ -194,3 +194,45 @@ The Triple Exponential Moving Average (TEMA) indicator is favored by
 traders who seek smoother and more responsive moving average signals. It
 aims to reduce lag and provide a clearer representation of the underlying
 trend.
+
+## VIDYA (Variable Index Dynamic Average)
+
+The Variable Index Dynamic Average (VIDYA) indicator is a technical analysis
+tool that aims to adapt the moving average based on market volatility. It
+dynamically adjusts the smoothing period of the moving average to respond to
+changing market conditions.
+
+Here are the key points about the Variable Index Dynamic Average (VIDYA)
+indicator:
+
+- Adaptive Moving Average: The VIDYA indicator is a type of adaptive moving
+  average that adjusts its sensitivity to market volatility. It achieves this
+  by modifying the smoothing period of the moving average based on the
+  volatility of price data. During periods of high volatility, the smoothing
+  period is increased to reduce the impact of short-term price fluctuations.
+  Conversely, during periods of low volatility, the smoothing period is
+  decreased to increase responsiveness to price changes.
+
+- Volatility-Based Calculation: The VIDYA indicator calculates the volatility
+  by using a formula that considers the difference between the current price
+  and the previous price. This volatility value is then used to determine the
+  smoothing period of the moving average. Higher volatility results in a longer
+  smoothing period, while lower volatility leads to a shorter smoothing period.
+
+- Trend Identification: The VIDYA indicator is primarily used to identify
+  trends in the market. When the price is trending upwards, the VIDYA line
+  rises above the price, indicating a bullish trend. Conversely, when the price
+  is trending downwards, the VIDYA line falls below the price, indicating a
+  bearish trend. Traders often use the crossing of the price and VIDYA line as
+  a signal for potential buying or selling opportunities.
+
+- Smoother Indicator: Compared to traditional moving averages, the VIDYA
+  indicator tends to produce smoother and less lagging results. It adapts to
+  changes in market conditions and captures trends more effectively by
+  adjusting the smoothing period based on volatility. This feature can help
+  reduce false signals and provide a clearer representation of price movements.
+
+The Variable Index Dynamic Average (VIDYA) indicator is a popular tool among
+technical traders who seek to adapt moving averages to changing market
+conditions. By adjusting the smoothing period based on volatility, it aims to
+provide a more accurate representation of price trends.

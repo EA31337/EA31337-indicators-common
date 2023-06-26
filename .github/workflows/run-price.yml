@@ -131,6 +131,7 @@ jobs:
           - FrAMA
           - MA
           - TEMA
+          - VIDYA
 
     steps:
       - uses: actions/download-artifact@v3
