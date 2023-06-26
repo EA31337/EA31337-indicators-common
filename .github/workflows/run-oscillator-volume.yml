@@ -126,6 +126,7 @@ jobs:
     strategy:
       matrix:
         test:
+          - AD
           - BWMFI
           - CHO
           - Force

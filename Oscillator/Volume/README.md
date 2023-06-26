@@ -24,6 +24,54 @@ well-informed trading decisions. As with any indicator, it's advisable to test
 and validate their effectiveness within your trading strategy before relying on
 them solely.
 
+## AD (Accumulation/Distribution)
+
+The Accumulation/Distribution (AD) indicator is a technical analysis tool that
+measures the flow of money into or out of a financial instrument over a
+specified period. It helps traders assess the strength of buying or selling
+pressure and identify potential price reversals.
+
+Here are the key points about the Accumulation/Distribution (AD) indicator:
+
+- Money Flow Calculation: The AD indicator calculates the money flow by
+  considering the relationship between the closing price, trading volume, and the
+  price range (high and low) of each period. It determines whether the money flow
+  is positive (accumulation) or negative (distribution).
+
+- Accumulation and Distribution Zones: The AD indicator assigns a positive value
+  to the money flow when the closing price is higher than the previous period's
+  closing price. This indicates accumulation or buying pressure. Conversely, a
+  negative value is assigned when the closing price is lower than the previous
+  period's closing price, indicating distribution or selling pressure.
+
+- Volume Weighting: The AD indicator takes trading volume into account when
+  calculating the money flow. Higher trading volume during periods of
+  accumulation or distribution suggests stronger buying or selling pressure,
+  respectively.
+
+- Confirmation of Price Movements: Traders use the AD indicator to
+  confirm price movements. When the AD indicator shows positive
+  values along with an upward price trend, it suggests that buying
+  pressure is increasing and supports the bullish bias. Conversely,
+  negative values in conjunction with a downward price trend
+  indicate increasing selling pressure and support the bearish bias.
+
+- Divergences: Traders also look for divergences between the AD
+  indicator and price movements. If the price is making higher highs
+  but the AD indicator is making lower highs (bearish divergence),
+  it suggests weakening buying pressure and a potential trend
+  reversal. Conversely, if the price is making lower lows but the AD
+  indicator is making higher lows (bullish divergence), it indicates
+  potential buying pressure and a possible trend reversal.
+
+The Accumulation/Distribution (AD) indicator provides insights
+into the flow of money in and out of a financial instrument. By
+analyzing the relationship between price, volume, and money flow,
+traders can gauge buying or selling pressure and identify
+potential reversals in price trends. The AD indicator is commonly
+used as a tool for confirming price movements and making informed
+trading decisions.
+
 ## BWMFI (Bill Williams' Market Facilitation Index)
 
 Bill Williams' Market Facilitation Index (BWMFI) is a technical indicator
