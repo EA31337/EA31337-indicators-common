@@ -142,6 +142,7 @@ jobs:
           - MI
           - MOM
           - OsMA
+          - ROC
           - RSI
           - Stochastic
           - WPR

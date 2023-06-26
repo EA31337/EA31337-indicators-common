@@ -566,6 +566,45 @@ Here are the key points about the OsMA indicator:
 The OsMA indicator is primarily used to assist in identifying potential
 entry and exit points in the market based on momentum and trend strength.
 
+## ROC (Rate of Change)
+
+The Rate of Change (ROC) indicator is a momentum oscillator that measures the
+percentage change in price over a specific period. It quantifies the speed and
+magnitude of price movements and helps identify the strength of a trend.
+
+Here are the key points about the Rate of Change (ROC) indicator:
+
+- Calculation: The ROC indicator calculates the percentage change in price by
+  comparing the current closing price to the closing price of a specific number
+  of periods ago. The ROC value is expressed as a percentage.
+
+- Interpretation: The ROC indicator shows the percentage change in price
+  over time. A positive ROC value indicates upward momentum or an increase
+  in price, while a negative ROC value suggests downward momentum or a
+  decrease in price. The magnitude of the ROC value indicates the strength
+  of the momentum. Higher positive values indicate stronger upward
+  momentum, while lower negative values indicate stronger downward
+  momentum.
+
+- Overbought and Oversold Conditions: Traders often use the ROC indicator
+  to identify overbought and oversold conditions in the market. When the
+  ROC value reaches extreme positive levels, it suggests that the price has
+  risen too quickly and may be due for a reversal or a pullback.
+  Conversely, when the ROC value reaches extreme negative levels, it
+  indicates that the price has declined rapidly and may be ripe for a
+  potential bounce or upward correction.
+
+- Divergence: Divergences between the ROC indicator and price chart can
+  provide trading signals. Bullish divergence occurs when the price makes
+  lower lows while the ROC indicator forms higher lows, suggesting
+  potential upward momentum. Bearish divergence occurs when the price forms
+  higher highs while the ROC indicator makes lower highs, indicating
+  potential downward momentum.
+
+The ROC indicator is useful for identifying potential trend reversals,
+assessing the strength of price momentum, and spotting overbought or
+oversold conditions.
+
 ## RSI (Relative Strength Index)
 
 The Relative Strength Index (RSI) is a popular momentum oscillator used in
