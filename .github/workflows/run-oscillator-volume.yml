@@ -130,6 +130,7 @@ jobs:
           - CHO
           - Force
           - MFI
+          - OBV
 
     steps:
       - uses: actions/download-artifact@v3

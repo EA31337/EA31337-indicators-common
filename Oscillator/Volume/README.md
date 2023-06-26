@@ -200,3 +200,39 @@ with other technical analysis tools to make trading decisions.
 It helps traders identify periods of strong trends, assess
 market participation, and potentially spot divergences or
 reversals.
+
+## OBV (On Balance Volume)
+
+The On Balance Volume (OBV) is a technical indicator that measures the
+cumulative volume flow in a security to help determine the strength of a price
+trend. It was developed by Joseph Granville and focuses on the relationship
+between volume and price movements.
+
+Here are the key features of the OBV indicator:
+
+- Calculation: The OBV indicator is calculated by adding the volume on days
+  when the price closes higher than the previous day's close and subtracting the
+  volume on days when the price closes lower than the previous day's close. If
+  the price closes unchanged, the volume is not added or subtracted. The
+  cumulative values are then plotted on a chart.
+
+- Interpretation: The OBV indicator provides insights into the buying and
+  selling pressure behind price movements. When the OBV line is trending upwards,
+  it suggests that buying volume is outweighing selling volume,
+  indicating a bullish trend. Conversely, a downward trend in the OBV
+  line suggests that selling volume is dominating, signaling a bearish
+  trend.
+
+- Divergence: Traders often look for divergences between the OBV
+  indicator and the price chart. If the price is making new highs, but
+  the OBV line is not following suit (bearish divergence) or vice versa
+  (bullish divergence), it may indicate a potential reversal or change in
+  the trend direction.
+
+- Confirmation: The OBV indicator is commonly used to confirm price trends. When
+  the OBV line is in agreement with the price, it provides confirmation that the
+  trend is likely to continue. If there is a discrepancy between the OBV line and
+  the price, it may suggest a weakening trend or a potential trend reversal.
+
+The OBV indicator can be applied to various time frames and is suitable for
+analyzing individual stocks, indexes, or other financial instruments.
