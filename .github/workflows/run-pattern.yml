@@ -45,6 +45,15 @@ jobs:
           path: Include/EA31337-classes
           ref: v2.012.1
           repository: EA31337/EA31337-classes
+      - name: Compile (build 1382)
+        if: endsWith(matrix.file, '.mq4')
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 4.0.0.1382
+          path: ${{ matrix.file }}
+          verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
