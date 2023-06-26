@@ -530,6 +530,42 @@ vary depending on the time frame and market conditions. Traders should consider
 using it alongside other indicators, trend analysis, and risk management
 techniques to make informed trading decisions.
 
+## OsMA (Moving Average of Oscillator)
+
+The Moving Average of Oscillator (OsMA) is a technical indicator that combines
+the features of both a momentum oscillator and a moving average. It helps
+traders identify the momentum and trend strength in the market by measuring the
+difference between an oscillator (such as MACD) and its signal line.
+
+Here are the key points about the OsMA indicator:
+
+- Calculation: The OsMA is derived from the MACD (Moving Average Convergence
+  Divergence) indicator. It subtracts the signal line (typically a moving
+  average of the MACD line) from the MACD line itself. The resulting values
+  are then plotted as a histogram.
+
+- Interpretation: The OsMA histogram represents the difference between the
+  MACD line and its signal line. Positive values indicate that the MACD line
+  is above its signal line, suggesting bullish momentum. Negative values
+  indicate that the MACD line is below its signal line, indicating bearish
+  momentum. The height of the histogram bars reflects the magnitude of the
+  difference.
+
+- Trend Confirmation: Traders often use the OsMA to confirm the strength of a
+  trend. When the OsMA histogram bars are increasing in height, it indicates
+  increasing momentum and supports the prevailing trend. Conversely, a
+  decrease in the height of the histogram bars may suggest weakening momentum
+  and a potential trend reversal.
+
+- Divergence: Like other oscillators, the OsMA can also be used to identify
+  divergences between the indicator and the price chart. Divergences occur
+  when the price makes a new high or low, but the OsMA histogram fails to
+  follow suit. This can signal a potential reversal or a change in the trend
+  direction.
+
+The OsMA indicator is primarily used to assist in identifying potential
+entry and exit points in the market based on momentum and trend strength.
+
 ## RSI (Relative Strength Index)
 
 The Relative Strength Index (RSI) is a popular momentum oscillator used in

@@ -141,6 +141,7 @@ jobs:
           - MACD
           - MI
           - MOM
+          - OsMA
           - RSI
           - Stochastic
           - WPR
