@@ -270,3 +270,47 @@ Here are the key points about the Price and Volume Trend (PVT) indicator:
   credibility to the upward trend. Similarly, if the price is falling and the PVT
   line is declining, it indicates that selling pressure is accompanied by higher
   volume, reinforcing the downward trend.
+
+## Volumes
+
+The Volumes indicator is a technical analysis tool used to analyze the
+trading volume associated with a financial instrument. It provides insights
+into the strength and intensity of buying and selling activity in the market.
+
+Here are the key points about the Volumes indicator:
+
+- Volume Analysis: The Volumes indicator displays the trading volume data as
+  vertical bars on a chart. The height or length of each bar represents the
+  volume traded during a specific period, such as a candlestick or bar. Higher
+  volume bars indicate increased trading activity, while lower volume bars
+  suggest decreased activity.
+
+- Volume Confirmation: The Volumes indicator is often used to confirm price
+  movements. When the price is rising and accompanied by higher volume, it
+  suggests strong buying pressure and validates the upward price movement.
+  Conversely, when the price is falling and accompanied by higher volume, it
+  indicates strong selling pressure and supports the downward price movement.
+  Traders look for volume confirmation to gain confidence in the validity of
+  price trends.
+
+- Volume Patterns: The Volumes indicator can also help identify volume patterns
+  and trends. Traders analyze the shape, size, and duration of volume bars to
+  spot potential market patterns, such as volume spikes, climax volume, or
+  divergences between volume and price. These patterns can provide insights
+  into market sentiment and potential trading opportunities.
+
+- Volume-Based Strategies: The Volumes indicator is used in various
+  volume-based trading strategies. For example, traders may look for volume
+  breakouts, where a significant increase in volume accompanies a price
+  breakout, as a signal to enter trades. Additionally, volume-based indicators
+  such as Volume Weighted Average Price (VWAP) can be used in conjunction with
+  the Volumes indicator to identify support and resistance levels.
+
+- Volume Analysis in Conjunction with Price: To gain a more comprehensive view
+  of market dynamics, traders often analyze the Volumes indicator alongside
+  price charts and other technical indicators. This integration helps identify
+  trends, confirm signals, and make more informed trading decisions.
+
+The Volumes indicator is a valuable tool for analyzing trading volume and its
+relationship to price movements. It provides insights into market activity,
+confirms price trends, and helps identify potential trading opportunities.

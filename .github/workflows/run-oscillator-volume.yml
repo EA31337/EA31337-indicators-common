@@ -132,6 +132,7 @@ jobs:
           - MFI
           - OBV
           - PVT
+          - Volumes
 
     steps:
       - uses: actions/download-artifact@v3
