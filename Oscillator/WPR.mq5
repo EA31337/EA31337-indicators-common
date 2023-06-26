@@ -22,11 +22,11 @@
 
 /**
  * @file
- * Implements Relative Strength Index indicator.
+ * Implements Williams Percent Range (WPR) indicator.
  */
 
 // Defines.
-#define INDI_FULL_NAME "Relative Strength Index"
+#define INDI_FULL_NAME "Williams Percent Range"
 #define INDI_SHORT_NAME "WPR"
 
 // Indicator properties.
@@ -36,13 +36,13 @@
 #property description INDI_FULL_NAME
 //--
 #property indicator_separate_window
-#property indicator_level1 - 20.0
-#property indicator_level2 - 80.0
+#property indicator_level1 -20.0
+#property indicator_level2 -80.0
 #property indicator_levelstyle STYLE_DOT
 #property indicator_levelcolor Silver
 #property indicator_levelwidth 1
 #property indicator_maximum 0.0
-#property indicator_minimum - 100.0
+#property indicator_minimum -100.0
 #property indicator_buffers 1
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
@@ -95,9 +95,6 @@ int OnCalculate(const int rates_total, const int prev_calculated,
                 const double &close[], const long &tick_volume[],
                 const long &volume[], const int &spread[]) {
   int i, start;
-  if (rates_total < fmax(0, InpWPRPeriod)) {
-    return (0);
-  }
   // Initialize calculations.
   start =
       prev_calculated == 0 ? fmax(0, InpWPRPeriod - 1) : prev_calculated - 1;
@@ -106,7 +103,6 @@ int OnCalculate(const int rates_total, const int prev_calculated,
     IndicatorDataEntry _entry = indi[rates_total - i];
     if (!indi.Get<bool>(
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
-      ExtWPRBuffer[i] = -50.0;
       return prev_calculated + 1;
     }
     ExtWPRBuffer[i] = _entry[0];
