@@ -22,7 +22,7 @@
 
 /**
  * @file
- * Implements Bollinger SAR indicator.
+ * Implements Parabolic SAR indicator.
  */
 
 // Defines.

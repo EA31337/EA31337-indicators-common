@@ -22,7 +22,7 @@
 
 /**
  * @file
- * Implements Bollinger Envelopes indicator.
+ * Implements Envelopes indicator.
  */
 
 // Defines.
