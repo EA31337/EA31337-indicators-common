@@ -29,6 +29,48 @@ jobs:
       - name: Display output
         run: echo ${{ steps.get-files.outputs.filelist }}
 
+  Compile-Indicators-Platform:
+    defaults:
+      run:
+        shell: powershell
+    runs-on: windows-latest
+    steps:
+      - name: Compile (build 1382)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 4.0.0.1382.2
+          path: Indicators
+          verbose: true
+      - name: Compile (build 2361)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2361
+          path: Indicators
+          verbose: true
+      - name: Compile (build 3815)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.3815
+          path: Indicators
+          verbose: true
+      - name: List all source code files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - run: Get-Location
+      - name: Upload indicator artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: '**/*.ex[45]'
+    timeout-minutes: 10
+
   Compile-Indicators:
     defaults:
       run:
