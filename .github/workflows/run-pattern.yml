@@ -15,19 +15,19 @@ on:
 jobs:
   GetList:
     outputs:
-      filelist: ${{ steps.get-files.outputs.filelist }}
+      filelist: ${{ env.filelist }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set output with list of files
-        id: get-files
         run: |
           import glob, json, os
-          files = glob.glob("Pattern/*.mq?")
-          print("::set-output name=filelist::{}".format(json.dumps(files)))
+          files = json.dumps(glob.glob("Pattern/*.mq?"))
+          with open(os.getenv('GITHUB_ENV'), "a") as file:
+            file.write(f"filelist={files}\n")
         shell: python
       - name: Display output
-        run: echo ${{ steps.get-files.outputs.filelist }}
+        run: echo ${{ env.filelist }}
 
   Compile-Indicators-Platform:
     defaults:
