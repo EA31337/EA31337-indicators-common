@@ -5,11 +5,11 @@ name: Run (Pattern)
 on:
   pull_request:
     paths:
-      - 'Pattern/**'
+      - 'Pattern/*'
       - .github/workflows/run-pattern.yml
   push:
     paths:
-      - 'Pattern/**'
+      - 'Pattern/*'
       - .github/workflows/run-pattern.yml
 
 jobs:
@@ -43,6 +43,11 @@ jobs:
           mt-version: 4.0.0.1382.2
           path: Indicators
           verbose: true
+      - name: Upload MQL4 indicators
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: ${{ env.MT4_PATH }}/MQL?/**/*.ex[45]
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
@@ -51,6 +56,11 @@ jobs:
           mt-version: 5.0.0.2361
           path: .platform/**/MQL?/Indicators
           verbose: true
+      - name: Upload MQL5 indicators
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: ${{ env.MT5_PATH }}/MQL?/**/*.ex[45]
       - name: Compile (build 3815)
         uses: fx31337/mql-compile-action@master
         with:
@@ -59,16 +69,16 @@ jobs:
           mt-version: 5.0.0.3815
           path: .platform/**/MQL?/Indicators
           verbose: true
+      - name: Upload MQL5 indicators
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: ${{ env.MT5_PATH }}/MQL?/**/*.ex[45]
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
-      - name: Upload indicator artifacts
-        uses: actions/upload-artifact@v3
-        with:
-          name: Indicators-platform
-          path: '**/MQL?/Indicators/**/*.ex[45]'
     timeout-minutes: 20
 
   Compile-Indicators:
