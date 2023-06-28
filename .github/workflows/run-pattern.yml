@@ -47,7 +47,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Indicators-platform
-          path: ${{ env.MT4_PATH }}/MQL?/**/*.[me][qx][45]
+          path: ${{ env.MT4_PATH }}/MQL?/**/*.[me][qx][45h]
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
@@ -60,7 +60,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Indicators-platform
-          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45]
+          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45h]
       - name: Compile (build 3815)
         uses: fx31337/mql-compile-action@master
         with:
@@ -73,7 +73,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Indicators-platform
-          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45]
+          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45h]
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -99,7 +99,7 @@ jobs:
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v3
         with:
-          name: Indicators-common
+          name: Indicators-platform
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files

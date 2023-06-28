@@ -5,35 +5,87 @@ name: Run (Oscillator)
 on:
   pull_request:
     paths:
-      - 'Oscillator/**'
+      - 'Oscillator/*'
       - .github/workflows/run-oscillator.yml
   push:
     paths:
-      - 'Oscillator/**'
+      - 'Oscillator/*'
       - .github/workflows/run-oscillator.yml
 
 jobs:
   GetList:
     outputs:
-      filelist: ${{ steps.get-files.outputs.filelist }}
+      filelist: ${{ env.filelist }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Set output with list of files
-        id: get-files
         run: |
           import glob, json, os
-          files = glob.glob("Oscillator/*.mq?")
-          print("::set-output name=filelist::{}".format(json.dumps(files)))
+          files = json.dumps(glob.glob("Oscillator/*.mq?"))
+          with open(os.getenv('GITHUB_ENV'), "a") as file:
+            file.write(f"filelist={files}\n")
         shell: python
       - name: Display output
-        run: echo ${{ steps.get-files.outputs.filelist }}
+        run: echo ${{ env.filelist }}
+
+  Compile-Indicators-Platform:
+    defaults:
+      run:
+        shell: powershell
+    runs-on: windows-latest
+    steps:
+      - name: Compile (build 1382)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 4.0.0.1382.2
+          path: Indicators
+          verbose: true
+      - name: Upload MQL4 indicators
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: ${{ env.MT4_PATH }}/MQL?/**/*.[me][qx][45h]
+      - name: Compile (build 2361)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.2361
+          path: .platform/**/MQL?/Indicators
+          verbose: true
+      - name: Upload MQL5 indicators
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45h]
+      - name: Compile (build 3815)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 5.0.0.3815
+          path: .platform/**/MQL?/Indicators
+          verbose: true
+      - name: Upload MQL5 indicators
+        uses: actions/upload-artifact@v3
+        with:
+          name: Indicators-platform
+          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45h]
+      - name: List all source code files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - run: Get-Location
+    timeout-minutes: 20
 
   Compile-Indicators:
     defaults:
       run:
         shell: powershell
-    needs: [GetList]
+    needs: [GetList, Compile-Indicators-Platform]
     runs-on: windows-latest
     strategy:
       matrix:
@@ -45,6 +97,22 @@ jobs:
           path: Include/EA31337-classes
           ref: v2.012.1
           repository: EA31337/EA31337-classes
+      - uses: actions/download-artifact@v3
+        with:
+          name: Indicators-platform
+      - name: List all source code files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - name: Compile (build 1382)
+        if: endsWith(matrix.file, '.mq4')
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          init-platform: true
+          mt-version: 4.0.0.1382
+          path: ${{ matrix.file }}
+          verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
