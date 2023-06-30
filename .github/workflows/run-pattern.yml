@@ -113,7 +113,7 @@ jobs:
         if: endsWith(matrix.file, '.mq4')
         uses: fx31337/mql-compile-action@master
         with:
-          include: MQL4
+          include: MQL5
           init-platform: true
           mt-version: 4.0.0.1382
           path: ${{ matrix.file }}
