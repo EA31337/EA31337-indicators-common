@@ -35,3 +35,7 @@
 
 // Includes the main code.
 #include "Fractals.mq5"
+
+// Resource files.
+#property tester_indicator "::Fractals.mt5.ex4"
+#resource "\\Fractals.mt5.ex4"
