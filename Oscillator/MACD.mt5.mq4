@@ -30,5 +30,7 @@
 #property version "1.000"
 #endif
 
+#ifdef __FIXME__
 // Resource files.
 #include <../Indicators\Examples\MACD.mq5>
+#endif
