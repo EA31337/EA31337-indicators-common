@@ -13,22 +13,6 @@ on:
       - .github/workflows/run-price.yml
 
 jobs:
-  GetList:
-    outputs:
-      filelist: ${{ env.filelist }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set output with list of files
-        run: |
-          import glob, json, os
-          files = json.dumps(glob.glob("Price/*.mq?"))
-          with open(os.getenv('GITHUB_ENV'), "a") as file:
-            file.write(f"filelist={files}\n")
-        shell: python
-      - name: Display output
-        run: echo ${{ env.filelist }}
-
   Compile-Indicators-Platform:
     defaults:
       run:
@@ -85,56 +69,58 @@ jobs:
     defaults:
       run:
         shell: powershell
-    needs: [GetList, Compile-Indicators-Platform]
+        working-directory: ${{ env.working-directory }}
+    env:
+      working-directory: Price
+    needs: [Compile-Indicators-Platform]
     runs-on: windows-latest
-    strategy:
-      matrix:
-        file: ${{ fromJson(needs.GetList.outputs.filelist) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
         with:
-          path: MQL4/Include/EA31337-classes
+          path: ${{ env.working-directory }}/MQL4/Include/EA31337-classes
           ref: v2.012.1
           repository: EA31337/EA31337-classes
       - uses: actions/checkout@v3
         with:
-          path: MQL5/Include/EA31337-classes
+          path: ${{ env.working-directory }}/MQL5/Include/EA31337-classes
           ref: v2.012.1
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v3
         with:
           name: Indicators-platform
+          path: ${{ env.working-directory }}
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
-      - name: Compile (build 1382)
-        if: endsWith(matrix.file, '.mq4')
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: MQL4
-          init-platform: true
-          mt-version: 4.0.0.1382
-          path: ${{ matrix.file }}
-          verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: ${{ matrix.file }}
+          path: '*.mt5.mq4'
           verbose: true
+          working-directory: ${{ env.working-directory }}
+      - name: Compile (build 2361)
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: MQL5
+          init-platform: true
+          mt-version: 5.0.0.2361
+          path: '*.mq?'
+          verbose: true
+          working-directory: ${{ env.working-directory }}
       - name: Compile (build 2515)
-        if: endsWith(matrix.file, '.mq5')
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2515
-          path: ${{ matrix.file }}
+          path: '*.mq5'
           verbose: true
+          working-directory: ${{ env.working-directory }}
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
@@ -170,7 +156,6 @@ jobs:
           path: Strategy-Indicator
           verbose: true
       - name: Compile (build 2515)
-        if: endsWith(matrix.file, '.mq5')
         uses: fx31337/mql-compile-action@master
         with:
           include: .
