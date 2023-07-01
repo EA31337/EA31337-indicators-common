@@ -69,24 +69,27 @@ jobs:
     defaults:
       run:
         shell: powershell
-        working-directory: Pattern
+        working-directory: ${{ env.working-directory }}
+    env:
+      working-directory: Pattern
     needs: [Compile-Indicators-Platform]
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
         with:
-          path: MQL4/Include/EA31337-classes
+          path: ${{ env.working-directory }}/MQL4/Include/EA31337-classes
           ref: v2.012.1
           repository: EA31337/EA31337-classes
       - uses: actions/checkout@v3
         with:
-          path: MQL5/Include/EA31337-classes
+          path: ${{ env.working-directory }}/MQL5/Include/EA31337-classes
           ref: v2.012.1
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v3
         with:
           name: Indicators-platform
+          path: ${{ env.working-directory }}
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -99,6 +102,7 @@ jobs:
           mt-version: 5.0.0.2361
           path: '*.mt5.mq4'
           verbose: true
+          working-directory: ${{ env.working-directory }}
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
@@ -107,6 +111,7 @@ jobs:
           mt-version: 5.0.0.2361
           path: '*.mq?'
           verbose: true
+          working-directory: ${{ env.working-directory }}
       - name: Compile (build 2515)
         uses: fx31337/mql-compile-action@master
         with:
@@ -115,6 +120,7 @@ jobs:
           mt-version: 5.0.0.2515
           path: '*.mq5'
           verbose: true
+          working-directory: ${{ env.working-directory }}
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
