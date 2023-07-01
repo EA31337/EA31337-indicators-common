@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "TRIX.mq5"
+
+// Resource files.
+#property tester_indicator "::TRIX.mt5.ex4"
+#resource "TRIX.mt5.ex4"

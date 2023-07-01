@@ -37,3 +37,7 @@
 
 // Includes the main code.
 #include "Stochastic.mq5"
+
+// Resource files.
+#property tester_indicator "::Stochastic.mt5.ex4"
+#resource "Stochastic.mt5.ex4"

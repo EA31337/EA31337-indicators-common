@@ -31,3 +31,7 @@
 
 // Includes the main code.
 #include "OBV.mq5"
+
+// Resource files.
+#property tester_indicator "::OBV.mt5.ex4"
+#resource "OBV.mt5.ex4"

@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "Volumes.mq5"
+
+// Resource files.
+#property tester_indicator "::Volumes.mt5.ex4"
+#resource "Volumes.mt5.ex4"

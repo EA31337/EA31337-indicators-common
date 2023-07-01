@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "Force.mq5"
+
+// Resource files.
+#property tester_indicator "::Force_Index.mt5.ex4"
+#resource "Force_Index.mt5.ex4"

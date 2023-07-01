@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "Alligator.mq5"
+
+// Resource files.
+#property tester_indicator "::Alligator.mt5.ex4"
+#resource "Alligator.mt5.ex4"

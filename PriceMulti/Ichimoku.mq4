@@ -36,3 +36,7 @@
 
 // Includes the main code.
 #include "Ichimoku.mq5"
+
+// Resource files.
+#property tester_indicator "::Ichimoku.mt5.ex4"
+#resource "Ichimoku.mt5.ex4"

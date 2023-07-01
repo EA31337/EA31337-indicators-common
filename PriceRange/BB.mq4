@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "BB.mq5"
+
+// Resource files.
+#property tester_indicator "::BB.mt5.ex4"
+#resource "BB.mt5.ex4"

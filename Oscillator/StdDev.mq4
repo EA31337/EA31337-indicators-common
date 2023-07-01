@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "StdDev.mq5"
+
+// Resource files.
+#property tester_indicator "::StdDev.mt5.ex4"
+#resource "StdDev.mt5.ex4"

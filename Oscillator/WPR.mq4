@@ -36,3 +36,7 @@
 
 // Includes the main code.
 #include "WPR.mq5"
+
+// Resource files.
+#property tester_indicator "::WPR.mt5.ex4"
+#resource "WPR.mt5.ex4"

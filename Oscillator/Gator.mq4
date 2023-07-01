@@ -37,3 +37,7 @@
 
 // Includes the main code.
 #include "Gator.mq5"
+
+// Resource files.
+#property tester_indicator "::Gator.mt5.ex4"
+#resource "Gator.mt5.ex4"

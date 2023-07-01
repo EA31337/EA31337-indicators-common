@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "AC.mq5"
+
+// Resource files.
+#property tester_indicator "::AC.mt5.ex4"
+#resource "AC.mt5.ex4"

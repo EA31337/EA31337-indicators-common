@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "MACD.mq5"
+
+// Resource files.
+#property tester_indicator "::MACD.mt5.ex4"
+#resource "MACD.mt5.ex4"

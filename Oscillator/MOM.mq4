@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "MOM.mq5"
+
+// Resource files.
+#property tester_indicator "::Momentum.mt5.ex4"
+#resource "Momentum.mt5.ex4"

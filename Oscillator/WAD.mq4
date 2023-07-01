@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "WAD.mq5"
+
+// Resource files.
+#property tester_indicator "::WAD.mt5.ex4"
+#resource "WAD.mt5.ex4"
