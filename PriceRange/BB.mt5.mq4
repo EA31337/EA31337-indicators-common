@@ -30,5 +30,7 @@
 #property version "1.000"
 #endif
 
+#ifdef __FIXME__
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\BB.mq5>
+#endif

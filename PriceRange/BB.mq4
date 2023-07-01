@@ -33,6 +33,8 @@
 // Includes the main code.
 #include "BB.mq5"
 
+#ifdef __FIXME__
 // Resource files.
 #property tester_indicator "::BB.mt5.ex4"
 #resource "BB.mt5.ex4"
+#endif
