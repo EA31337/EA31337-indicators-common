@@ -24,6 +24,7 @@ Related project:
 | v1.009   | v2.009     |
 | v1.010   | v2.010     |
 | v1.011   | v2.011.1   |
+| v1.012   | v2.012.1   |
 
 <!-- Named links -->
 
@@ -32,8 +33,6 @@ Related project:
 
 [gh-edit-badge]: https://img.shields.io/badge/GitHub-edit-purple.svg?logo=github
 [gh-edit-link]: https://github.dev/EA31337/EA31337-indicators-common
-
-[gh-issues]: https://github.com/EA31337/EA31337-indicators-common/issues
 
 [gh-tag-image]: https://img.shields.io/github/tag/EA31337/EA31337-indicators-common.svg?logo=github
 [gh-tag-link]: https://github.com/EA31337/EA31337-indicators-common/tags

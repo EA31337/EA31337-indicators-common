@@ -1,6 +1,6 @@
 //+------------------------------------------------------------------+
 //|                                               EA31337 indicators |
-//|                                 Copyright 2016-2022, EA31337 Ltd |
+//|                                 Copyright 2016-2023, EA31337 Ltd |
 //|                                        https://ea31337.github.io |
 //+------------------------------------------------------------------+
 
@@ -12,11 +12,11 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -30,7 +30,8 @@
 #define INDI_SHORT_NAME "AC"
 
 // Indicator properties.
-#property copyright "2016-2022, EA31337 Ltd"
+#ifdef __MQL__
+#property copyright "2016-2023, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
 //--
@@ -41,6 +42,8 @@
 #property indicator_color1 Green, Red
 #property indicator_width1 2
 #property indicator_label1 INDI_SHORT_NAME
+#property version "1.000"
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_AC.mqh>

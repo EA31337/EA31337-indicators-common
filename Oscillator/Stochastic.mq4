@@ -1,6 +1,6 @@
 //+------------------------------------------------------------------+
 //|                                               EA31337 indicators |
-//|                                 Copyright 2016-2022, EA31337 Ltd |
+//|                                 Copyright 2016-2023, EA31337 Ltd |
 //|                                        https://ea31337.github.io |
 //+------------------------------------------------------------------+
 
@@ -21,15 +21,19 @@
  */
 
 // Indicator properties.
+#ifdef __MQL__
 #property indicator_separate_window
 #property indicator_minimum 0
 #property indicator_maximum 100
-#property indicator_buffers 1
-#property indicator_color1 DodgerBlue
-#property indicator_level1 30.0
-#property indicator_level2 70.0
+#property indicator_buffers 2
+#property indicator_color1 LightSeaGreen
+#property indicator_color2 Red
+#property indicator_level1 20.0
+#property indicator_level2 80.0
 #property indicator_levelcolor clrSilver
 #property indicator_levelstyle STYLE_DOT
+#property version "1.000"
+#endif
 
 // Includes the main code.
-#include "RSI.mq5"
+#include "Stochastic.mq5"

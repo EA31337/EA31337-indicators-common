@@ -1,6 +1,6 @@
 //+------------------------------------------------------------------+
 //|                                               EA31337 indicators |
-//|                                 Copyright 2016-2022, EA31337 Ltd |
+//|                                 Copyright 2016-2023, EA31337 Ltd |
 //|                                        https://ea31337.github.io |
 //+------------------------------------------------------------------+
 
@@ -12,11 +12,11 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
  */
 
@@ -27,55 +27,60 @@
 
 // Defines.
 #define INDI_FULL_NAME "Relative Strength Index"
-#define INDI_SHORT_NAME "RSI"
+#define INDI_SHORT_NAME "MI"
 
 // Indicator properties.
-#property copyright "2016-2022, EA31337 Ltd"
+#ifdef __MQL__
+#property copyright "2016-2023, EA31337 Ltd"
 #property link "https://ea31337.github.io"
 #property description INDI_FULL_NAME
 //--
 #property indicator_separate_window
-#property indicator_minimum 0
-#property indicator_maximum 100
-#property indicator_level1 30
-#property indicator_level2 70
-#property indicator_buffers 1
+#property indicator_buffers 4
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
 #property indicator_color1 DodgerBlue
+#property indicator_level1 27
+#property indicator_level2 26.5
+#property indicator_levelcolor DarkGray
+#property version "1.000"
+#endif
 
 // Includes.
-#include <EA31337-classes/Indicators/Indi_RSI.mqh>
+#include <EA31337-classes/Indicators/Indi_MassIndex.mqh>
 
 // Input parameters.
-input int InpRSIPeriod = 14;                                // Period
-input ENUM_APPLIED_PRICE InpRSIAppliedPrice = PRICE_OPEN;   // Applied price
+input int InpPeriod = 9;                                    // First EMA period
+input int InpPeriodSecond = 9;                              // Second EMA period
+input int InpPeriodSum = 25;                                // Mass period
 input int InpShift = 0;                                     // Shift
 input ENUM_IDATA_SOURCE_TYPE InpSourceType = IDATA_BUILTIN; // Source type
 
 // Global indicator buffers.
-double ExtRSIBuffer[];
+double InpExtMIBuffer[];
 
 // Global variables.
-Indi_RSI *indi;
+Indi_MassIndex *indi;
 
 /**
  * Init event handler function.
  */
 void OnInit() {
   // Initialize indicator buffers.
-  SetIndexBuffer(0, ExtRSIBuffer, INDICATOR_DATA);
+  SetIndexBuffer(0, InpExtMIBuffer);
   // Initialize indicator.
-  IndiRSIParams _indi_params(::InpRSIPeriod, ::InpRSIAppliedPrice, ::InpShift);
-  indi = new Indi_RSI(_indi_params, InpSourceType);
+  IndiMassIndexParams _indi_params(::InpPeriod, ::InpPeriodSecond,
+                                   ::InpPeriodSum, ::InpShift);
+  indi = new Indi_MassIndex(_indi_params, InpSourceType);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
-  string short_name = StringFormat("%s(%d)", indi.GetName(), InpRSIPeriod);
+  string short_name = StringFormat("%s(%d,%d,%d)", indi.GetName(), ::InpPeriod,
+                                   ::InpPeriodSecond, ::InpPeriodSum);
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
-  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, 50.0);
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   // Sets first bar from what index will be drawn
-  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpRSIPeriod);
+  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN,
+                      fmax3(0, ::InpPeriod, ::InpPeriodSecond));
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
 }
@@ -89,21 +94,20 @@ int OnCalculate(const int rates_total, const int prev_calculated,
                 const double &close[], const long &tick_volume[],
                 const long &volume[], const int &spread[]) {
   int i, start;
-  if (rates_total < fmax(0, InpRSIPeriod)) {
+  if (rates_total < fmax3(0, ::InpPeriod, ::InpPeriodSecond)) {
     return (0);
   }
   // Initialize calculations.
-  start =
-      prev_calculated == 0 ? fmax(0, InpRSIPeriod - 1) : prev_calculated - 1;
+  start = prev_calculated == 0 ? fmax3(0, ::InpPeriod, ::InpPeriodSecond)
+                               : prev_calculated - 1;
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
     IndicatorDataEntry _entry = indi[rates_total - i];
     if (!indi.Get<bool>(
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
-      ExtRSIBuffer[i] = 50.0;
       return prev_calculated + 1;
     }
-    ExtRSIBuffer[i] = _entry[0];
+    InpExtMIBuffer[i] = _entry[0];
   }
   // Returns new prev_calculated.
   return (rates_total);
