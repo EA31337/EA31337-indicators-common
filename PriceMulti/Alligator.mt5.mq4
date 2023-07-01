@@ -30,5 +30,8 @@
 #property version "1.000"
 #endif
 
+// Includes EA31337 framework.
+#include <EA31337-classes/Indicators/Indi_MA.mqh>
+
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\Alligator.mq5>

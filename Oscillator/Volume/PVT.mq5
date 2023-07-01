@@ -44,6 +44,12 @@
 #property version "1.000"
 #endif
 
+// Resource files.
+#ifdef __MQL5__
+#property tester_indicator "::Indicators\\Examples\\PVT.ex5"
+#resource "\\Indicators\\Examples\\PVT.ex5"
+#endif
+
 // Includes.
 #include <EA31337-classes/Indicators/Indi_PriceVolumeTrend.mqh>
 

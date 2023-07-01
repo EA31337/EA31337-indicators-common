@@ -47,6 +47,12 @@
 #property version "1.000"
 #endif
 
+// Resource files.
+#ifdef __MQL5__
+#property tester_indicator "::Indicators\\Examples\\Envelopes.ex5"
+#resource "\\Indicators\\Examples\\Envelopes.ex5"
+#endif
+
 // Includes.
 #include <EA31337-classes/Indicators/Indi_Envelopes.mqh>
 

@@ -45,6 +45,12 @@
 #property version "1.000"
 #endif
 
+// Resource files.
+#ifdef __MQL5__
+#property tester_indicator "::Indicators\\Examples\\Accelerator.ex5"
+#resource "\\Indicators\\Examples\\Accelerator.ex5"
+#endif
+
 // Includes.
 #include <EA31337-classes/Indicators/Indi_AC.mqh>
 
