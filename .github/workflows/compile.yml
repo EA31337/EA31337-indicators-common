@@ -88,7 +88,7 @@ jobs:
         with:
           name: Indicators-platform
       - name: Remove tests files
-        run: 'Remove-Item -Path . -Filter "tests" -Recurse -Force'
+        run: 'Remove-Item -Path . -Filter "tests" -Recurse -Force -ErrorAction SilentlyContinue'
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
