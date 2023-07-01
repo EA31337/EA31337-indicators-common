@@ -33,6 +33,8 @@
 // Includes the main code.
 #include "OsMA.mq5"
 
+#ifdef __FIXME__
 // Resource files.
 #property tester_indicator "::OsMA.mt5.ex4"
 #resource "OsMA.mt5.ex4"
+#endif
