@@ -1,0 +1,93 @@
+--- MQL5/Include/MovingAverages.mqh
++++ MQL5/Include/MovingAverages.mqh
+@@ -108,16 +108,16 @@
+       //--- calculate first visible value
+       double first_value=0;
+
+-      for(int i=begin; i<start_position; i++)
+-         first_value+=price[i];
++      for(int i2=begin; i2<start_position; i2++)
++         first_value+=price[i2];
+
+       buffer[start_position-1]=first_value/period;
+      }
+    else
+       start_position=prev_calculated-1;
+ //--- main loop
+-   for(int i=start_position; i<rates_total; i++)
+-      buffer[i]=buffer[i-1]+(price[i]-price[i-period])/period;
++   for(int i3=start_position; i3<rates_total; i3++)
++      buffer[i3]=buffer[i3-1]+(price[i3]-price[i3-period])/period;
+ //--- restore as_series flags
+    ArraySetAsSeries(price,as_series_price);
+    ArraySetAsSeries(buffer,as_series_buffer);
+@@ -151,14 +151,14 @@
+       start_position=period+begin;
+       buffer[begin] =price[begin];
+
+-      for(int i=begin+1; i<start_position; i++)
+-         buffer[i]=price[i]*smooth_factor+buffer[i-1]*(1.0-smooth_factor);
++      for(int i2=begin+1; i2<start_position; i2++)
++         buffer[i2]=price[i2]*smooth_factor+buffer[i2-1]*(1.0-smooth_factor);
+      }
+    else
+       start_position=prev_calculated-1;
+ //--- main loop
+-   for(int i=start_position; i<rates_total; i++)
+-      buffer[i]=price[i]*smooth_factor+buffer[i-1]*(1.0-smooth_factor);
++   for(int i3=start_position; i3<rates_total; i3++)
++      buffer[i3]=price[i3]*smooth_factor+buffer[i3-1]*(1.0-smooth_factor);
+ //--- restore as_series flags
+    ArraySetAsSeries(price,as_series_price);
+    ArraySetAsSeries(buffer,as_series_buffer);
+@@ -244,9 +244,9 @@
+       double first_value=0;
+       int    wsum       =0;
+
+-      for(int i=begin,k=1; i<start_position; i++,k++)
++      for(int i2=begin,k=1; i2<start_position; i2++,k++)
+         {
+-         first_value+=k*price[i];
++         first_value+=k*price[i2];
+          wsum       +=k;
+         }
+
+@@ -256,14 +256,14 @@
+    else
+       start_position=prev_calculated-1;
+ //--- main loop
+-   for(int i=start_position; i<rates_total; i++)
++   for(int i3=start_position; i3<rates_total; i3++)
+      {
+       double sum=0;
+
+       for(int j=0; j<period; j++)
+-         sum+=(period-j)*price[i-j];
++         sum+=(period-j)*price[i3-j];
+
+-      buffer[i]=sum/weight_sum;
++      buffer[i3]=sum/weight_sum;
+      }
+ //--- restore as_series flags
+    ArraySetAsSeries(price,as_series_price);
+@@ -298,16 +298,16 @@
+       //--- calculate first visible value
+       double first_value=0;
+
+-      for(int i=begin; i<start_position; i++)
+-         first_value+=price[i];
++      for(int i2=begin; i2<start_position; i2++)
++         first_value+=price[i2];
+
+       buffer[start_position-1]=first_value/period;
+      }
+    else
+       start_position=prev_calculated-1;
+ //--- main loop
+-   for(int i=start_position; i<rates_total; i++)
+-      buffer[i]=(buffer[i-1]*(period-1)+price[i])/period;
++   for(int i3=start_position; i3<rates_total; i3++)
++      buffer[i3]=(buffer[i3-1]*(period-1)+price[i3])/period;
+ //--- restore as_series flags
+    ArraySetAsSeries(price,as_series_price);
+    ArraySetAsSeries(buffer,as_series_buffer);
