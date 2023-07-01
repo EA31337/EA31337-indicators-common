@@ -31,4 +31,4 @@
 #endif
 
 // Includes MQL5 version of indicator.
-#include <../Indicators\Examples\Accelerator.mq5"
+#include <../Indicators\Examples\Accelerator.mq5>
