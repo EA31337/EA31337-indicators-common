@@ -36,4 +36,15 @@
 #ifdef __FIXME__
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\Alligator.mq5>
+#else
+/**
+ * @todo: Remove this after above is fixed.
+ */
+int OnCalculate(const int rates_total, const int prev_calculated,
+                const datetime &time[], const double &open[],
+                const double &high[], const double &low[],
+                const double &close[], const long &tick_volume[],
+                const long &volume[], const int &spread[]) {
+  return (rates_total);
+}
 #endif
