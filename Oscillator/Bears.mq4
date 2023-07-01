@@ -31,6 +31,8 @@
 // Includes the main code.
 #include "Bears.mq5"
 
+#ifdef __FIXME__
 // Resource files.
 #property tester_indicator "::Bears.mt5.ex4"
 #resource "Bears.mt5.ex4"
+#endif
