@@ -13,22 +13,6 @@ on:
       - .github/workflows/run-pattern.yml
 
 jobs:
-  GetList:
-    outputs:
-      filelist: ${{ env.filelist }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set output with list of files
-        run: |
-          import glob, json, os
-          files = json.dumps(glob.glob("Pattern/*.mq?"))
-          with open(os.getenv('GITHUB_ENV'), "a") as file:
-            file.write(f"filelist={files}\n")
-        shell: python
-      - name: Display output
-        run: echo ${{ env.filelist }}
-
   Compile-Indicators-Platform:
     defaults:
       run:
@@ -85,11 +69,9 @@ jobs:
     defaults:
       run:
         shell: powershell
-    needs: [GetList, Compile-Indicators-Platform]
+        working-directory: Pattern
+    needs: [Compile-Indicators-Platform]
     runs-on: windows-latest
-    strategy:
-      matrix:
-        file: ${{ fromJson(needs.GetList.outputs.filelist) }}
     steps:
       - uses: actions/checkout@v3
       - uses: actions/checkout@v3
@@ -109,14 +91,13 @@ jobs:
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
-      - name: Compile (build 1382)
-        if: endsWith(matrix.file, '.mq4')
+      - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
           init-platform: true
-          mt-version: 4.0.0.1382
-          path: ${{ matrix.file }}
+          mt-version: 5.0.0.2361
+          path: '*.mt5.mq4'
           verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
@@ -124,16 +105,15 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: ${{ matrix.file }}
+          path: '*.mq?'
           verbose: true
       - name: Compile (build 2515)
-        if: endsWith(matrix.file, '.mq5')
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2515
-          path: ${{ matrix.file }}
+          path: '*.mq5'
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
@@ -170,7 +150,6 @@ jobs:
           path: Strategy-Indicator
           verbose: true
       - name: Compile (build 2515)
-        if: endsWith(matrix.file, '.mq5')
         uses: fx31337/mql-compile-action@master
         with:
           include: .
