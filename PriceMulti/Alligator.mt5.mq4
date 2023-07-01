@@ -33,5 +33,7 @@
 // Includes EA31337 framework.
 #include <EA31337-classes/Indicators/Indi_MA.mqh>
 
+#ifdef __FIXME__
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\Alligator.mq5>
+#endif
