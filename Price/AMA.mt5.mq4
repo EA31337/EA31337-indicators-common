@@ -29,4 +29,4 @@
 #endif
 
 // Includes MQL5 version of indicator.
-#include <../Indicators\Examples\DEMA.mq5>
+#include <../Indicators\Examples\AMA.mq5>
