@@ -38,8 +38,6 @@
 // Includes the main code.
 #include "Gator.mq5"
 
-#ifdef __FIXME__
 // Resource files.
 #property tester_indicator "::Gator.mt5.ex4"
 #resource "Gator.mt5.ex4"
-#endif

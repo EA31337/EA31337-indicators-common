@@ -33,8 +33,6 @@
 // Includes the main code.
 #include "AO.mq5"
 
-#ifdef __FIXME__
 // Resource files.
 #property tester_indicator "::AO.mt5.ex4"
 #resource "AO.mt5.ex4"
-#endif

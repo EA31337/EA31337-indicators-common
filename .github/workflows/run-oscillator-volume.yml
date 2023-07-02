@@ -101,6 +101,7 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2361
           path: '*.mt5.mq4'
+          path-ignore: '**/{BWMFI,CHO,Force}.{mt?.mq?,mq4}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2361)
@@ -109,7 +110,8 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '*.mq?'
+          path: '**/*.mq[45]'
+          path-ignore: '**/{BWMFI,CHO,Force}.{mt?.mq?,mq4}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2515)

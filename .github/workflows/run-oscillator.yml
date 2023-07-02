@@ -101,6 +101,7 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2361
           path: '*.mt5.mq4'
+          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,CCI,CHV,DeMarker,DPO,Gator,MACD,MI,OsMA,UOS}.{mt?.mq?,mq?}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2361)
@@ -109,8 +110,8 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '*.mq?'
-          path-ignore: '**/{ADXW}.mt5.mq4'
+          path: '**/*.mq[45]'
+          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,CCI,CHV,DeMarker,DPO,Gator,MACD,MI,OsMA,UOS}.{mt?.mq?,mq?}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2515)
