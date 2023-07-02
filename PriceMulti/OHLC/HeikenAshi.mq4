@@ -36,5 +36,5 @@
 #include "HeikenAshi.mq5"
 
 // Resource files.
-#property tester_indicator "::Heiken_Ashi.mt5.ex4"
-#resource "Heiken_Ashi.mt5.ex4"
+#property tester_indicator "::HeikenAshi.mt5.ex4"
+#resource "HeikenAshi.mt5.ex4"

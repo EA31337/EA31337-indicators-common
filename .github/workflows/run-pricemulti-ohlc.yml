@@ -90,6 +90,8 @@ jobs:
         with:
           name: Indicators-platform
           path: ${{ env.working-directory }}
+      - name: Remove tests files
+        run: 'Remove-Item -Path . -Filter "tests" -Recurse -Force -ErrorAction SilentlyContinue'
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -109,7 +111,8 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '*.mq?'
+          path: '*.mq[45]'
+          path-ignore: '**/{Foo,{tests,Examples,Scripts}/**/*}.{mt?.mq?,mq?}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2515)
@@ -119,6 +122,7 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2515
           path: '*.mq5'
+          path-ignore: '**/{Foo,{tests,Examples,Scripts}/**/*}.mq5'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: List compiled files
@@ -129,7 +133,7 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex[45]'
-    timeout-minutes: 20
+    timeout-minutes: 10
 
   Compile-Strategy:
     defaults:
@@ -217,4 +221,4 @@ jobs:
         with:
           name: Results-PriceMulti-OHLC-${{ matrix.test }}
           path: '**.csv'
-    timeout-minutes: 10
+    timeout-minutes: 20

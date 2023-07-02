@@ -32,5 +32,5 @@
 #include "MOM.mq5"
 
 // Resource files.
-#property tester_indicator "::Momentum.mt5.ex4"
-#resource "Momentum.mt5.ex4"
+#property tester_indicator "::MOM.mt5.ex4"
+#resource "MOM.mt5.ex4"

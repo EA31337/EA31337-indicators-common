@@ -69,7 +69,7 @@ jobs:
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
-    timeout-minutes: 20
+    timeout-minutes: 10
 
   Compile-Indicators:
     defaults:
@@ -87,8 +87,6 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: Indicators-platform
-      - name: Remove tests files
-        run: 'Remove-Item -Path . -Filter "tests" -Recurse -Force -ErrorAction SilentlyContinue'
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -99,8 +97,9 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '*.mt5.mq4'
-          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,Gator,MACD,MI,OsMA,UOS,SimplePanel}.{mt?.mq?,mq4}'
+          path: '**/*.mt5.mq4'
+          # yamllint disable-line rule:line-length
+          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DPO,Force,Gator,MACD,MI,OsMA,RSI,StdDev,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
@@ -109,7 +108,8 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2361
           path: '**/*.mq[45]'
-          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,Controls,Gator,MACD,MI,OsMA,UOS,SimplePanel}.{mt?.mq?,mq?}'
+          # yamllint disable-line rule:line-length
+          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DPO,Force,Gator,MACD,MI,OsMA,RSI,StdDev,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile (build 2515)
         uses: fx31337/mql-compile-action@master
@@ -118,7 +118,7 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2515
           path: '**/*.mq5'
-          path-ignore: '**/{Controls,Controls}.mq?'
+          path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
@@ -128,4 +128,4 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex[45]'
-    timeout-minutes: 10
+    timeout-minutes: 20

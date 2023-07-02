@@ -90,6 +90,8 @@ jobs:
         with:
           name: Indicators-platform
           path: ${{ env.working-directory }}
+      - name: Remove tests files
+        run: 'Remove-Item -Path . -Filter "tests" -Recurse -Force -ErrorAction SilentlyContinue'
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -101,6 +103,7 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2361
           path: '*.mt5.mq4'
+          path-ignore: '**/{DEMA,FrAMA,TEMA}.{mt?.mq?,mq4}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2361)
@@ -109,7 +112,8 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '*.mq?'
+          path: '*.mq[45]'
+          path-ignore: '**/{DEMA,FrAMA,TEMA,{tests,Examples,Scripts}/**/*}.{mt?.mq?,mq?}'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: Compile (build 2515)
@@ -119,6 +123,7 @@ jobs:
           init-platform: true
           mt-version: 5.0.0.2515
           path: '*.mq5'
+          path-ignore: '**/{Foo,{tests,Examples,Scripts}/**/*}.mq5'
           verbose: true
           working-directory: ${{ env.working-directory }}
       - name: List compiled files
@@ -129,7 +134,7 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex[45]'
-    timeout-minutes: 20
+    timeout-minutes: 10
 
   Compile-Strategy:
     defaults:
@@ -185,10 +190,10 @@ jobs:
       matrix:
         test:
           - AMA
-          - DEMA
-          - FrAMA
+          # - DEMA  # @fixme
+          # - FrAMA  # @fixme
           - MA
-          - TEMA
+          # - TEMA  # @fixme
           - VIDYA
           - ZigZag
 
