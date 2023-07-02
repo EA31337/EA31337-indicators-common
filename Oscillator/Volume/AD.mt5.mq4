@@ -23,40 +23,13 @@
 // Indicator properties.
 #ifdef __MQL__
 #property indicator_separate_window
-#property indicator_buffers 6
-
-#property indicator_type1 DRAW_LINE
+#property indicator_buffers 1
 #property indicator_color1 LightSeaGreen
-#property indicator_style1 STYLE_SOLID
-#property indicator_width1 1
-#property indicator_label1 "ADX"
-
-#property indicator_type2 DRAW_LINE
-#property indicator_color2 YellowGreen
-#property indicator_style2 STYLE_DOT
-#property indicator_width2 1
-#property indicator_label2 "+DI"
-
-#property indicator_type3 DRAW_LINE
-#property indicator_color3 Wheat
-#property indicator_style3 STYLE_DOT
-#property indicator_width3 1
-#property indicator_label3 "-DI"
-#property version "1.000"
+#property indicator_label1 "AD"
 #endif
 
-#ifdef __FIXME__
+// Includes EA31337 framework.
+#include <EA31337-classes/Indicator.enum.h>
+
 // Includes MQL5 version of indicator.
-#include <../Indicators\Examples\ADX.mq5>
-#else
-/**
- * @todo: Remove this after above is fixed.
- */
-int OnCalculate(const int rates_total, const int prev_calculated,
-                const datetime &time[], const double &open[],
-                const double &high[], const double &low[],
-                const double &close[], const long &tick_volume[],
-                const long &volume[], const int &spread[]) {
-  return (rates_total);
-}
-#endif
+#include <../Indicators\Examples\AD.mq5>
