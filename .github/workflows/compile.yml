@@ -99,7 +99,7 @@ jobs:
           mt-version: 5.0.0.2361
           path: '**/*.mt5.mq4'
           # yamllint disable-line rule:line-length
-          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TRIX,UOS}.{mt?.mq?,mq?}'
+          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
@@ -109,7 +109,7 @@ jobs:
           mt-version: 5.0.0.2361
           path: '**/*.mq[45]'
           # yamllint disable-line rule:line-length
-          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
+          path-ignore: '**/{AC,ADX,ADXW,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile (build 2515)
         uses: fx31337/mql-compile-action@master
