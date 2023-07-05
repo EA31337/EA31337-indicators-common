@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "Bulls.mq5"
+
+// Resource files.
+#property tester_indicator "::Bulls.mt5.ex4"
+#resource "Bulls.mt5.ex4"

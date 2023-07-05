@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "CHO.mq5"
+
+// Resource files.
+#property tester_indicator "::CHO.mt5.ex4"
+#resource "CHO.mt5.ex4"

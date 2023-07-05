@@ -36,3 +36,7 @@
 
 // Includes the main code.
 #include "RSI.mq5"
+
+// Resource files.
+#property tester_indicator "::RSI.mt5.ex4"
+#resource "RSI.mt5.ex4"

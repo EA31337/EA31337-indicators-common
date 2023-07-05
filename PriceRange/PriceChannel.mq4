@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "PriceChannel.mq5"
+
+// Resource files.
+#property tester_indicator "::PriceChannel.mt5.ex4"
+#resource "PriceChannel.mt5.ex4"

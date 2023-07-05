@@ -47,3 +47,7 @@
 
 // Includes the main code.
 #include "ADX.mq5"
+
+// Resource files.
+#property tester_indicator "::ADX.mt5.ex4"
+#resource "ADX.mt5.ex4"

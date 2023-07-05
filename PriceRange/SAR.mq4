@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "SAR.mq5"
+
+// Resource files.
+#property tester_indicator "::SAR.ex4"
+#resource "SAR.mt5.ex4"

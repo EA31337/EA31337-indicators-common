@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "FrAMA.mq5"
+
+// Resource files.
+#property tester_indicator "::FrAMA.mt5.ex4"
+#resource "FrAMA.mt5.ex5"

@@ -31,3 +31,7 @@
 
 // Includes the main code.
 #include "UOS.mq5"
+
+// Resource files.
+#property tester_indicator "::UOS.mt5.ex4"
+#resource "UOS.mt5.ex4"

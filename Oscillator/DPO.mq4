@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "DPO.mq5"
+
+// Resource files.
+#property tester_indicator "::DPO.mt5.ex4"
+#resource "DPO.mt5.ex4"

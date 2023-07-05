@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "Bears.mq5"
+
+// Resource files.
+#property tester_indicator "::Bears.mt5.ex4"
+#resource "Bears.mt5.ex4"

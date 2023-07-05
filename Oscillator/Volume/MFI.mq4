@@ -37,3 +37,7 @@
 
 // Includes the main code.
 #include "MFI.mq5"
+
+// Resource files.
+#property tester_indicator "::MFI.mt5.ex4"
+#resource "MFI.mt5.ex4"

@@ -32,3 +32,7 @@
 
 // Includes the main code.
 #include "RVI.mq5"
+
+// Resource files.
+#property tester_indicator "::RVI.mt5.ex4"
+#resource "RVI.mt5.ex4"

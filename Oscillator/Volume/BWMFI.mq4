@@ -31,3 +31,7 @@
 
 // Includes the main code.
 #include "BWMFI.mq5"
+
+// Resource files.
+#property tester_indicator "::BWMFI.mt5.ex4"
+#resource "BWMFI.mt5.ex4"

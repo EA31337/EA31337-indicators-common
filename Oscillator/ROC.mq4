@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "ROC.mq5"
+
+// Resource files.
+#property tester_indicator "::ROC.mt5.ex4"
+#resource "ROC.mt5.ex4"

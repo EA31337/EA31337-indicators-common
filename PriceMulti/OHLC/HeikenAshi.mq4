@@ -34,3 +34,7 @@
 
 // Includes the main code.
 #include "HeikenAshi.mq5"
+
+// Resource files.
+#property tester_indicator "::HeikenAshi.mt5.ex4"
+#resource "HeikenAshi.mt5.ex4"

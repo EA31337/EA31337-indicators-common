@@ -34,3 +34,7 @@
 
 // Includes the main code.
 #include "CCI.mq5"
+
+// Resource files.
+#property tester_indicator "::CCI.mt5.ex4"
+#resource "CCI.mt5.ex4"

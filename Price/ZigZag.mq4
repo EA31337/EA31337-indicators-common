@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "ZigZag.mq5"
+
+// Resource files.
+#property tester_indicator "::ZigZag.mt5.ex4"
+#resource "ZigZag.mt5.ex4"

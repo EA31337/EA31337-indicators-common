@@ -31,3 +31,7 @@
 
 // Includes the main code.
 #include "Envelopes.mq5"
+
+// Resource files.
+#property tester_indicator "::Envelopes.mt5.ex4"
+#resource "Envelopes.mt5.ex4"

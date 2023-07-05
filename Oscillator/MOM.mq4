@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "MOM.mq5"
+
+// Resource files.
+#property tester_indicator "::MOM.mt5.ex4"
+#resource "MOM.mt5.ex4"

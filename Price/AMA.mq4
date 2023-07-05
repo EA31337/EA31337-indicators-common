@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "AMA.mq5"
+
+// Resource files.
+#property tester_indicator "::AMA.mt5.ex4"
+#resource "AMA.mt5.ex4"

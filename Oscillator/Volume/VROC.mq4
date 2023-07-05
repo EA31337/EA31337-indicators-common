@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "VROC.mq5"
+
+// Resource files.
+#property tester_indicator "::VROC.mt5.ex4"
+#resource "VROC.mt5.ex4"

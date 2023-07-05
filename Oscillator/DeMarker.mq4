@@ -34,3 +34,7 @@
 
 // Includes the main code.
 #include "DeMarker.mq5"
+
+// Resource files.
+#property tester_indicator "::DeMarker.mt5.ex4"
+#resource "DeMarker.mt5.ex4"

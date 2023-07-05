@@ -31,3 +31,7 @@
 
 // Includes the main code.
 #include "CHV.mq5"
+
+// Resource files.
+#property tester_indicator "::CHV.mt5.ex4"
+#resource "CHV.mt5.ex4"

@@ -31,3 +31,7 @@
 
 // Includes the main code.
 #include "ASI.mq5"
+
+// Resource files.
+#property tester_indicator "::ASI.mt5.ex4"
+#resource "ASI.mt5.ex4"

@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "VIDYA.mq5"
+
+// Resource files.
+#property tester_indicator "::VIDYA.mt5.ex4"
+#resource "VIDYA.mt5.ex4"

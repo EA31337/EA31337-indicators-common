@@ -49,6 +49,12 @@
 // Includes.
 #include <EA31337-classes/Indicators/Indi_MA.mqh>
 
+// Resource files.
+#ifdef __MQL5__
+#property tester_indicator "::Indicators\\Examples\\Custom Moving Average.ex5"
+#resource "\\Indicators\\Examples\\Custom Moving Average.ex5"
+#endif
+
 // Input parameters.
 input int InpMAPeriod = 14;                  // MA period
 input int InpMAShift = 0;                    // MA shift

@@ -30,3 +30,7 @@
 
 // Includes the main code.
 #include "PVT.mq5"
+
+// Resource files.
+#property tester_indicator "::PVT.mt5.ex4"
+#resource "PVT.mt5.ex4"

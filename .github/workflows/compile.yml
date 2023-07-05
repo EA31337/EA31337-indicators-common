@@ -19,22 +19,6 @@ on:
       - '.git*'
 
 jobs:
-  GetList:
-    outputs:
-      filelist: ${{ env.filelist }}
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set output with list of files
-        run: |
-          import glob, json, os
-          files = json.dumps(glob.glob("Oscillator/*.mq?"))
-          with open(os.getenv('GITHUB_ENV'), "a") as file:
-            file.write(f"filelist={files}\n")
-        shell: python
-      - name: Display output
-        run: echo ${{ env.filelist }}
-
   Compile-Indicators-Platform:
     defaults:
       run:
@@ -85,24 +69,16 @@ jobs:
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
-    timeout-minutes: 20
+    timeout-minutes: 10
 
   Compile-Indicators:
     defaults:
       run:
         shell: powershell
-    needs: [GetList, Compile-Indicators-Platform]
+    needs: [Compile-Indicators-Platform]
     runs-on: windows-latest
-    strategy:
-      matrix:
-        file: ${{ fromJson(needs.GetList.outputs.filelist) }}
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/checkout@v3
-        with:
-          path: MQL4/Include/EA31337-classes
-          ref: v2.012.1
-          repository: EA31337/EA31337-classes
       - uses: actions/checkout@v3
         with:
           path: MQL5/Include/EA31337-classes
@@ -115,14 +91,15 @@ jobs:
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
-      - name: Compile (build 1382)
-        if: endsWith(matrix.file, '.mq4')
+      - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
         with:
-          include: MQL4
+          include: MQL5
           init-platform: true
-          mt-version: 4.0.0.1382
-          path: ${{ matrix.file }}
+          mt-version: 5.0.0.2361
+          path: '**/*.mt5.mq4'
+          # yamllint disable-line rule:line-length
+          path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile (build 2361)
         uses: fx31337/mql-compile-action@master
@@ -130,16 +107,18 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: ${{ matrix.file }}
+          path: '**/*.mq[45]'
+          # yamllint disable-line rule:line-length
+          path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile (build 2515)
-        if: endsWith(matrix.file, '.mq5')
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2515
-          path: ${{ matrix.file }}
+          path: '**/*.mq5'
+          path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
@@ -149,4 +128,4 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex[45]'
-    timeout-minutes: 10
+    timeout-minutes: 20
