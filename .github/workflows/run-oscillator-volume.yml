@@ -230,4 +230,4 @@ jobs:
         with:
           name: Results-Oscillator-Volume-${{ matrix.test }}
           path: '**.csv'
-    timeout-minutes: 10
+    timeout-minutes: 20

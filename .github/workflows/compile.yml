@@ -128,4 +128,4 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex[45]'
-    timeout-minutes: 20
+    timeout-minutes: 30
