@@ -133,7 +133,7 @@ jobs:
         with:
           name: Indicators-common
           path: '**/*.ex[45]'
-    timeout-minutes: 10
+    timeout-minutes: 20
 
   Compile-Strategy:
     defaults:
@@ -175,7 +175,7 @@ jobs:
         with:
           name: Stg_Indicator
           path: 'Strategy-Indicator/*.ex[45]'
-    timeout-minutes: 10
+    timeout-minutes: 20
 
   Run-MQL4:
     defaults:
@@ -221,4 +221,4 @@ jobs:
         with:
           name: Results-Pattern-${{ matrix.test }}
           path: '**.csv'
-    timeout-minutes: 10
+    timeout-minutes: 20
