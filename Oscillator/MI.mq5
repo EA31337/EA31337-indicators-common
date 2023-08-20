@@ -77,7 +77,7 @@ void OnInit() {
   // Initialize indicator.
   IndiMassIndexParams _indi_params(::InpPeriod, ::InpPeriodSecond,
                                    ::InpPeriodSum, ::InpShift);
-  indi = new Indi_MassIndex(_indi_params, InpSourceType);
+  indi = new Indi_MassIndex(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d,%d,%d)", indi.GetName(), ::InpPeriod,

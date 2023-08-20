@@ -79,7 +79,7 @@ void OnInit() {
   IndiUltimateOscillatorParams _indi_params(
       ::InpFastPeriod_, ::InpMiddlePeriod_, ::InpSlowPeriod_, ::InpFastK_,
       ::InpMiddleK_, ::InpSlowK_, ::InpShift_);
-  indi = new Indi_UltimateOscillator(_indi_params, InpSourceType);
+  indi = new Indi_UltimateOscillator(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =

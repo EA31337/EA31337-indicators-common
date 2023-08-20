@@ -79,7 +79,7 @@ void OnInit() {
   SetIndexBuffer(4, InpExtColorBuffer, INDICATOR_COLOR_INDEX);
   // Initialize indicator.
   IndiHeikenAshiParams _indi_params(::InpShift);
-  indi = new Indi_HeikenAshi(_indi_params, InpSourceType);
+  indi = new Indi_HeikenAshi(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

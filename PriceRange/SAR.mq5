@@ -73,7 +73,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtSARBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiSARParams _indi_params(::InpSARStep, ::InpSARMaximum, ::InpShift);
-  indi = new Indi_SAR(_indi_params, InpSourceType);
+  indi = new Indi_SAR(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%.2f,%.2f)", indi.GetName(),

@@ -73,7 +73,7 @@ void OnInit() {
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits);
   // Initialize indicator.
   IndiWilliamsADParams _indi_params(::InpShift);
-  indi = new Indi_WilliamsAD(_indi_params, InpSourceType);
+  indi = new Indi_WilliamsAD(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

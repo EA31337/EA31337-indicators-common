@@ -73,7 +73,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtRSIBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiRSIParams _indi_params(::InpRSIPeriod, ::InpRSIAppliedPrice, ::InpShift);
-  indi = new Indi_RSI(_indi_params, InpSourceType);
+  indi = new Indi_RSI(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpRSIPeriod);

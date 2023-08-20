@@ -79,7 +79,7 @@ void OnInit() {
   SetIndexBuffer(2, InpExtMiddBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiPriceChannelParams _indi_params(::InpPeriod, ::InpShift);
-  indi = new Indi_PriceChannel(_indi_params, InpSourceType);
+  indi = new Indi_PriceChannel(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), ::InpPeriod);

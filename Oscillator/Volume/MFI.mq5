@@ -80,7 +80,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtMFIBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiMFIParams _indi_params(::InpMFIPeriod, ::InpVolumeType, ::InpShift);
-  indi = new Indi_MFI(_indi_params, InpSourceType);
+  indi = new Indi_MFI(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

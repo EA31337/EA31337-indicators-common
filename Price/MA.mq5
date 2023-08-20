@@ -78,7 +78,7 @@ void OnInit() {
   // Initialize indicator.
   IndiMAParams _indi_params(::InpMAPeriod, ::InpMAShift, ::InpMAMethod,
                             ::InpMAAppliedPrice, ::InpShift);
-  indi = new Indi_MA(_indi_params, InpSourceType);
+  indi = new Indi_MA(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpMAPeriod);

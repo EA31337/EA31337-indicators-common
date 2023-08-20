@@ -83,7 +83,7 @@ void OnInit() {
   IndiCHOParams _indi_params(::InpCHOFastMA, ::InpCHOSlowMA,
                              ::InpCHOSmoothMethod, ::InpCHOVolumeType,
                              ::InpShift);
-  indi = new Indi_CHO(_indi_params, InpSourceType);
+  indi = new Indi_CHO(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =

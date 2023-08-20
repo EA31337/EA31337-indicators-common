@@ -76,7 +76,7 @@ void OnInit() {
   SetIndexBuffer(0, InpExtASIBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiASIParams _indi_params(::InpTMax, ::InpShift);
-  indi = new Indi_ASI(_indi_params, InpSourceType);
+  indi = new Indi_ASI(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpTMax);

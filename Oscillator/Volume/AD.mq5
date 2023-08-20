@@ -74,7 +74,7 @@ void OnInit() {
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits + 2);
   // Initialize indicator.
   IndiADParams _indi_params(/*::InpVolumeType, */ ::InpShift);
-  indi = new Indi_AD(_indi_params, InpSourceType);
+  indi = new Indi_AD(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

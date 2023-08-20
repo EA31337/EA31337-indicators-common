@@ -75,7 +75,7 @@ void OnInit() {
   SetIndexBuffer(0, InpExtVROCBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiVROCParams _indi_params(::InpVROCPeriod, ::InpVolumeType_, ::InpShift);
-  indi = new Indi_VROC(_indi_params, InpSourceType);
+  indi = new Indi_VROC(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", INDI_SHORT_NAME, ::InpVROCPeriod);

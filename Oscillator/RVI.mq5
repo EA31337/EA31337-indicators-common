@@ -77,7 +77,7 @@ void OnInit() {
   SetIndexBuffer(1, ExtSignalBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiRVIParams _indi_params(::InpRVIPeriod, ::InpShift);
-  indi = new Indi_RVI(_indi_params, InpSourceType);
+  indi = new Indi_RVI(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), ::InpRVIPeriod);

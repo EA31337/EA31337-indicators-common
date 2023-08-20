@@ -72,7 +72,7 @@ void OnInit() {
   SetIndexBuffer(0, InpExtPVTBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiPriceVolumeTrendParams _indi_params(::InpPVTVolumeType, ::InpShift);
-  indi = new Indi_PriceVolumeTrend(_indi_params, InpSourceType);
+  indi = new Indi_PriceVolumeTrend(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

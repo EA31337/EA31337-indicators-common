@@ -72,7 +72,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtATRBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiATRParams _indi_params(::InpATRPeriod, ::InpShift);
-  indi = new Indi_ATR(_indi_params, InpSourceType);
+  indi = new Indi_ATR(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpATRPeriod);

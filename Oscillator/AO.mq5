@@ -81,7 +81,7 @@ void OnInit() {
   SetIndexBuffer(3, ExtSlowBuffer, INDICATOR_CALCULATIONS);
   // Initialize indicator.
   IndiAOParams _indi_params(::InpShift);
-  indi = new Indi_AO(_indi_params, InpSourceType);
+  indi = new Indi_AO(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());

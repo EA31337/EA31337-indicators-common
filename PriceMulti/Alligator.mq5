@@ -95,7 +95,7 @@ void OnInit() {
       ::InpJawsPeriod, ::InpJawsShift, ::InpTeethPeriod, ::InpTeethShift,
       ::InpLipsPeriod, ::InpLipsShift, ::InpMAMethod, ::InpAppliedPrice,
       ::InpShift);
-  indi = new Indi_Alligator(_indi_params, InpSourceType);
+  indi = new Indi_Alligator(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =

@@ -88,7 +88,7 @@ void OnInit() {
   IndiBandsParams _indi_params(::InpBandsPeriod, ::InpBandsDeviations,
                                ::InpBandsShift, ::InpBandsAppliedPrice,
                                ::InpShift);
-  indi = new Indi_Bands(_indi_params, InpSourceType);
+  indi = new Indi_Bands(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d, %f)", indi.GetName(),

@@ -79,7 +79,7 @@ void OnInit() {
   // Initialize indicator.
   IndiCHVParams _indi_params(::InpCHVSmoothPeriod, ::InpPeriod,
                              ::InpCHVSmoothType, ::InpShift);
-  indi = new Indi_CHV(_indi_params, InpSourceType);
+  indi = new Indi_CHV(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d,%d)", indi.GetName(),

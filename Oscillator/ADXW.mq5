@@ -104,7 +104,7 @@ void OnInit() {
   // Initialize indicator.
   IndiADXWParams _indi_params(::InpADXWPeriod, ::InpADXWAppliedPrice,
                               ::InpShift);
-  indi = new Indi_ADXW(_indi_params, InpSourceType);
+  indi = new Indi_ADXW(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpADXWPeriod);

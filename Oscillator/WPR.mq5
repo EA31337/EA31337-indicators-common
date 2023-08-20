@@ -79,7 +79,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtWPRBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiWPRParams _indi_params(::InpWPRPeriod, ::InpShift);
-  indi = new Indi_WPR(_indi_params, InpSourceType);
+  indi = new Indi_WPR(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpWPRPeriod);

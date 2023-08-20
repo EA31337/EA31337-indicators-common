@@ -76,7 +76,7 @@ void OnInit() {
   // Initialize indicator.
   IndiBullsPowerParams _indi_params(::InpBullsPeriod, ::InpBullsAppliedPrice,
                                     ::InpShift);
-  indi = new Indi_BullsPower(_indi_params, InpSourceType);
+  indi = new Indi_BullsPower(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpBullsPeriod);

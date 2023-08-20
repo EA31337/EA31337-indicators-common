@@ -89,7 +89,7 @@ void OnInit() {
   // Initialize indicator.
   IndiStochParams _indi_params(::InpKPeriod, ::InpDPeriod, ::InpSlowing,
                                ::InpMaMethod, ::InpPriceField, ::InpShift);
-  indi = new Indi_Stochastic(_indi_params, InpSourceType);
+  indi = new Indi_Stochastic(_indi_params /* , InpSourceType */);
   // Name for DataWindow and indicator subwindow label.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d,%d,%d)", indi.GetName(), ::InpKPeriod,

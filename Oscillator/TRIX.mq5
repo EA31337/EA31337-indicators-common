@@ -75,7 +75,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtInpBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiTRIXParams _indi_params(::InpPeriod, ::InpAppliedPrice, ::InpShift);
-  indi = new Indi_TRIX(_indi_params, InpSourceType);
+  indi = new Indi_TRIX(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", INDI_SHORT_NAME, InpPeriod);
