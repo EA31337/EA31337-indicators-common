@@ -395,11 +395,9 @@ suggest a bullish signal, indicating a potential buying opportunity.
 Conversely, when the DPO crosses below the zero line, it may suggest a bearish
 signal, indicating a potential selling opportunity.
 
-It's important to note that the DPO focuses on eliminating the longer-term
-trend component from the price data, allowing traders to analyze shorter-term
-price patterns and cycles. It is recommended to use the DPO in conjunction with
-other technical indicators, chart patterns, and risk management strategies to
-make well-informed trading decisions.
+The DPO attempts to eliminate the overall trend from price data to highlight
+shorter-term cycles and the longer-term trend component from the price data,
+allowing traders to analyze shorter-term price patterns and cycles.
 
 ## Gator 1 (based on 3 non-shifted moving averages)
 
