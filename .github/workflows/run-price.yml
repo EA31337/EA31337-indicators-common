@@ -228,4 +228,4 @@ jobs:
         with:
           name: Results-Price-${{ matrix.test }}
           path: '**.csv'
-    timeout-minutes: 10
+    timeout-minutes: 20
