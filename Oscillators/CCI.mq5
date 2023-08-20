@@ -76,7 +76,7 @@ void OnInit() {
   SetIndexBuffer(0, ExtCCIBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiCCIParams _indi_params(::InpCCIPeriod, ::InpCCIAppliedPrice, ::InpShift);
-  indi = new Indi_CCI(_indi_params, ::InpSourceType);
+  indi = new Indi_CCI(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), InpCCIPeriod);
