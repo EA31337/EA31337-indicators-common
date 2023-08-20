@@ -1,16 +1,16 @@
 ---
-name: Run (Oscillator)
+name: Run (Oscillators)
 
 # yamllint disable-line rule:truthy
 on:
   pull_request:
     paths:
-      - 'Oscillator/*'
-      - .github/workflows/run-oscillator.yml
+      - 'Oscillators/*'
+      - .github/workflows/run-oscillators.yml
   push:
     paths:
-      - 'Oscillator/*'
-      - .github/workflows/run-oscillator.yml
+      - 'Oscillators/*'
+      - .github/workflows/run-oscillators.yml
 
 jobs:
   Compile-Indicators-Platform:
@@ -71,7 +71,7 @@ jobs:
         shell: powershell
         working-directory: ${{ env.working-directory }}
     env:
-      working-directory: Oscillator
+      working-directory: Oscillators
     needs: [Compile-Indicators-Platform]
     runs-on: windows-latest
     steps:
@@ -227,7 +227,7 @@ jobs:
           filepath: Stg_Indicator/Stg_Indicator.set
           content: |
             Indicator_Indi_Indicator_DataExportMethod=1
-            Indicator_Indi_Indicator_Path=Oscillator\${{ matrix.test }}
+            Indicator_Indi_Indicator_Path=Oscillators\${{ matrix.test }}
             Indicator_Indi_Indicator_Type=25
           mode: 0644
       - name: List files
@@ -247,6 +247,6 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v3
         with:
-          name: Results-Oscillator-${{ matrix.test }}
+          name: Results-Oscillators-${{ matrix.test }}
           path: '**.csv'
     timeout-minutes: 10
