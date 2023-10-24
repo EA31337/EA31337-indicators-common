@@ -80,6 +80,8 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          repository: EA31337/EA31337-indicators-common
       - uses: actions/checkout@v3
         with:
           path: MQL5/Include/EA31337-classes
