@@ -130,6 +130,6 @@ jobs:
       - name: Upload indicator artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Indicators-common
+          name: indicators-common
           path: '**/*.ex[45]'
     timeout-minutes: 30
