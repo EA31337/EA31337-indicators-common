@@ -19,6 +19,9 @@ on:
       - '.git*'
   workflow_call:
 
+env:
+  INDI_COMMON_WORKDIR: indicators-common
+
 jobs:
   Compile-Indicators-Platform:
     defaults:
@@ -81,6 +84,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
+          path: ${{ env.INDI_COMMON_WORKDIR }}
           ref: ${{ github.head_ref || github.ref_name }}
           repository: EA31337/EA31337-indicators-common
       - uses: actions/checkout@v3
@@ -101,7 +105,7 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '**/*.mt5.mq4'
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt5.mq4
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
@@ -111,7 +115,7 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2361
-          path: '**/*.mq[45]'
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq[45]
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
           verbose: true
@@ -121,7 +125,7 @@ jobs:
           include: MQL5
           init-platform: true
           mt-version: 5.0.0.2515
-          path: '**/*.mq5'
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq5
           path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
           verbose: true
       - name: List compiled files
@@ -131,5 +135,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: indicators-common
-          path: '**/*.ex[45]'
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.ex[45]
     timeout-minutes: 30
