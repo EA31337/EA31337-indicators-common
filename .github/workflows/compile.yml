@@ -20,7 +20,8 @@ on:
   workflow_call:
 
 env:
-  INDI_COMMON_WORKDIR: indicators-common
+  # Setting an environment variable with the value of a configuration variable.
+  INDI_COMMON_WORKDIR: ${{ INDI_COMMON_WORKDIR || 'indicators-common' }}
 
 jobs:
   Compile-Indicators-Platform:
