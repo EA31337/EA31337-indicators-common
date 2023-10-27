@@ -21,7 +21,7 @@ on:
 
 env:
   # Setting an environment variable with the value of a configuration variable.
-  INDI_COMMON_WORKDIR: ${{ INDI_COMMON_WORKDIR || 'indicators-common' }}
+  INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
 
 jobs:
   Compile-Indicators-Platform:
