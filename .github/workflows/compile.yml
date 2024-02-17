@@ -1,6 +1,9 @@
 ---
 name: Compile
 
+env:
+  ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
+
 # yamllint disable-line rule:truthy
 on:
   pull_request:
@@ -18,6 +21,11 @@ on:
       - '*.md'
       - '.git*'
   workflow_call:
+      artifact_prefix:
+        default: mt
+        description: Artifact name
+        required: false
+        type: string
 
 env:
   # Setting an environment variable with the value of a configuration variable.
@@ -28,13 +36,13 @@ jobs:
     name: Installs platform (4)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
     with:
-      artifact: mt4
+      artifact: ${{ env.ARTIFACT_PREFIX }}4
       version: 4
   mt5:
     name: Installs platform (5)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
     with:
-      artifact: mt5
+      artifact: ${{ env.ARTIFACT_PREFIX }}5
       version: 5
 
   compile-platform-indicators:
