@@ -55,7 +55,7 @@ jobs:
           name: mt${{ matrix.version }}
           path: .mt${{ matrix.version }}
       - name: Compile MQL
-        uses: fx31337/mql-compile-action@master
+        uses: fx31337/mql-compile-action@dev
         with:
           include: .
           init-platform: true
@@ -114,7 +114,6 @@ jobs:
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
-          init-platform: true
           mt-path: .mt${{ matrix.version }}
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt5.mq4
           # yamllint disable-line rule:line-length
@@ -124,7 +123,6 @@ jobs:
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
-          init-platform: true
           mt-path: .mt5
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq[45]
           # yamllint disable-line rule:line-length
@@ -134,7 +132,6 @@ jobs:
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
-          init-platform: true
           mt-path: .mt5
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq5
           path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
