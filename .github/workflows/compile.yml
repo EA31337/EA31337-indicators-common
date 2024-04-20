@@ -71,6 +71,7 @@ jobs:
       - name: Upload platform indicators
         uses: actions/upload-artifact@v4
         with:
+          if-no-files-found: error
           name: platform-indicators
           path: MQL?/**/*.[me][qx][45h]
     timeout-minutes: 10
