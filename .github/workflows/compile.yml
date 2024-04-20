@@ -74,7 +74,9 @@ jobs:
           if-no-files-found: error
           name: platform-indicators
           path: MQL?/**/*.[me][qx][45h]
-    timeout-minutes: 10
+      - if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+    timeout-minutes: 20
 
   compile-indicators:
     defaults:
