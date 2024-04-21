@@ -60,8 +60,7 @@ jobs:
           include: .
           init-platform: true
           mt-path: .mt${{ matrix.version }}
-          path: .mt${{ matrix.version }}
-          path-ignore: '**/{Scripts}/**/*}.{mq[45]}'
+          path: .mt${{ matrix.version }}/**/Indicators
           verbose: true
       - name: Move MQL to the current location
         run: Move-Item -Path ".mt?\*\*\MQL?" -Destination . -Verbose
