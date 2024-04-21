@@ -114,9 +114,9 @@ jobs:
       - name: Compile
         uses: fx31337/mql-compile-action@master
         with:
-          include: MQL${{ matrix.version }}
+          include: MQL5
           mt-path: .mt${{ matrix.version }}
-          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt?.mq${{ matrix.version }}
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt5.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
