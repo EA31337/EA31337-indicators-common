@@ -62,8 +62,8 @@ jobs:
           mt-path: .mt${{ matrix.version }}
           path: .mt${{ matrix.version }}/**/MQL?/Indicators
           verbose: true
-      - name: Move MQL to the current location
-        run: Move-Item -Path ".mt?\*\*\MQL?" -Destination . -Verbose
+      - name: Copy MQL to the current location
+        run: Copy-Item -Path ".mt?\*\*\MQL?" -Destination . -Recurse -Verbose
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path "MQL?" -Include *.mq[45]).fullname'
       - name: List compiled files
