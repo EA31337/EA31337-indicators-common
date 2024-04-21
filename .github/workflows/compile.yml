@@ -114,28 +114,21 @@ jobs:
       - name: Compile
         uses: fx31337/mql-compile-action@master
         with:
-          include: MQL5
+          include: MQL${{ matrix.version }}
           mt-path: .mt${{ matrix.version }}
-          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt5.mq4
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt?.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
       - name: Compile
         uses: fx31337/mql-compile-action@master
         with:
-          include: MQL5
-          mt-path: .mt5
-          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq[45]
+          include: MQL${{ matrix.version }}
+          mt-path: .mt${{ matrix.version }}
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
-          verbose: true
-      - name: Compile
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: MQL5
-          mt-path: .mt5
-          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq5
-          path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
+          # path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
