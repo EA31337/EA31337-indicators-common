@@ -1,6 +1,11 @@
 ---
 name: Compile
 
+env:
+  CLEANUP: ${{ inputs.cleanup || true }}
+  INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
+  REPOSITORY: EA31337/EA31337-indicators-common
+
 # yamllint disable-line rule:truthy
 on:
   pull_request:
@@ -18,10 +23,12 @@ on:
       - '*.md'
       - '.git*'
   workflow_call:
-
-env:
-  # Setting an environment variable with the value of a configuration variable.
-  INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
+    inputs:
+      cleanup:
+        default: false
+        description: Whether to run clean-up job.
+        required: false
+        type: boolean
 
 jobs:
   mt4:
@@ -150,6 +157,7 @@ jobs:
     needs: [compile-indicators]
     runs-on: ubuntu-latest
     steps:
-      - uses: geekyeggo/delete-artifact@v5
+      - if: env.CLEANUP && github.repository == env.REPOSITORY
+        uses: geekyeggo/delete-artifact@v5
         with:
           name: mt?
