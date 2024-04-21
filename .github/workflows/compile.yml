@@ -144,3 +144,12 @@ jobs:
           name: indicators-common
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.ex[45]
     timeout-minutes: 30
+
+  cleanup:
+    name: Clean-up
+    needs: [compile-indicators]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: mt?
