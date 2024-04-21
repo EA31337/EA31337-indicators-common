@@ -132,7 +132,7 @@ jobs:
           mt-path: .mt${{ matrix.version }}
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
-          path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,ASI,ATR,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,MFI,MOM,OBV,OsMA,PVT,ROC,RSI,RVI,StdDev,Stochastic,TEMA,TRIX,UOS,VIDYA,Volumes,ZigZag},{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
+          path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,ASI,ATR,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,MFI,MOM,OBV,OsMA,PVT,ROC,RSI,RVI,StdDev,Stochastic,TEMA,TRIX,UOS,VIDYA,Volumes,ZigZag}.{mt?.mq?,mq?}'
           # path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
           verbose: true
       - name: List compiled files
