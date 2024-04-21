@@ -96,7 +96,12 @@ jobs:
           repository: EA31337/EA31337-indicators-common
       - uses: actions/checkout@v3
         with:
-          path: MQL${{ matrix.version }}/Include/EA31337-classes
+          path: MQL4/Include/EA31337-classes
+          ref: v3.000.1
+          repository: EA31337/EA31337-classes
+      - uses: actions/checkout@v3
+        with:
+          path: MQL5/Include/EA31337-classes
           ref: v3.000.1
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v4
