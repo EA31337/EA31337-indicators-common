@@ -2,6 +2,7 @@
 name: Compile
 
 env:
+  ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
   CLEANUP: ${{ inputs.cleanup || true }}
   INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
   REPOSITORY: EA31337/EA31337-indicators-common
@@ -24,6 +25,11 @@ on:
       - '.git*'
   workflow_call:
     inputs:
+      artifact_prefix:
+        default: mt
+        description: Artifact prefix.
+        required: false
+        type: string
       cleanup:
         default: false
         description: Whether to run clean-up job.
@@ -35,14 +41,14 @@ jobs:
     name: Installs platform (4)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
     with:
-      artifact_name: mt4
+      artifact_name: ${{ inputs.artifact_prefix || 'mt' }}4
       artifact_overwrite: true
       version: 4
   mt5:
     name: Installs platform (5)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
     with:
-      artifact_name: mt5
+      artifact_name: ${{ inputs.artifact_prefix || 'mt' }}5
       artifact_overwrite: true
       version: 5
 
@@ -59,18 +65,18 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          name: mt${{ matrix.version }}
-          path: .mt${{ matrix.version }}
+          name: ${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
       - name: Compile MQL
         uses: fx31337/mql-compile-action@dev
         with:
           include: .
           init-platform: true
-          mt-path: .mt${{ matrix.version }}
-          path: .mt${{ matrix.version }}/**/MQL?/Indicators
+          mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}/**/MQL?/Indicators
           verbose: true
       - name: Copy MQL to the current location
-        run: Copy-Item -Path ".mt?\*\*\MQL?" -Destination . -Recurse -Verbose
+        run: Copy-Item -Path ".${{ env.ARTIFACT_PREFIX }}*\*\*\MQL?" -Destination . -Recurse -Verbose
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path "MQL?" -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -113,8 +119,8 @@ jobs:
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v4
         with:
-          name: mt${{ matrix.version }}
-          path: .mt${{ matrix.version }}
+          name: ${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
@@ -127,7 +133,7 @@ jobs:
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
-          mt-path: .mt${{ matrix.version }}
+          mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt5.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,AD,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MFI,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
@@ -136,7 +142,7 @@ jobs:
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL${{ matrix.version }}
-          mt-path: .mt${{ matrix.version }}
+          mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
           path-ignore: '**/{AC,AD,ADX,ADXW,Alligator,AMA,AO,ASI,ATR,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,Fractals,FrAMA,Gator,HeikenAshi,Ichimoku,MACD,MA,MI,MFI,MOM,OBV,OsMA,PriceChannel,PVT,ROC,RSI,RVI,SAR,StdDev,Stochastic,TEMA,TRIX,UOS,VIDYA,VROC,Volumes,WAD,WPR,ZigZag}.{mt?.mq?,mq?}'
@@ -160,4 +166,4 @@ jobs:
       - if: env.CLEANUP && github.repository == env.REPOSITORY
         uses: geekyeggo/delete-artifact@v5
         with:
-          name: mt?
+          name: ${{ env.ARTIFACT_PREFIX }}*
