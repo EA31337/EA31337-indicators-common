@@ -3,7 +3,7 @@ name: Compile
 
 env:
   ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
-  CLEANUP: ${{ inputs.cleanup == false && false || true }}
+  CLEANUP: ${{ inputs.cleanup == true }}
   INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
   REPOSITORY: EA31337/EA31337-indicators-common
 
@@ -31,7 +31,7 @@ on:
         required: false
         type: string
       cleanup:
-        default: false
+        default: true
         description: Whether to run clean-up job.
         required: false
         type: boolean
@@ -159,7 +159,7 @@ jobs:
     timeout-minutes: 30
 
   cleanup:
-    if: inputs.cleanup == false && false || true
+    if: inputs.cleanup
     name: Clean-up
     needs: [compile-indicators]
     runs-on: ubuntu-latest
