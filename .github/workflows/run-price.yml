@@ -3,6 +3,7 @@ name: Run (Price)
 
 env:
   ARTIFACT_PREFIX: mt
+  CLEANUP: false
 
 # yamllint disable-line rule:truthy
 on:
