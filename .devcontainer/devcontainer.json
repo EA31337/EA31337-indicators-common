@@ -22,6 +22,7 @@
 		"vscode": {
 			"extensions": [
 				"L-I-V.mql-tools",
+				"github.vscode-github-actions",
 				"ms-vscode.cpptools",
 				"vscodevim.vim"
 			]
