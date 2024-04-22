@@ -1,6 +1,9 @@
 ---
 name: Run (Price)
 
+env:
+  ARTIFACT_PREFIX: mt
+
 # yamllint disable-line rule:truthy
 on:
   pull_request:
@@ -16,6 +19,9 @@ jobs:
   compile-indicators:
     name: Compile
     uses: ./.github/workflows/compile.yml
+    with:
+      artifact_prefix: mt
+      cleanup: false
 
   compile-strategy:
     defaults:
@@ -37,19 +43,25 @@ jobs:
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v4
         with:
-          path: .
+          name: ${{ env.ARTIFACT_PREFIX }}4
+          path: .${{ env.ARTIFACT_PREFIX }}4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: |
+            indicators-common
+            platform-indicators-*
       - name: Compile .mq4
         uses: fx31337/mql-compile-action@master
         with:
           include: .
-          mt-path: .mt4
+          mt-path: .${{ env.ARTIFACT_PREFIX }}4
           path: Strategy-Indicator
           verbose: true
       - name: Compile .mq5
         uses: fx31337/mql-compile-action@master
         with:
           include: .
-          mt-path: .mt5
+          mt-path: .${{ env.ARTIFACT_PREFIX }}4
           path: Strategy-Indicator
           verbose: true
       - name: List compiled files
@@ -85,7 +97,11 @@ jobs:
     steps:
       - uses: actions/download-artifact@v4
         with:
-          path: .
+          name: ${{ env.ARTIFACT_PREFIX }}4
+          path: .${{ env.ARTIFACT_PREFIX }}4
+      - uses: actions/download-artifact@v4
+        with:
+          name: Stg_Indicator
       - uses: frdrwrt/write-to-file@v1.3
         with:
           filepath: Stg_Indicator/Stg_Indicator.set
@@ -99,7 +115,7 @@ jobs:
       - name: Run Indicator strategy with ${{ matrix.test }} indicator
         uses: fx31337/mql-tester-action@master
         with:
-          mt-path: .mt4
+          mt-path: ${{ env.ARTIFACT_PREFIX }}4
           BtDays: 1-12
           OptTrace: ${{ env.OPT_TRACE }}
           RunOnStart: >-
@@ -115,3 +131,12 @@ jobs:
           name: Results-Price-${{ matrix.test }}
           path: '**.csv'
     timeout-minutes: 20
+
+  cleanup:
+    name: Clean-up
+    needs: [run-mt5]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}*
