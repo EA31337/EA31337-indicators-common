@@ -53,7 +53,7 @@ jobs:
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
       - name: Upload indicator artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Stg_Indicator
           path: 'Strategy-Indicator/*.ex[45]'
@@ -80,7 +80,7 @@ jobs:
           - ZigZag
 
     steps:
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
           path: .
       - uses: frdrwrt/write-to-file@v1.3
@@ -107,7 +107,7 @@ jobs:
           SetFile: ${{ github.workspace }}/Stg_Indicator/Stg_Indicator.set
           TestExpert: Stg_Indicator.ex4
       - name: Upload results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: Results-Price-${{ matrix.test }}
           path: '**.csv'
