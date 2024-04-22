@@ -35,6 +35,9 @@ jobs:
           path: Include/EA31337-classes
           ref: v3.000.1
           repository: EA31337/EA31337-classes
+      - uses: actions/download-artifact@v4
+        with:
+          path: .
       - name: Compile .mq4
         uses: fx31337/mql-compile-action@master
         with:
