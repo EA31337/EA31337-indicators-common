@@ -3,7 +3,7 @@ name: Compile
 
 env:
   ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
-  CLEANUP: ${{ inputs.cleanup || true }}
+  CLEANUP: ${{ inputs.cleanup == false && false || true }}
   INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
   REPOSITORY: EA31337/EA31337-indicators-common
 
@@ -159,11 +159,12 @@ jobs:
     timeout-minutes: 30
 
   cleanup:
+    if: inputs.cleanup == false && false || true
     name: Clean-up
     needs: [compile-indicators]
     runs-on: ubuntu-latest
     steps:
-      - if: env.CLEANUP && (inputs.cleanup || true ) && github.repository == env.REPOSITORY
+      - if: env.CLEANUP && github.repository == env.REPOSITORY
         uses: geekyeggo/delete-artifact@v5
         with:
           name: ${{ env.ARTIFACT_PREFIX }}*
