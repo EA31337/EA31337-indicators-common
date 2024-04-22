@@ -160,11 +160,11 @@ jobs:
 
   cleanup:
     # Clean-up platform artifacts only on direct/non-workflow calls.
+    if: github.event.workflow == '.github/workflows/compile.yml'
     name: Clean-up
     needs: [compile-indicators]
     runs-on: ubuntu-latest
     steps:
       - uses: geekyeggo/delete-artifact@v5
-        if: github.event.workflow == '.github/workflows/compile.yml'
         with:
           name: ${{ env.ARTIFACT_PREFIX }}*
