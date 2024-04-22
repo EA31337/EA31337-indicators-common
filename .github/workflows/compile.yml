@@ -159,12 +159,12 @@ jobs:
     timeout-minutes: 30
 
   cleanup:
-    if: ${{ !!(inputs.cleanup == false) }}
+    # Clean-up platform artifacts only on direct/non-workflow calls.
+    if: github.event.workflow == '.github/workflows/compile.yml'
     name: Clean-up
     needs: [compile-indicators]
     runs-on: ubuntu-latest
     steps:
-      - if: env.CLEANUP && github.repository == env.REPOSITORY
-        uses: geekyeggo/delete-artifact@v5
+      - uses: geekyeggo/delete-artifact@v5
         with:
           name: ${{ env.ARTIFACT_PREFIX }}*
