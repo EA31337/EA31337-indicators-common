@@ -77,7 +77,7 @@ void OnInit() {
   // Initialize indicator.
   IndiZigZagParams _indi_params(::InpDepth_, ::InpDeviation_, ::InpBackstep_,
                                 ::InpShift_);
-  indi = new Indi_ZigZag(_indi_params, InpSourceType);
+  indi = new Indi_ZigZag(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =

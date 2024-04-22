@@ -80,7 +80,7 @@ void OnInit() {
   // Initialize indicator.
   IndiAMAParams _indi_params(::InpPeriod, ::InpFastPeriod, ::InpSlowPeriod,
                              ::InpAMAShift, ::InpAppliedPrice, ::InpShift);
-  indi = new Indi_AMA(_indi_params, InpSourceType);
+  indi = new Indi_AMA(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name =

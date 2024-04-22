@@ -1,5 +1,11 @@
 ---
-name: Compile MQL
+name: Compile
+
+env:
+  ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
+  INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
+  REPOSITORY: EA31337/EA31337-indicators-common
+  SKIP_CLEANUP: ${{ inputs.skip_cleanup || false }}
 
 # yamllint disable-line rule:truthy
 on:
@@ -17,108 +23,130 @@ on:
     paths-ignore:
       - '*.md'
       - '.git*'
+  workflow_call:
+    inputs:
+      artifact_prefix:
+        default: mt
+        description: Artifact prefix.
+        required: false
+        type: string
+      skip_cleanup:
+        default: false
+        description: Whether to skip a clean-up job.
+        required: false
+        type: boolean
 
 jobs:
-  Compile-Indicators-Platform:
-    defaults:
-      run:
-        shell: powershell
-    runs-on: windows-latest
-    steps:
-      - name: Compile (build 1382)
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: .
-          init-platform: true
-          mt-version: 4.0.0.1382.2
-          path: Indicators
-          verbose: true
-      - name: Upload MQL4 indicators
-        uses: actions/upload-artifact@v3
-        with:
-          name: Indicators-platform
-          path: ${{ env.MT4_PATH }}/MQL?/**/*.[me][qx][45h]
-      - name: Compile (build 2361)
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: .
-          init-platform: true
-          mt-version: 5.0.0.2361
-          path: .platform/**/MQL?/Indicators
-          verbose: true
-      - name: Upload MQL5 indicators
-        uses: actions/upload-artifact@v3
-        with:
-          name: Indicators-platform
-          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45h]
-      - name: Compile (build 3815)
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: .
-          init-platform: true
-          mt-version: 5.0.0.3815
-          path: .platform/**/MQL?/Indicators
-          verbose: true
-      - name: Upload MQL5 indicators
-        uses: actions/upload-artifact@v3
-        with:
-          name: Indicators-platform
-          path: ${{ env.MT5_PATH }}/MQL?/**/*.[me][qx][45h]
-      - name: List all source code files
-        run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
-      - name: List compiled files
-        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
-      - run: Get-Location
-    timeout-minutes: 10
+  mt4:
+    name: Installs platform (4)
+    uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
+    with:
+      artifact_name: ${{ inputs.artifact_prefix || 'mt' }}4
+      artifact_overwrite: true
+      version: 4
+  mt5:
+    name: Installs platform (5)
+    uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
+    with:
+      artifact_name: ${{ inputs.artifact_prefix || 'mt' }}5
+      artifact_overwrite: true
+      version: 5
 
-  Compile-Indicators:
+  compile-platform-indicators:
     defaults:
       run:
         shell: powershell
-    needs: [Compile-Indicators-Platform]
+    name: Compile platform indicators
+    needs: [mt4, mt5]
     runs-on: windows-latest
+    strategy:
+      matrix:
+        version: [4, 5]
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+      - name: Compile MQL
+        uses: fx31337/mql-compile-action@dev
+        with:
+          include: .
+          init-platform: true
+          mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}/**/MQL?/Indicators
+          verbose: true
+      - name: Copy MQL to the current location
+        run: Copy-Item -Path ".${{ env.ARTIFACT_PREFIX }}*\*\*\MQL?" -Destination . -Recurse -Verbose
+      - name: List all source code files
+        run: '(Get-ChildItem -Recurse -Path "MQL?" -Include *.mq[45]).fullname'
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path "MQL?" -Include *.ex[45]).fullname'
+      - name: Upload platform indicators
+        uses: actions/upload-artifact@v4
+        with:
+          if-no-files-found: error
+          name: platform-indicators-mql${{ matrix.version }}
+          path: MQL?/**/*.[me][qx][45h]
+      - if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+    timeout-minutes: 20
+
+  compile-indicators:
+    defaults:
+      run:
+        shell: powershell
+    name: Compile indicators
+    needs: [compile-platform-indicators]
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        version: [4, 5]
     steps:
       - uses: actions/checkout@v3
+        with:
+          path: ${{ env.INDI_COMMON_WORKDIR }}
+          ref: ${{ github.head_ref || github.ref_name }}
+          repository: EA31337/EA31337-indicators-common
+      - uses: actions/checkout@v3
+        with:
+          path: MQL4/Include/EA31337-classes
+          ref: v3.000.1
+          repository: EA31337/EA31337-classes
       - uses: actions/checkout@v3
         with:
           path: MQL5/Include/EA31337-classes
-          ref: v2.013.1
+          ref: v3.000.1
           repository: EA31337/EA31337-classes
-      - uses: actions/download-artifact@v3
+      - uses: actions/download-artifact@v4
         with:
-          name: Indicators-platform
+          name: ${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+      - uses: actions/download-artifact@v4
+        with:
+          merge-multiple: true
+          pattern: platform-indicators-mql?
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
-      - name: Compile (build 2361)
+      - name: Compile
         uses: fx31337/mql-compile-action@master
         with:
           include: MQL5
-          init-platform: true
-          mt-version: 5.0.0.2361
-          path: '**/*.mt5.mq4'
+          mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mt5.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
-          path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
+          path-ignore: '**/{AC,AD,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MFI,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS}.{mt?.mq?,mq?}'
           verbose: true
-      - name: Compile (build 2361)
+      - name: Compile
         uses: fx31337/mql-compile-action@master
         with:
-          include: MQL5
-          init-platform: true
-          mt-version: 5.0.0.2361
-          path: '**/*.mq[45]'
+          include: MQL${{ matrix.version }}
+          mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.mq${{ matrix.version }}
           # yamllint disable-line rule:line-length
-          path-ignore: '**/{AC,ADX,ADXW,Alligator,AO,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,FrAMA,Gator,MACD,MI,OsMA,RSI,StdDev,TEMA,TRIX,UOS,{tests,Examples,Experts,Scripts}/**/*}.{mt?.mq?,mq?}'
-          verbose: true
-      - name: Compile (build 2515)
-        uses: fx31337/mql-compile-action@master
-        with:
-          include: MQL5
-          init-platform: true
-          mt-version: 5.0.0.2515
-          path: '**/*.mq5'
-          path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
+          path-ignore: '**/{AC,AD,ADX,ADXW,Alligator,AMA,AO,ASI,ATR,Bears,Bulls,BB,BWMFI,CCI,CHO,CHV,DeMarker,DEMA,DPO,Envelopes,Force,Fractals,FrAMA,Gator,HeikenAshi,Ichimoku,MACD,MA,MI,MFI,MOM,OBV,OsMA,PriceChannel,PVT,ROC,RSI,RVI,SAR,StdDev,Stochastic,TEMA,TRIX,UOS,VIDYA,VROC,Volumes,WAD,WPR,ZigZag}.{mt?.mq?,mq?}'
+          # path-ignore: '**/{Foo,{tests,Examples,Experts,Scripts}/**/*}.mq?'
           verbose: true
       - name: List compiled files
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
@@ -126,6 +154,16 @@ jobs:
       - name: Upload indicator artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: Indicators-common
-          path: '**/*.ex[45]'
+          name: indicators-common
+          path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.ex[45]
     timeout-minutes: 30
+
+  cleanup:
+    if: inputs.skip_cleanup != true
+    name: Clean-up
+    needs: [compile-indicators]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}*

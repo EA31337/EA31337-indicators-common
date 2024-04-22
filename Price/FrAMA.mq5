@@ -75,7 +75,7 @@ void OnInit() {
   SetIndexBuffer(0, InpExtFrAMABuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiFrAIndiMAParams _indi_params(::InpPeriod, ::InpShift_);
-  indi = new Indi_FrAMA(_indi_params, InpSourceType);
+  indi = new Indi_FrAMA(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(%d)", indi.GetName(), ::InpPeriod);

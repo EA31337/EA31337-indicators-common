@@ -12,7 +12,7 @@
  *
  * This program is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
@@ -22,12 +22,12 @@
 
 /**
  * @file
- * Implements Moving Average indicator.
+ * Implements Heiken Ashi indicator.
  */
 
 // Defines.
-#define INDI_FULL_NAME "Moving Average"
-#define INDI_SHORT_NAME "MA"
+#define INDI_FULL_NAME "HeikenAshi"
+#define INDI_SHORT_NAME "HA"
 
 // Indicator properties.
 #ifdef __MQL__
@@ -36,59 +36,63 @@
 #property description INDI_FULL_NAME
 //--
 #property indicator_chart_window
-#property indicator_buffers 1
+#property indicator_buffers 5
 #property indicator_plots 1
-#property indicator_type1 DRAW_LINE
-#property indicator_color1 DarkBlue
-#property indicator_width1 1
+#property indicator_type1 DRAW_COLOR_CANDLES
+#property indicator_color1 DodgerBlue, Red
 #property indicator_label1 INDI_SHORT_NAME
-#property indicator_applied_price PRICE_CLOSE
 #property version "1.000"
 #endif
 
-// Includes.
-#include <EA31337-classes/Indicators/Indi_MA.mqh>
-
 // Resource files.
 #ifdef __MQL5__
-#property tester_indicator "::Indicators\\Examples\\Custom Moving Average.ex5"
-#resource "\\Indicators\\Examples\\Custom Moving Average.ex5"
+#property tester_indicator "::Indicators\\Examples\\Heiken_Ashi.ex5"
+#resource "\\Indicators\\Examples\\Heiken_Ashi.ex5"
 #endif
 
+// Includes.
+#include <EA31337-classes/Indicators/Indi_HeikenAshi.mqh>
+
 // Input parameters.
-input int InpMAPeriod = 14;                  // MA period
-input int InpMAShift = 0;                    // MA shift
-input ENUM_MA_METHOD InpMAMethod = MODE_SMA; // MA method (smoothing type)
-input ENUM_APPLIED_PRICE InpMAAppliedPrice = PRICE_OPEN;    // Applied price
-input int InpShift = 0;                                     // Indicator shift
+input int InpShift = 0;                                     // Shift
 input ENUM_IDATA_SOURCE_TYPE InpSourceType = IDATA_BUILTIN; // Source type
 
 // Global indicator buffers.
-double ExtMABuffer[];
+double InpExtOBuffer[];
+double InpExtHBuffer[];
+double InpExtLBuffer[];
+double InpExtCBuffer[];
+double InpExtColorBuffer[];
 
 // Global variables.
-Indi_MA *indi;
+Indi_HeikenAshi *indi;
 
 /**
  * Init event handler function.
  */
 void OnInit() {
   // Initialize indicator buffers.
-  SetIndexBuffer(0, ExtMABuffer, INDICATOR_DATA);
+  SetIndexBuffer(0, InpExtOBuffer, INDICATOR_DATA);
+  SetIndexBuffer(1, InpExtHBuffer, INDICATOR_DATA);
+  SetIndexBuffer(2, InpExtLBuffer, INDICATOR_DATA);
+  SetIndexBuffer(3, InpExtCBuffer, INDICATOR_DATA);
+  SetIndexBuffer(4, InpExtColorBuffer, INDICATOR_COLOR_INDEX);
   // Initialize indicator.
-  IndiMAParams _indi_params(::InpMAPeriod, ::InpMAShift, ::InpMAMethod,
-                            ::InpMAAppliedPrice, ::InpShift);
-  indi = new Indi_MA(_indi_params /* , InpSourceType */);
+  IndiHeikenAshiParams _indi_params(::InpShift);
+  indi = new Indi_HeikenAshi(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
-  string short_name = StringFormat("%s(%d)", indi.GetName(), InpMAPeriod);
+  string short_name = StringFormat("%s", indi.GetName());
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
   PlotIndexSetString(0, PLOT_LABEL, short_name);
-  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, DBL_MAX);
+  // Use DBL_MAX for empty values.
+  PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, 0.0);
   // Sets first bar from what index will be drawn
-  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpMAPeriod - 1);
+  PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, 0);
   // Sets indicator shift.
-  PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  PlotIndexSetInteger(0, PLOT_SHIFT, ::InpShift);
+  // Set accuracy.
+  IndicatorSetInteger(INDICATOR_DIGITS, _Digits);
 }
 
 /**
@@ -100,14 +104,14 @@ int OnCalculate(const int rates_total, const int prev_calculated,
                 const double &close[], const long &tick_volume[],
                 const long &volume[], const int &spread[]) {
   int i, start;
-  if (rates_total < 2 * InpMAPeriod) {
-    return (0);
-  }
   // Initialize calculations.
-  start = prev_calculated == 0 ? 2 * InpMAPeriod - 1 : prev_calculated - 1;
+  start = prev_calculated == 0 ? 0 : prev_calculated - 1;
   if (prev_calculated == 0) {
     for (i = 0; i <= start; i++) {
-      ExtMABuffer[i] = close[i];
+      InpExtLBuffer[0] = low[0];
+      InpExtHBuffer[0] = high[0];
+      InpExtOBuffer[0] = open[0];
+      InpExtCBuffer[0] = close[0];
     }
   }
   // Main calculations.
@@ -115,10 +119,12 @@ int OnCalculate(const int rates_total, const int prev_calculated,
     IndicatorDataEntry _entry = indi[rates_total - i];
     if (!indi.Get<bool>(
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
-      ExtMABuffer[i] = DBL_MAX;
       return prev_calculated + 1;
     }
-    ExtMABuffer[i] = _entry[0];
+    InpExtLBuffer[i] = _entry[(int)HA_LOW];
+    InpExtHBuffer[i] = _entry[(int)HA_HIGH];
+    InpExtOBuffer[i] = _entry[(int)HA_OPEN];
+    InpExtCBuffer[i] = _entry[(int)HA_CLOSE];
   }
   // Returns new prev_calculated.
   return (rates_total);

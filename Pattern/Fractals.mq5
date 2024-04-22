@@ -76,7 +76,7 @@ void OnInit() {
   SetIndexBuffer(1, ExtLowerBuffer, INDICATOR_DATA);
   // Initialize indicator.
   IndiFractalsParams _indi_params(::InpShift);
-  indi = new Indi_Fractals(_indi_params, InpSourceType);
+  indi = new Indi_Fractals(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s(", indi.GetName());
