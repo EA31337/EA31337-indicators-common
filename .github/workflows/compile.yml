@@ -43,6 +43,7 @@ jobs:
     with:
       artifact_name: ${{ inputs.artifact_prefix || 'mt' }}4
       artifact_overwrite: true
+      skip_cleanup: true
       version: 4
   mt5:
     name: Installs platform (5)
@@ -50,6 +51,7 @@ jobs:
     with:
       artifact_name: ${{ inputs.artifact_prefix || 'mt' }}5
       artifact_overwrite: true
+      skip_cleanup: true
       version: 5
 
   compile-platform-indicators:
