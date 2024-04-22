@@ -163,7 +163,7 @@ jobs:
     needs: [compile-indicators]
     runs-on: ubuntu-latest
     steps:
-      - if: env.CLEANUP && ${{ inputs.cleanup || true }} && github.repository == env.REPOSITORY
+      - if: env.CLEANUP && (inputs.cleanup || true ) && github.repository == env.REPOSITORY
         uses: geekyeggo/delete-artifact@v5
         with:
           name: ${{ env.ARTIFACT_PREFIX }}*
