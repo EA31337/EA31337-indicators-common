@@ -159,7 +159,7 @@ jobs:
     timeout-minutes: 30
 
   cleanup:
-    if: inputs.cleanup
+    if: ${{ !!(inputs.cleanup == false) }}
     name: Clean-up
     needs: [compile-indicators]
     runs-on: ubuntu-latest
