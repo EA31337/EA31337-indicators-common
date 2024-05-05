@@ -104,17 +104,17 @@ jobs:
       matrix:
         version: [4, 5]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: ${{ env.INDI_COMMON_WORKDIR }}
           ref: ${{ github.head_ref || github.ref_name }}
           repository: EA31337/EA31337-indicators-common
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: MQL4/Include/EA31337-classes
           ref: v3.000.1
           repository: EA31337/EA31337-classes
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: MQL5/Include/EA31337-classes
           ref: v3.000.1
@@ -154,7 +154,7 @@ jobs:
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
       - name: Upload indicator artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: indicators-common
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.ex[45]

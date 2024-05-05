@@ -31,12 +31,12 @@ jobs:
     needs: [compile-indicators]
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: Strategy-Indicator
           ref: v2.000-dev
           repository: EA31337/Strategy-Indicator
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: Include/EA31337-classes
           ref: v3.000.1
