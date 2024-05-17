@@ -30,7 +30,15 @@
 #endif
 
 // Includes EA31337 framework.
-#include <EA31337-classes/Indicator.enum.h>
+#include <EA31337-classes/DateTime.struct.h>
+#include <EA31337-classes/Indicator/Indicator.enum.h>
+
+datetime TimeTradeServer() { return DateTimeStatic::TimeTradeServer(); }
+
+#define INDICATOR_LEGACY_VERSION_ACQUIRE_BUFFER                                \
+  ACQUIRE_BUFFER4(ExtMLBuffer, ExtTLBuffer, ExtBLBuffer, ExtStdDevBuffer)
+#define INDICATOR_LEGACY_VERSION_RELEASE_BUFFER                                \
+  RELEASE_BUFFER4(ExtMLBuffer, ExtTLBuffer, ExtBLBuffer, ExtStdDevBuffer)
 
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\MarketFacilitationIndex.mq5>

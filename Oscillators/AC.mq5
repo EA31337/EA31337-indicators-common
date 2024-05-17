@@ -36,10 +36,10 @@
 #property description INDI_FULL_NAME
 //--
 #property indicator_separate_window
-#property indicator_buffers 6
+#property indicator_buffers 2
 #property indicator_plots 1
-#property indicator_type1 DRAW_COLOR_HISTOGRAM
-#property indicator_color1 Green, Red
+#property indicator_type1 DRAW_COLOR_LINE
+#property indicator_color1 Green
 #property indicator_width1 2
 #property indicator_label1 INDI_SHORT_NAME
 #property version "1.000"
@@ -51,8 +51,11 @@
 #resource "\\Indicators\\Examples\\Accelerator.ex5"
 #endif
 
+#define __debug__
+
 // Includes.
 #include <EA31337-classes/Indicators/Indi_AC.mqh>
+#include <EA31337-classes/Platform.h>
 
 // Input parameters.
 input int InpShift = 0;                                     // Indicator shift
@@ -75,6 +78,7 @@ void OnInit() {
   // Initialize indicator.
   IndiACParams _indi_params(::InpShift);
   indi = new Indi_AC(_indi_params /* , InpSourceType */);
+  Platform::AddWithDefaultBindings(indi);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
   string short_name = StringFormat("%s", indi.GetName());
