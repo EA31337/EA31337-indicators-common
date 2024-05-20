@@ -32,6 +32,15 @@
 #property version "1.000"
 #endif
 
+// This will allow calling MT5 functions in MT4.
+#define INDICATOR_LEGACY_VERSION_MT5
+#define INDICATOR_LEGACY_VERSION_LONG // OHLC-based OnCalculate().
+#define INDICATOR_LEGACY_VERSION_ACQUIRE_BUFFER                                \
+  ACQUIRE_BUFFER1(ExtDeMarkerBuffer)
+#define INDICATOR_LEGACY_VERSION_RELEASE_BUFFER                                \
+  RELEASE_BUFFER1(ExtDeMarkerBuffer)
+#include <EA31337-classes/IndicatorLegacy.h>
+
 // Includes the main code.
 #include "DeMarker.mq5"
 

@@ -45,6 +45,25 @@
 #property version "1.000"
 #endif
 
+// This will allow calling MT5 functions in MT4.
+#define INDICATOR_LEGACY_VERSION_MT5
+#define INDICATOR_LEGACY_VERSION_LONG // OHLC-based OnCalculate().
+#define INDICATOR_LEGACY_VERSION_ACQUIRE_BUFFER                                \
+  ACQUIRE_BUFFER5_NO_ENSURE(InpExtADXWBuffer, InpExtPDIBuffer,                 \
+                            InpExtNDIBuffer, InpExtPDSBuffer,                  \
+                            InpExtNDSBuffer);                                  \
+  ACQUIRE_BUFFER5_NO_ENSURE(InpExtPDBuffer, InpExtNDBuffer, InpExtTRBuffer,    \
+                            InpExtATRBuffer, InpExtDXBuffer);                  \
+  SET_BUFFER_AS_SERIES_RELEASE_ENSURER_BEGIN(10);
+#define INDICATOR_LEGACY_VERSION_RELEASE_BUFFER                                \
+  RELEASE_BUFFER5_NO_ENSURE(InpExtADXWBuffer, InpExtPDIBuffer,                 \
+                            InpExtNDIBuffer, InpExtPDSBuffer,                  \
+                            InpExtNDSBuffer);                                  \
+  RELEASE_BUFFER5_NO_ENSURE(InpExtPDBuffer, InpExtNDBuffer, InpExtTRBuffer,    \
+                            InpExtATRBuffer, InpExtDXBuffer);                  \
+  SET_BUFFER_AS_SERIES_RELEASE_ENSURER_END(10);
+#include <EA31337-classes/IndicatorLegacy.h>
+
 // Includes the main code.
 #include "ADXW.mq5"
 

@@ -35,5 +35,16 @@
 #property version "1.000"
 #endif
 
+// This will allow calling MT5 functions in MT4.
+#define INDICATOR_LEGACY_VERSION_MT5
+#define INDICATOR_LEGACY_VERSION_LONG // OHLC-based OnCalculate().
+#define INDICATOR_LEGACY_VERSION_ACQUIRE_BUFFER                                \
+  ACQUIRE_BUFFER5(ExtOBuffer, ExtHBuffer, ExtLBuffer, ExtCBuffer,              \
+                  ExtColorBuffer)
+#define INDICATOR_LEGACY_VERSION_RELEASE_BUFFER                                \
+  RELEASE_BUFFER5(ExtOBuffer, ExtHBuffer, ExtLBuffer, ExtCBuffer,              \
+                  ExtColorBuffer)
+#include <EA31337-classes/IndicatorLegacy.h>
+
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\Heiken_Ashi.mq5>

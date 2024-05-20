@@ -28,8 +28,15 @@
 #property version "1.000"
 #endif
 
+// This will allow calling MT5 functions in MT4.
+#define INDICATOR_LEGACY_VERSION_MT5
+#define INDICATOR_LEGACY_VERSION_LONG // OHLC-based OnCalculate().
+#define INDICATOR_LEGACY_VERSION_ACQUIRE_BUFFER ACQUIRE_BUFFER1(ExtMABuffer)
+#define INDICATOR_LEGACY_VERSION_RELEASE_BUFFER RELEASE_BUFFER1(ExtMABuffer)
+#include <EA31337-classes/IndicatorLegacy.h>
+
 // Includes EA31337 framework.
-#include <EA31337-classes/Indicator.enum.h>
+#include <EA31337-classes/Indicator/Indicator.enum.h>
 
 // Includes MQL5 version of indicator.
 #include <../Indicators\Examples\Force_Index.mq5>
