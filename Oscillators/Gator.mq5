@@ -54,12 +54,10 @@
 // Resource files.
 #ifdef __MQL5__
 #property tester_indicator "::Indicators\\Examples\\Gator.ex5"
-#ifdef __MQL5__
 #property tester_indicator "::Indicators\\Examples\\Gator_2.ex5"
-#endif
-#endif
 #resource "\\Indicators\\Examples\\Gator.ex5"
 #resource "\\Indicators\\Examples\\Gator_2.ex5"
+#endif
 
 // Includes.
 #include <EA31337-classes/Indicators/Indi_Gator.mqh>

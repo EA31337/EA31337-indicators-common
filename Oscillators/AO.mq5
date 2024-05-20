@@ -115,7 +115,7 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   int max_modes =
       indi.Get<int>(STRUCT_ENUM(IndicatorDataParams, IDATA_PARAM_MAX_MODES));
   */
-  uint max_modes = indi.GetParams().max_modes;
+  uint max_modes = indi.GetModeCount();
   start = prev_calculated == 0 ? fmax3(0, FAST_PERIOD, SLOW_PERIOD)
                                : prev_calculated - 1;
   // Main calculations.
