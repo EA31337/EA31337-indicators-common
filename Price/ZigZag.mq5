@@ -71,7 +71,7 @@ Indi_ZigZag *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtZigZagBuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -89,6 +89,7 @@ void OnInit() {
   PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, 0.0);
   // Set accuracy.
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits);
+  return INIT_SUCCEEDED;
 }
 
 /**

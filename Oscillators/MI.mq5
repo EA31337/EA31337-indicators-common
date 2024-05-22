@@ -71,7 +71,7 @@ Indi_MassIndex *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, InpExtMIBuffer);
   // Initialize indicator.
@@ -89,6 +89,7 @@ void OnInit() {
                       fmax3(0, ::InpPeriod, ::InpPeriodSecond));
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**

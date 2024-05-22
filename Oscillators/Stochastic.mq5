@@ -80,7 +80,7 @@ Indi_Stochastic *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtMainBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, ExtSignalBuffer, INDICATOR_DATA);
@@ -114,6 +114,7 @@ void OnInit() {
   // Drawing settings (MQL4).
   SetIndexStyle(0, DRAW_HISTOGRAM);
   SetIndexStyle(1, DRAW_LINE);
+  return INIT_SUCCEEDED;
 }
 
 /**
