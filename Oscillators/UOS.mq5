@@ -72,7 +72,7 @@ Indi_UltimateOscillator *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtBuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -99,6 +99,7 @@ void OnInit() {
   PlotIndexSetDouble(1, PLOT_EMPTY_VALUE, 0.0);
   // Sets first bar from what index will be drawn.
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, ::InpSlowPeriod_ - 1);
+  return INIT_SUCCEEDED;
 }
 
 /**

@@ -70,7 +70,7 @@ Indi_HeikenAshi *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, InpExtOBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, InpExtHBuffer, INDICATOR_DATA);
@@ -93,6 +93,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_SHIFT, ::InpShift);
   // Set accuracy.
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits);
+  return INIT_SUCCEEDED;
 }
 
 /**

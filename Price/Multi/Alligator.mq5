@@ -85,7 +85,7 @@ Indi_Alligator *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtJaws, INDICATOR_DATA);
   SetIndexBuffer(1, ExtTeeth, INDICATOR_DATA);
@@ -115,6 +115,7 @@ void OnInit() {
   PlotIndexSetString(0, PLOT_LABEL, "Jaws=" + string(InpJawsPeriod));
   PlotIndexSetString(1, PLOT_LABEL, "Teeth=" + string(InpTeethPeriod));
   PlotIndexSetString(2, PLOT_LABEL, "Lips=" + string(InpLipsPeriod));
+  return INIT_SUCCEEDED;
 }
 
 /**
