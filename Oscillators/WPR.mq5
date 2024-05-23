@@ -36,13 +36,13 @@
 #property description INDI_FULL_NAME
 //--
 #property indicator_separate_window
-#property indicator_level1 -20.0
-#property indicator_level2 -80.0
+#property indicator_level1 - 20.0
+#property indicator_level2 - 80.0
 #property indicator_levelstyle STYLE_DOT
 #property indicator_levelcolor Silver
 #property indicator_levelwidth 1
 #property indicator_maximum 0.0
-#property indicator_minimum -100.0
+#property indicator_minimum - 100.0
 #property indicator_buffers 1
 #property indicator_plots 1
 #property indicator_type1 DRAW_LINE
@@ -74,7 +74,7 @@ Indi_WPR *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtWPRBuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -90,6 +90,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpWPRPeriod);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**

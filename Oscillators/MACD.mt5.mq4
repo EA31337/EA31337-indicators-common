@@ -30,5 +30,16 @@
 #property version "1.000"
 #endif
 
+// This will allow calling MT5 functions in MT4.
+#define INDICATOR_LEGACY_VERSION_MT5
+#define INDICATOR_LEGACY_VERSION_LONG // OHLC-based OnCalculate().
+#define INDICATOR_LEGACY_VERSION_ACQUIRE_BUFFER                                \
+  ACQUIRE_BUFFER4(ExtMacdBuffer, ExtSignalBuffer, ExtFastMaBuffer,             \
+                  ExtSlowMaBuffer)
+#define INDICATOR_LEGACY_VERSION_RELEASE_BUFFER                                \
+  RELEASE_BUFFER4(ExtMacdBuffer, ExtSignalBuffer, ExtFastMaBuffer,             \
+                  ExtSlowMaBuffer)
+#include <EA31337-classes/IndicatorLegacy.h>
+
 // Resource files.
 #include <../Indicators\Examples\MACD.mq5>

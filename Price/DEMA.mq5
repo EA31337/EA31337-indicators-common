@@ -72,12 +72,12 @@ Indi_DEMA *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtMABuffer, INDICATOR_DATA);
   // Initialize indicator.
-  IndiDEIndiMAParams _indi_params(::InpMAPeriod, ::InpMAShift,
-                                  ::InpMAAppliedPrice, ::InpShift);
+  IndiDEMAParams _indi_params(::InpMAPeriod, ::InpMAShift, ::InpMAAppliedPrice,
+                              ::InpShift);
   indi = new Indi_DEMA(_indi_params /* , InpSourceType */);
   // Name for labels.
   // @todo: Use serialized string of _indi_params.
@@ -89,6 +89,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpMAPeriod - 1);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**

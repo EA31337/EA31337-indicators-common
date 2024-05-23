@@ -71,7 +71,7 @@ Indi_RVI *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtRVIBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, ExtSignalBuffer, INDICATOR_DATA);
@@ -89,6 +89,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpRVIPeriod);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**

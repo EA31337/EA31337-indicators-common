@@ -82,7 +82,7 @@ Indi_Ichimoku *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtTenkanBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, ExtKijunBuffer, INDICATOR_DATA);
@@ -111,6 +111,7 @@ void OnInit() {
   PlotIndexSetString(1, PLOT_LABEL, "Kijun-sen(" + string(InpKijun) + ")");
   PlotIndexSetString(2, PLOT_LABEL,
                      "Senkou Span A;Senkou Span B(" + string(InpSenkou) + ")");
+  return INIT_SUCCEEDED;
 }
 
 /**

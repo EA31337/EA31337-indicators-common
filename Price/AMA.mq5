@@ -74,7 +74,7 @@ Indi_AMA *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, InpExtAMABuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -96,6 +96,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_SHIFT, ::InpPeriod);
   // Set accuracy.
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits + 1);
+  return INIT_SUCCEEDED;
 }
 
 /**

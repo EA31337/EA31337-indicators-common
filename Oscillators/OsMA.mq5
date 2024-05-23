@@ -71,7 +71,7 @@ Indi_OsMA *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtOsMABuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -95,6 +95,7 @@ void OnInit() {
   // Drawing settings (MQL4).
   SetIndexStyle(0, DRAW_HISTOGRAM);
   SetIndexStyle(1, DRAW_LINE);
+  return INIT_SUCCEEDED;
 }
 
 /**

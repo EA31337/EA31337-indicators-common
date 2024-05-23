@@ -70,7 +70,7 @@ Indi_Fractals *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtUpperBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, ExtLowerBuffer, INDICATOR_DATA);
@@ -96,6 +96,7 @@ void OnInit() {
   PlotIndexSetInteger(1, PLOT_ARROW, 218);
   // Set accuracy.
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits);
+  return INIT_SUCCEEDED;
 }
 
 /**

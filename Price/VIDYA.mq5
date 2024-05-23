@@ -73,7 +73,7 @@ Indi_VIDYA *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtBuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -92,6 +92,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpPeriodCMO_ + InpPeriodEMA_ - 1);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift_);
+  return INIT_SUCCEEDED;
 }
 
 /**

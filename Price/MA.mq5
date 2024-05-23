@@ -46,6 +46,12 @@
 #property version "1.000"
 #endif
 
+// This will automatically attach candle and tick indicators to the hierarchy
+// of this indicator if required.
+#define INDICATOR_STANDALONE_VERSION_LONG  // OHLC-based OnCalculate().
+#define INDICATOR_STANDALONE_INDI_PTR indi // Pointer to the indicator.
+#include <EA31337-classes/IndicatorLegacy.h>
+
 // Includes.
 #include <EA31337-classes/Indicators/Indi_MA.mqh>
 
@@ -72,7 +78,7 @@ Indi_MA *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtMABuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -89,6 +95,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpMAPeriod - 1);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**
@@ -113,6 +120,11 @@ int OnCalculate(const int rates_total, const int prev_calculated,
   // Main calculations.
   for (i = start; i < rates_total && !IsStopped(); i++) {
     IndicatorDataEntry _entry = indi[rates_total - i];
+    double _v = _entry[0];
+
+    IndicatorDataEntry _entry_curr = indi[0];
+    double _v_curr = _entry_curr[0];
+
     if (!indi.Get<bool>(
             STRUCT_ENUM(IndicatorState, INDICATOR_STATE_PROP_IS_READY))) {
       ExtMABuffer[i] = DBL_MAX;

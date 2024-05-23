@@ -70,7 +70,7 @@ Indi_Volumes *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtBuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -85,6 +85,7 @@ void OnInit() {
   // Name for DataWindow and indicator subwindow label.
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, 0.0);
+  return INIT_SUCCEEDED;
 }
 
 /**

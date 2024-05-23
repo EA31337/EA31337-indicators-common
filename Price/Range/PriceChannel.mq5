@@ -40,7 +40,7 @@
 #property indicator_plots 2
 #property indicator_type1 DRAW_FILLING
 #property indicator_type2 DRAW_LINE
-#property indicator_color1 DodgerBlue,Gray
+#property indicator_color1 DodgerBlue, Gray
 #property indicator_color2 Blue
 #property indicator_label1 "Channel upper;Channel lower"
 #property indicator_label2 "Channel median"
@@ -72,7 +72,7 @@ Indi_PriceChannel *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, InpExtHighBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, InpExtLowBuffer, INDICATOR_DATA);
@@ -93,6 +93,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpPeriod);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**
