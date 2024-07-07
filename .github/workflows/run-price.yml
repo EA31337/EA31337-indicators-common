@@ -115,16 +115,14 @@ jobs:
       - name: Run Indicator strategy with ${{ matrix.test }} indicator
         uses: fx31337/mql-tester-action@master
         with:
-          mt-path: ${{ env.ARTIFACT_PREFIX }}4
           BtDays: 1-12
-          OptTrace: ${{ env.OPT_TRACE }}
-          RunOnStart: >-
-            ln -fsv "/github/workspace/Indicators-common"
-            "$TERMINAL_DIR/$MQL_DIR/Indicators"
-          RunOnSet: cat "$TESTER_DIR/$EA_SETFILE"
-          RunOnError: pwd && find -L .
+          Login: ${{ secrets.MT5_LOGIN }}
+          Password: ${{ secrets.MT5_PASSWORD }}
           SetFile: ${{ github.workspace }}/Stg_Indicator/Stg_Indicator.set
-          TestExpert: Stg_Indicator.ex4
+          TestExpert: Stg_Indicator.ex5
+          TestPeriod: M1
+          TestSymbol: EURUSD
+          Version: 5
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
