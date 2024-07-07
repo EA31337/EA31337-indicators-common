@@ -112,12 +112,12 @@ jobs:
       - uses: actions/checkout@v4
         with:
           path: MQL4/Include/EA31337-classes
-          ref: v3.007-dev-new
+          ref: v3.008-dev-new
           repository: EA31337/EA31337-classes
       - uses: actions/checkout@v4
         with:
           path: MQL5/Include/EA31337-classes
-          ref: v3.007-dev-new
+          ref: v3.008-dev-new
           repository: EA31337/EA31337-classes
       - uses: actions/download-artifact@v4
         with:
