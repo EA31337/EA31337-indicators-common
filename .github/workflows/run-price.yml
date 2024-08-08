@@ -121,7 +121,7 @@ jobs:
       - name: List files
         run: find . -ls
       - name: Run Indicator strategy with ${{ matrix.test }} indicator
-        uses: fx31337/mql-tester-action@master
+        uses: fx31337/mql-tester-action@dev
         with:
           Login: ${{ secrets.MT5_LOGIN }}
           Password: ${{ secrets.MT5_PASSWORD }}
