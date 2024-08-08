@@ -8,12 +8,12 @@ env:
 on:
   pull_request:
     paths:
-      - 'Price/*'
       - .github/workflows/run-price.yml
+      - Price/*
   push:
     paths:
-      - 'Price/*'
       - .github/workflows/run-price.yml
+      - Price/*
 
 jobs:
   compile-indicators:
@@ -130,7 +130,7 @@ jobs:
           TestFromDate: 2024.01.01
           TestPeriod: M1
           TestSymbol: EURUSD
-          TestToDate: 2024.01.12
+          TestToDate: 2024.01.14
           UrlExpert: file://${{ github.workspace }}/Stg_Indicator.ex5
           Version: 5
       - name: Upload results

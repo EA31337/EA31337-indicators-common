@@ -1,6 +1,7 @@
 ---
 name: Compile
 
+# Setting an environment variable with the value of a configuration variable.
 env:
   ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
   INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
@@ -45,6 +46,7 @@ jobs:
       artifact_overwrite: true
       skip_cleanup: true
       version: 4
+
   mt5:
     name: Installs platform (5)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
