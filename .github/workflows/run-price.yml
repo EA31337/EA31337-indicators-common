@@ -138,6 +138,8 @@ jobs:
         with:
           name: Results-Price-${{ matrix.test }}
           path: '**.csv'
+      - if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
     timeout-minutes: 20
 
   cleanup:
