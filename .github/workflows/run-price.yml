@@ -125,6 +125,7 @@ jobs:
         with:
           Login: ${{ secrets.MT5_LOGIN }}
           Password: ${{ secrets.MT5_PASSWORD }}
+          Server: MetaQuotes-Demo
           TestExpert: Stg_Indicator.ex5
           TestExpertParameters: ${{ github.workspace }}/Stg_Indicator/Stg_Indicator.set
           TestFromDate: 2024.01.01
