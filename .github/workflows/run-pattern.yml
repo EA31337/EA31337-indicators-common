@@ -1,0 +1,147 @@
+---
+name: Run (Pattern)
+
+env:
+  ARTIFACT_PREFIX: mt
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+    paths:
+      - .github/workflows/run-pattern.yml
+      - Pattern/*
+  push:
+    paths:
+      - .github/workflows/run-pattern.yml
+      - Pattern/*
+
+jobs:
+  compile-indicators:
+    name: Compile
+    uses: ./.github/workflows/compile.yml
+    with:
+      artifact_prefix: mt
+      skip_cleanup: true
+
+  compile-strategy:
+    defaults:
+      run:
+        shell: powershell
+    name: Compile Strategy
+    needs: [compile-indicators]
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: Strategy-Indicator
+          ref: v2.000-dev
+          repository: EA31337/Strategy-Indicator
+      - uses: actions/checkout@v4
+        with:
+          path: Include/EA31337-classes
+          ref: v3.000.1
+          repository: EA31337/EA31337-classes
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}4
+          path: .${{ env.ARTIFACT_PREFIX }}4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}5
+          path: .${{ env.ARTIFACT_PREFIX }}5
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: |
+            indicators-common
+            platform-indicators-*
+      - name: Compile .mq4
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          mt-path: .${{ env.ARTIFACT_PREFIX }}4
+          path: Strategy-Indicator
+          verbose: true
+      - name: Compile .mq5
+        uses: fx31337/mql-compile-action@master
+        with:
+          include: .
+          mt-path: .${{ env.ARTIFACT_PREFIX }}5
+          path: Strategy-Indicator
+          verbose: true
+      - name: List compiled files
+        run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
+      - run: Get-Location
+      - name: Upload indicator artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Stg_Indicator
+          path: 'Strategy-Indicator/*.ex[45]'
+    timeout-minutes: 20
+
+  run-mt5:
+    defaults:
+      run:
+        shell: bash
+    env:
+      OPT_TRACE: ${{ secrets.OPT_TRACE }}
+    name: Run (MT5)
+    needs: [compile-indicators, compile-strategy]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        test:
+          - Fractals
+
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}4
+          path: .${{ env.ARTIFACT_PREFIX }}4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}5
+          path: .${{ env.ARTIFACT_PREFIX }}5
+      - uses: actions/download-artifact@v4
+        with:
+          name: Stg_Indicator
+      - uses: frdrwrt/write-to-file@v1.3
+        with:
+          filepath: Stg_Indicator/Stg_Indicator.set
+          content: |
+            Indicator_Indi_Indicator_DataExportMethod=1
+            Indicator_Indi_Indicator_Path=Pattern\${{ matrix.test }}
+            Indicator_Indi_Indicator_Type=25
+          mode: 0644
+      - name: List files
+        run: find . -ls
+      - name: Run Indicator strategy with ${{ matrix.test }} indicator
+        uses: fx31337/mql-tester-action@master
+        with:
+          Login: ${{ secrets.MT5_LOGIN }}
+          Password: ${{ secrets.MT5_PASSWORD }}
+          Server: MetaQuotes-Demo
+          TestExpert: Stg_Indicator.ex5
+          TestExpertParameters: ${{ github.workspace }}/Stg_Indicator/Stg_Indicator.set
+          TestFromDate: 2024.01.01
+          TestPeriod: M1
+          TestSymbol: EURUSD
+          TestToDate: 2024.01.14
+          UrlExpert: file://${{ github.workspace }}/Stg_Indicator.ex5
+          Version: 5
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: Results-Pattern-${{ matrix.test }}
+          path: '**.csv'
+      - if: ${{ failure() }}
+        uses: mxschmitt/action-tmate@v3
+    timeout-minutes: 20
+
+  cleanup:
+    name: Clean-up
+    needs: [run-mt5]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: ${{ env.ARTIFACT_PREFIX }}*
