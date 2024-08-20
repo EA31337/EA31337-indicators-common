@@ -76,7 +76,7 @@ Indi_Envelopes *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtUpBuffer, INDICATOR_DATA);
   SetIndexBuffer(1, ExtDownBuffer, INDICATOR_DATA);
@@ -100,6 +100,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_DRAW_BEGIN, InpMAPeriod);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**

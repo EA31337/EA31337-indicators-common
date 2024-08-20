@@ -1,5 +1,5 @@
 ---
-name: Run (Price)
+name: Run (Oscillators)
 
 env:
   ARTIFACT_PREFIX: mt
@@ -8,12 +8,12 @@ env:
 on:
   pull_request:
     paths:
-      - .github/workflows/run-price.yml
-      - Price/*
+      - .github/workflows/run-oscillators.yml
+      - Oscillators/*
   push:
     paths:
-      - .github/workflows/run-price.yml
-      - Price/*
+      - .github/workflows/run-oscillators.yml
+      - Oscillators/*
 
 jobs:
   compile-indicators:
@@ -90,13 +90,32 @@ jobs:
     strategy:
       matrix:
         test:
-          - AMA
-          # - DEMA  # @fixme
-          # - FrAMA  # @fixme
-          - MA
-          # - TEMA  # @fixme
-          - VIDYA
-          - ZigZag
+          # - AC  # @fixme
+          # - ADX  # @fixme
+          # - ADXW  # @fixme
+          # - AO  # @fixme
+          - ASI
+          - ATR
+          # - Bears  # @fixme
+          # - Bulls  # @fixme
+          # - CCI  # @fixme
+          # - CHV  # @fixme
+          # - DPO  # @fixme
+          # - DeMarker  # @fixme
+          # - Gator  # @fixme
+          # - MACD  # @fixme
+          # - MI  # @fixme
+          - MOM
+          # - OsMA  # @fixme
+          - ROC
+          # - RSI  # @fixme
+          - RVI
+          # - StdDev  # @fixme
+          - Stochastic
+          # - UOS  # @fixme
+          # - TRIX  # @fixme
+          - WAD
+          - WPR
 
     steps:
       - uses: actions/download-artifact@v4
@@ -115,7 +134,7 @@ jobs:
           filepath: Stg_Indicator/Stg_Indicator.set
           content: |
             Indicator_Indi_Indicator_DataExportMethod=1
-            Indicator_Indi_Indicator_Path=Price\${{ matrix.test }}
+            Indicator_Indi_Indicator_Path=Oscillators\${{ matrix.test }}
             Indicator_Indi_Indicator_Type=25
           mode: 0644
       - name: List files
@@ -137,10 +156,8 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: Results-Price-${{ matrix.test }}
+          name: Results-Oscillators-${{ matrix.test }}
           path: '**.csv'
-      - if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
     timeout-minutes: 20
 
   cleanup:

@@ -70,7 +70,7 @@ Indi_FrAMA *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, InpExtFrAMABuffer, INDICATOR_DATA);
   // Initialize indicator.
@@ -89,6 +89,7 @@ void OnInit() {
   PlotIndexSetInteger(0, PLOT_SHIFT, ::InpPeriod);
   // Set accuracy.
   IndicatorSetInteger(INDICATOR_DIGITS, _Digits);
+  return INIT_SUCCEEDED;
 }
 
 /**

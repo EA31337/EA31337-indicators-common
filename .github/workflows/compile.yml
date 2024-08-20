@@ -1,8 +1,11 @@
 ---
 name: Compile
 
+# Setting an environment variable with the value of a configuration variable.
 env:
   ARTIFACT_PREFIX: ${{ inputs.artifact_prefix || 'mt' }}
+  # yamllint disable-line rule:line-length
+  CHECKOUT_BRANCH: ${{ inputs.checkout_branch || github.head_ref || github.ref_name }}
   INDI_COMMON_WORKDIR: ${{ vars.INDI_COMMON_WORKDIR || 'indicators-common' }}
   REPOSITORY: EA31337/EA31337-indicators-common
   SKIP_CLEANUP: ${{ inputs.skip_cleanup || false }}
@@ -30,6 +33,11 @@ on:
         description: Artifact prefix.
         required: false
         type: string
+      checkout_branch:
+        default: ${{ github.head_ref || github.ref_name }}
+        description: Checkout branch
+        required: false
+        type: string
       skip_cleanup:
         default: false
         description: Whether to skip a clean-up job.
@@ -43,13 +51,16 @@ jobs:
     with:
       artifact_name: ${{ inputs.artifact_prefix || 'mt' }}4
       artifact_overwrite: true
+      skip_cleanup: true
       version: 4
+
   mt5:
     name: Installs platform (5)
     uses: EA31337/EA-Tester/.github/workflows/platform-linux.yml@dev
     with:
       artifact_name: ${{ inputs.artifact_prefix || 'mt' }}5
       artifact_overwrite: true
+      skip_cleanup: true
       version: 5
 
   compile-platform-indicators:
@@ -73,10 +84,16 @@ jobs:
           include: .
           init-platform: true
           mt-path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}
+          # yamllint disable-line rule:line-length
           path: .${{ env.ARTIFACT_PREFIX }}${{ matrix.version }}/**/MQL?/Indicators
           verbose: true
       - name: Copy MQL to the current location
-        run: Copy-Item -Path ".${{ env.ARTIFACT_PREFIX }}*\*\*\MQL?" -Destination . -Recurse -Verbose
+        run: >-
+          Copy-Item
+          -Path ".${{ env.ARTIFACT_PREFIX }}*\*\*\MQL?"
+          -Destination .
+          -Recurse
+          -Verbose
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path "MQL?" -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -85,7 +102,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
-          name: platform-indicators-mql${{ matrix.version }}
+          name: ${{ env.ARTIFACT_PREFIX }}-indicators-ex${{ matrix.version }}
           path: MQL?/**/*.[me][qx][45h]
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
@@ -95,24 +112,24 @@ jobs:
     defaults:
       run:
         shell: powershell
-    name: Compile indicators
+    name: Compile Indicators
     needs: [compile-platform-indicators]
     runs-on: windows-latest
     strategy:
       matrix:
         version: [4, 5]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: ${{ env.INDI_COMMON_WORKDIR }}
-          ref: ${{ github.head_ref || github.ref_name }}
+          ref: ${{ env.CHECKOUT_BRANCH }}
           repository: EA31337/EA31337-indicators-common
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: MQL4/Include/EA31337-classes
           ref: v3.000.1
           repository: EA31337/EA31337-classes
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           path: MQL5/Include/EA31337-classes
           ref: v3.000.1
@@ -124,7 +141,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-          pattern: platform-indicators-mql?
+          pattern: ${{ env.ARTIFACT_PREFIX }}-indicators-ex?
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -152,9 +169,10 @@ jobs:
         run: '(Get-ChildItem -Recurse -Path . -Include *.ex[45]).fullname'
       - run: Get-Location
       - name: Upload indicator artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          name: indicators-common
+          # yamllint disable-line rule:line-length
+          name: ${{ env.ARTIFACT_PREFIX }}-indicators-common-ex${{ matrix.version }}
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.ex[45]
     timeout-minutes: 30
 

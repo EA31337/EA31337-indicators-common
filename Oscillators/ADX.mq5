@@ -85,7 +85,7 @@ Indi_ADX *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtADXBuffer);
   SetIndexBuffer(1, ExtPDIBuffer);
@@ -107,6 +107,7 @@ void OnInit() {
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   // Sets indicator shift.
   PlotIndexSetInteger(0, PLOT_SHIFT, InpShift);
+  return INIT_SUCCEEDED;
 }
 
 /**

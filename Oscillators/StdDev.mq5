@@ -71,7 +71,7 @@ Indi_StdDev *indi;
 /**
  * Init event handler function.
  */
-void OnInit() {
+int OnInit() {
   // Initialize indicator buffers.
   SetIndexBuffer(0, ExtStdDevBuffer);
   // Initialize indicator.
@@ -84,6 +84,7 @@ void OnInit() {
   IndicatorSetString(INDICATOR_SHORTNAME, short_name);
   PlotIndexSetString(0, PLOT_LABEL, short_name);
   PlotIndexSetDouble(0, PLOT_EMPTY_VALUE, DBL_MAX);
+  return INIT_SUCCEEDED;
 }
 
 /**

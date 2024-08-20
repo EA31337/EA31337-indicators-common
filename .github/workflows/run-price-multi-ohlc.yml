@@ -1,5 +1,5 @@
 ---
-name: Run (Price)
+name: Run (Price/Multi/OHLC)
 
 env:
   ARTIFACT_PREFIX: mt
@@ -8,12 +8,12 @@ env:
 on:
   pull_request:
     paths:
-      - .github/workflows/run-price.yml
-      - Price/*
+      - .github/workflows/run-price-multi-ohlc.yml
+      - Price/Multi/OHLC/*
   push:
     paths:
-      - .github/workflows/run-price.yml
-      - Price/*
+      - .github/workflows/run-price-multi-ohlc.yml
+      - Price/Multi/OHLC/*
 
 jobs:
   compile-indicators:
@@ -90,13 +90,7 @@ jobs:
     strategy:
       matrix:
         test:
-          - AMA
-          # - DEMA  # @fixme
-          # - FrAMA  # @fixme
-          - MA
-          # - TEMA  # @fixme
-          - VIDYA
-          - ZigZag
+          - HeikenAshi
 
     steps:
       - uses: actions/download-artifact@v4
@@ -115,7 +109,7 @@ jobs:
           filepath: Stg_Indicator/Stg_Indicator.set
           content: |
             Indicator_Indi_Indicator_DataExportMethod=1
-            Indicator_Indi_Indicator_Path=Price\${{ matrix.test }}
+            Indicator_Indi_Indicator_Path=Price\Multi\OHLC\${{ matrix.test }}
             Indicator_Indi_Indicator_Type=25
           mode: 0644
       - name: List files
@@ -137,10 +131,8 @@ jobs:
       - name: Upload results
         uses: actions/upload-artifact@v4
         with:
-          name: Results-Price-${{ matrix.test }}
+          name: Results-Price-Multi-OHLC-${{ matrix.test }}
           path: '**.csv'
-      - if: ${{ failure() }}
-        uses: mxschmitt/action-tmate@v3
     timeout-minutes: 20
 
   cleanup:
