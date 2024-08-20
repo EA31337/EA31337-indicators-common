@@ -95,7 +95,7 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           if-no-files-found: error
-          name: platform-indicators-ex${{ matrix.version }}
+          name: ${{ env.ARTIFACT_PREFIX }}-indicators-ex${{ matrix.version }}
           path: MQL?/**/*.[me][qx][45h]
       - if: ${{ failure() }}
         uses: mxschmitt/action-tmate@v3
@@ -134,7 +134,7 @@ jobs:
       - uses: actions/download-artifact@v4
         with:
           merge-multiple: true
-          pattern: platform-indicators-ex?
+          pattern: ${{ env.ARTIFACT_PREFIX }}-indicators-ex?
       - name: List all source code files
         run: '(Get-ChildItem -Recurse -Path . -Include *.mq[45]).fullname'
       - name: List compiled files
@@ -164,7 +164,8 @@ jobs:
       - name: Upload indicator artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: indicators-common-ex${{ matrix.version }}
+          # yamllint disable-line rule:line-length
+          name: ${{ env.ARTIFACT_PREFIX }}-indicators-common-ex${{ matrix.version }}
           path: ${{ env.INDI_COMMON_WORKDIR }}/**/*.ex[45]
     timeout-minutes: 30
 
